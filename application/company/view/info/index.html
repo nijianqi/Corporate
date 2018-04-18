@@ -1,0 +1,90 @@
+{extend name="admin@public/content"}
+
+{block name="content"}
+<form onsubmit="return false;" action="{:request()->url()}" data-auto="true" method="post" class='form-horizontal layui-form padding-top-20'>
+
+    <div class="form-group">
+        <label class="col-sm-2 control-label">
+            Title<br><span class="nowrap color-desc">网站标题</span>
+        </label>
+        <div class='col-sm-8'>
+            <input name="title" required="required" title="请输入网站标题" placeholder="请输入网站标题" value="{:comconf('title')}" class="layui-input">
+            <p class="help-block">当前网站标题，显示在浏览器标签上</p>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-2 control-label">
+            Kewords<br><span class="nowrap color-desc">网站关键字</span>
+        </label>
+        <div class='col-sm-8'>
+            <input name="kewords" required="required" title="请输入网站关键字" placeholder="请输入网站关键字" value="{:comconf('kewords')}" class="layui-input">
+            <p class="help-block">当前网站关键字，显示在浏览器标签上</p>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-2 control-label">
+            Description<br><span class="nowrap color-desc">网站描述</span>
+        </label>
+        <div class='col-sm-8'>
+            <input name="description" required="required" title="请输入网站描述" placeholder="请输入网站描述" value="{:comconf('description')}" class="layui-input">
+            <p class="help-block">网站描述，显示在浏览器标签上</p>
+        </div>
+    </div>
+
+    <div class="hr-line-dashed"></div>
+
+    <div class="form-group">
+        <label class="col-sm-2 control-label">
+            E-mail<br><span class="nowrap color-desc">邮箱地址</span>
+        </label>
+        <div class='col-sm-8'>
+            <input name="email" required="required" title="请输入邮箱地址" placeholder="请输入邮箱地址" value="{:comconf('email')}" class="layui-input">
+            <p class="help-block">邮箱地址设置，在前台页脚显示</p>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-2 control-label">
+            Wechat<br><span class="nowrap color-desc">微信二维码</span>
+        </label>
+        <div class='col-sm-8'>
+            <img data-tips-image style="height:auto;max-height:100px;min-width:100px" src="{:comconf('wechat_img')}"/>
+            <input type="hidden" name="wechat_img" onchange="$(this).prev('img').attr('src', this.value)" value="{:comconf('wechat_img')}" class="layui-input">
+            <a class="btn btn-link" data-file="one" data-uptype="local" data-type="ico,png,jpg,jpeg" data-field="wechat_img">上传图片</a>
+            <p class="help-block">建议上传二维码图片的尺寸为430x430px，此图标用于网站页脚，微信制作</p>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-2 control-label">
+            Phone<br><span class="nowrap color-desc">联系电话</span>
+        </label>
+        <div class='col-sm-8'>
+            <input name="phone" title="请输入联系电话" placeholder="请输入联系电话" value="{:comconf('phone')}" class="layui-input">
+            <p class="help-block">联系电话</p>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-2 control-label">
+            Weibo<br><span class="nowrap color-desc">微博地址</span>
+        </label>
+        <div class='col-sm-8'>
+            <input name="weibo" title="请输入微博地址" placeholder="请输入微博地址" value="{:comconf('weibo')}" class="layui-input">
+            <p class="help-block">微博地址</p>
+        </div>
+    </div>
+
+    <div class="hr-line-dashed"></div>
+
+    <div class="col-sm-4 col-sm-offset-2">
+        <div class="layui-form-item text-center">
+            <button class="layui-btn" type="submit">保存配置</button>
+        </div>
+    </div>
+
+</form>
+
+{/block}

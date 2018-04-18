@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+  <meta name="applicable-device" content="pc,mobile">
+  <meta name="keywords" content="{:sysconf('site_name')},浙江{:sysconf('site_name')}网络科技有限公司,外贸网站,bestsuppliers">
+  <meta name="description" content="浙江{:sysconf('site_name')}网络科技有限公司着力打造全球贸易B2B领域全新模式的外贸网站,以卓越的市场前瞻力和技术创新力推动中国互联网产业的发展，成就国际贸易新未来.跟着{:sysconf('site_name')}中国外贸家bestsuppliers，简单做外贸.">
+  <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0">
+  <title>浙江{:sysconf('site_name')}网络科技有限公司介绍-中国外贸家网站bestsuppliers
+</title>
+  <link rel="shortcut icon" href="{:sysconf('browser_icon')}">
+  <link rel="dns-prefetch" href="https://cdn.bootcss.com/">
+  <link href="https://cdn.bootcss.com/mdui/0.3.0/css/mdui.min.css" rel="stylesheet">
+  <link href="https://cdn.bootcss.com/Swiper/4.0.6/css/swiper.min.css" rel="stylesheet">
+  <link href="http://at.alicdn.com/t/font_446953_qql95ojohp808uxr.css" rel="stylesheet">
+  <link rel="stylesheet" href="static/index/css/index.css">
+  <link href="https://cdn.bootcss.com/viewerjs/1.0.0-beta.1/viewer.min.css" rel="stylesheet">
+  <link href="https://cdn.bootcss.com/outdated-browser/1.1.5/outdatedbrowser.min.css" rel="stylesheet">
+  <script type="text/javascript">
+    document.createElement("picture");
+  </script>
+  <script src="https://cdn.bootcss.com/picturefill/3.0.3/picturefill.min.js" async></script>
+</head>
+
+<body class="mdui-theme-primary-red mdui-theme-accent-red">
+  <header class="mdui-color-grey-900 mdui-shadow-5">
+    <div class="mdui-container mdui-xs-fluid mdui-p-a-0">
+      <div class="mdui-appbar mdui-shadow-0">
+        <div class="mdui-toolbar">
+          <a href="index.html" class="mdui-btn mdui-ripple mdui-m-x-2 mdui-p-a-0 best-logo">
+              {:sysconf('site_name')}<span class="mdui-hidden-xs">网络科技</span>
+                    </a>
+          <div class="mdui-toolbar-spacer"></div>
+          <a href="index.html" class="mdui-btn mdui-ripple mdui-ripple-white">首页</a>
+          <a href="bestsuppliers.html" class="mdui-btn mdui-ripple mdui-ripple-white">中国外贸家</a>
+          <div class="mdui-hidden-sm-down mdui-m-a-0">
+            <a href="about-us.html" class="mdui-btn mdui-ripple mdui-ripple-white mdui-text-color-theme">关于我们</a>
+            <a href="news.html" class="mdui-btn mdui-ripple mdui-ripple-white">新闻资讯</a>
+            <a href="join-us.html" class="mdui-btn mdui-ripple mdui-ripple-white">诚聘英才</a>
+            <a href="contact-us.html" class="mdui-btn mdui-ripple mdui-ripple-white">联系我们</a>
+          </div>
+          <a href="javascript:;" class="mdui-btn mdui-btn-icon mdui-hidden-md-up mdui-ripple mdui-ripple-white" mdui-drawer="{target: '#left-drawer',swipe:'true'}">
+                        <i class="mdui-icon material-icons">more_horiz</i>
+                    </a>
+        </div>
+      </div>
+    </div>
+  </header>
+  <div class="mdui-drawer mdui-drawer-close" id="left-drawer">
+    <div class="mdui-list">
+        {volist name="nav_list" id="vo" offset="1" length='10'}
+        <a href="{$vo.url}" target="{$vo.target}" class="mdui-list-item mdui-ripple">{$vo.title}</a>
+        {/volist}
+    </div>
+  </div>
+    <div class="mdui-container-fluid best-bg-img best-bannar" style="background-image:url('uploads/banner/20171213/bdbf78de3c7002ba6cd98725c8fc4b8e.jpg')"></div>
+    <main class="best-main mdui-p-y-auto mdui-color-grey-100">
+    <div class="mdui-container">
+      <div class="mdui-row">
+        <div class="mdui-col-xs-2 mdui-hidden-xs best-menu">
+          <div class="mdui-list mdui-color-white">
+            <a href="#company-introduce" class="mdui-list-item mdui-ripple mdui-list-item-active">
+                            <i class="mdui-list-item-icon iconfont mdui-icon icon-company"></i>
+                            <div class="mdui-list-item-content">公司介绍</div>
+                        </a>
+            <a href="#company-culture" class="mdui-list-item mdui-ripple">
+                            <i class="mdui-list-item-icon iconfont mdui-icon icon-culture"></i>
+                            <div class="mdui-list-item-content">企业文化</div>
+                        </a>
+            <a href="#company-structure" class="mdui-list-item mdui-ripple">
+                            <i class="mdui-list-item-icon iconfont mdui-icon icon-structure"></i>
+                            <div class="mdui-list-item-content">组织架构</div>
+                        </a>
+            <!-- <a href="#company-honor" class="mdui-list-item mdui-ripple">
+                            <i class="mdui-list-item-icon iconfont mdui-icon icon-honor"></i>
+                            <div class="mdui-list-item-content">荣誉资质</div>
+                        </a> -->
+            <a href="#company-memorabilia" class="mdui-list-item mdui-ripple">
+                            <i class="mdui-list-item-icon iconfont mdui-icon icon-memorabilia"></i>
+                            <div class="mdui-list-item-content">大事记</div>
+                        </a>
+            <a href="#company-album" class="mdui-list-item mdui-ripple">
+                            <i class="mdui-list-item-icon iconfont mdui-icon icon-photos"></i>
+                            <div class="mdui-list-item-content">公司相册</div>
+                        </a>
+          </div>
+        </div>
+        <div class="mdui-col-xs-12 mdui-col-sm-10 mdui-float-right best-item mdui-typo">
+          <div id="company-introduce" class="company mdui-color-white mdui-p-a-1">
+            <div class="best-partition mdui-m-b-1 mdui-p-x-2 mdui-p-y-1 mdui-color-grey-100">公司介绍</div>
+            <p class="mdui-text-index-2">浙江{:sysconf('site_name')}网络科技有限公司（简称{:sysconf('site_name')}网络科技）成立于2017年，公司核心团队是由一批具有互联网、国际贸易、安全支付、法律等行业背景的资深精英组成。公司总部位于美丽的中国杭州，在杭州未来科技城拥有自己的办公大楼，目前已经在浙江兰溪设立了浙中运营中心。</p>
+
+            <p class="mdui-text-index-2">立足于过去二十多年外贸实际经验和成果，{:sysconf('site_name')}网络科技目前已经打造并且投入运营重点项目“中国外贸家”平台。平台定位为全球贸易B2B交易服务平台领跑者，旨在通过平台双向交易服务帮助全球采购商与中国最佳供应商达成长远、深度合作。它包含供应商优选平台、海外推广运营平台和外贸交易服务平台。“中国外贸家“以”让天下没有做不成的生意“为使命，让中国制造企业更简单高效地参与全球采购，直达目标市场。</p>
+
+            <p class="mdui-text-index-2">面向未来，公司将秉承 “开放、正直、责任、成长”的价值观，着力打造全球贸易B2B领域全新模式，以卓越的市场前瞻力和技术创新力推动中国互联网产业的发展，成就国际贸易新未来。</p>
+            <h5 class="mdui-text-right">浙江{:sysconf('site_name')}网络科技有限公司<br>
+                        <small>Zhejiang Bestsuppliers Network technology co. LTD</small></h5>
+            <!-- <div class="mdui-text-right best-t2">浙江{:sysconf('site_name')}网络科技有限公司</div>
+                        <div class="mdui-text-right best-t-e">Zhejiang Bestsuppliers Network technology co. LTD</div> -->
+          </div>
+          <div id="company-culture" class="company mdui-color-white mdui-p-a-1">
+            <div class="best-partition mdui-m-b-1 mdui-p-x-2 mdui-p-y-1 mdui-color-grey-100">企业文化</div>
+            <p class="mdui-text-index-2"><strong>使命:</strong>让天下没有做不成的生意</p>
+            <p class="mdui-text-index-2"><strong>价值观:</strong>开放、正直、责任、成长</p>
+            <div class="mdui-p-l-1">
+              <p class="mdui-text-index-2"><strong>开放:</strong>团结互助、分享包容、创新与激情</p>
+              <p class="mdui-text-index-2"><strong>正直:</strong>坚守正道、求真务实、信念与信仰</p>
+              <p class="mdui-text-index-2"><strong>责任:</strong>敬畏本职、信守承诺、勇于担当</p>
+              <p class="mdui-text-index-2"><strong>成长:</strong>敢于挑战、达观协同、懂得坚持</p>
+            </div>
+          </div>
+
+          <div id="company-structure" class="mdui-color-white mdui-p-a-1">
+            <div class="best-partition mdui-m-b-1 mdui-p-x-2 mdui-p-y-1 mdui-color-grey-100">组织架构</div>
+            <picture>
+              <source srcset="static/index/images/structure-xs.jpg" media="(max-width: 1024px)">
+              <img class="mdui-img-fluid" srcset="static/index/images/structure.jpg" alt="{:sysconf('site_name')}组织架构">
+            </picture>
+          </div>
+          <div id="company-memorabilia" class="mdui-color-white mdui-p-a-1">
+            <div class="best-partition mdui-m-b-1 mdui-p-x-2 mdui-p-y-1 mdui-color-grey-100">大事记</div>
+            <div class="best-news-list">
+                            <a href="news-info/42.html" class="mdui-row mdui-text-color-black mdui-ripple mdui-sm-valign mdui-m-x-1 mdui-m-b-1 best-new " target="_blank">
+                <div class="mdui-col-xs-12 mdui-col-sm-9">
+                  <div class="mdui-typo-body-2 best-new-title">中国拉动全球经济增长最给力</div>
+                  <div class="mdui-typo-body-1 best-new-content mdui-text-color-grey-600 mdui-list-item-two-line">近日，联合国在纽约总部发布《2018年世界经济形势与展望》，指出2017年全球经济增长速度达到3%，是自2011年以来的最快增长。其中，中国对全球经济增长的贡献最多，约占1/3。</div>
+                </div>
+                <div class="mdui-col-12 mdui-col-sm-3 mdui-xs-valign mdui-p-y-1">
+                  <div class="mdui-typo-body-1 mdui-m-t-1 mdui-flex-item mdui-sm-text-right"><small>2017-12-22</small></div>
+                  <div class="mdui-typo-body-1 mdui-m-t-1 mdui-text-color-grey-600 mdui-sm-text-right">
+                    <span><i class="mdui-icon material-icons">remove_red_eye</i> 999+</span>
+                  </div>
+                </div>
+              </a>
+                            <a href="news-info/66.html" class="mdui-row mdui-text-color-black mdui-ripple mdui-sm-valign mdui-m-x-1 mdui-m-b-1 best-new " target="_blank">
+                <div class="mdui-col-xs-12 mdui-col-sm-9">
+                  <div class="mdui-typo-body-2 best-new-title">世界“看多”中国经济高质量发展(国际论道)</div>
+                  <div class="mdui-typo-body-1 best-new-content mdui-text-color-grey-600 mdui-list-item-two-line">12月18日至20日，中央经济工作会议在北京举行。这次会议释放的诸多信号让世界更加确定，进入新时代的中国经济，正在高质量发展的轨道上全力加速。为此，世界更加看好中国。</div>
+                </div>
+                <div class="mdui-col-12 mdui-col-sm-3 mdui-xs-valign mdui-p-y-1">
+                  <div class="mdui-typo-body-1 mdui-m-t-1 mdui-flex-item mdui-sm-text-right"><small>2017-12-25</small></div>
+                  <div class="mdui-typo-body-1 mdui-m-t-1 mdui-text-color-grey-600 mdui-sm-text-right">
+                    <span><i class="mdui-icon material-icons">remove_red_eye</i> 999+</span>
+                  </div>
+                </div>
+              </a>
+                            <a href="news-info/72.html" class="mdui-row mdui-text-color-black mdui-ripple mdui-sm-valign mdui-m-x-1 mdui-m-b-1 best-new " target="_blank">
+                <div class="mdui-col-xs-12 mdui-col-sm-9">
+                  <div class="mdui-typo-body-2 best-new-title">一览无余，盘点2017宏观经济大事件</div>
+                  <div class="mdui-typo-body-1 best-new-content mdui-text-color-grey-600 mdui-list-item-two-line">2017年即将过去。这一年，雄安新区成立、国产航母下水、C919首飞、营改增一年累计减税近7000亿……这些能够载入史册的大事如同时代的烙印，向我们昭示着2017年特有的经济发展轨迹。</div>
+                </div>
+                <div class="mdui-col-12 mdui-col-sm-3 mdui-xs-valign mdui-p-y-1">
+                  <div class="mdui-typo-body-1 mdui-m-t-1 mdui-flex-item mdui-sm-text-right"><small>2017-12-28</small></div>
+                  <div class="mdui-typo-body-1 mdui-m-t-1 mdui-text-color-grey-600 mdui-sm-text-right">
+                    <span><i class="mdui-icon material-icons">remove_red_eye</i> 999+</span>
+                  </div>
+                </div>
+              </a>
+                            <a href="news-info/75.html" class="mdui-row mdui-text-color-black mdui-ripple mdui-sm-valign mdui-m-x-1 mdui-m-b-1 best-new " target="_blank">
+                <div class="mdui-col-xs-12 mdui-col-sm-9">
+                  <div class="mdui-typo-body-2 best-new-title">2017年国际十大经济新闻</div>
+                  <div class="mdui-typo-body-1 best-new-content mdui-text-color-grey-600 mdui-list-item-two-line">2017年,世界经济呈全面复苏态势,主要经济体货币政策回归正常化的趋势愈发明显。</div>
+                </div>
+                <div class="mdui-col-12 mdui-col-sm-3 mdui-xs-valign mdui-p-y-1">
+                  <div class="mdui-typo-body-1 mdui-m-t-1 mdui-flex-item mdui-sm-text-right"><small>2017-12-28</small></div>
+                  <div class="mdui-typo-body-1 mdui-m-t-1 mdui-text-color-grey-600 mdui-sm-text-right">
+                    <span><i class="mdui-icon material-icons">remove_red_eye</i> 999+</span>
+                  </div>
+                </div>
+              </a>
+                            <a href="news-info/99.html" class="mdui-row mdui-text-color-black mdui-ripple mdui-sm-valign mdui-m-x-1 mdui-m-b-1 best-new " target="_blank">
+                <div class="mdui-col-xs-12 mdui-col-sm-9">
+                  <div class="mdui-typo-body-2 best-new-title">世界经济：告别危机，驶入复苏轨道</div>
+                  <div class="mdui-typo-body-1 best-new-content mdui-text-color-grey-600 mdui-list-item-two-line">随着2017年全球经济增长率达到3.6%，世界经济经历十年颠簸后重回2007-2008年国际金融危机以前20年的平均水平，这成为世界经济向复苏轨道驶入的一个拐点。</div>
+                </div>
+                <div class="mdui-col-12 mdui-col-sm-3 mdui-xs-valign mdui-p-y-1">
+                  <div class="mdui-typo-body-1 mdui-m-t-1 mdui-flex-item mdui-sm-text-right"><small>2018-01-08</small></div>
+                  <div class="mdui-typo-body-1 mdui-m-t-1 mdui-text-color-grey-600 mdui-sm-text-right">
+                    <span><i class="mdui-icon material-icons">remove_red_eye</i> 999+</span>
+                  </div>
+                </div>
+              </a>
+                            <a href="news-info/123.html" class="mdui-row mdui-text-color-black mdui-ripple mdui-sm-valign mdui-m-x-1 mdui-m-b-1 best-new " target="_blank">
+                <div class="mdui-col-xs-12 mdui-col-sm-9">
+                  <div class="mdui-typo-body-2 best-new-title">中国外贸向高质量发展挺进</div>
+                  <div class="mdui-typo-body-1 best-new-content mdui-text-color-grey-600 mdui-list-item-two-line">2018年，在经济回暖利好与外部不确定性共存的情况下，中国外贸将继续朝着高质量发展挺进。</div>
+                </div>
+                <div class="mdui-col-12 mdui-col-sm-3 mdui-xs-valign mdui-p-y-1">
+                  <div class="mdui-typo-body-1 mdui-m-t-1 mdui-flex-item mdui-sm-text-right"><small>2018-01-15</small></div>
+                  <div class="mdui-typo-body-1 mdui-m-t-1 mdui-text-color-grey-600 mdui-sm-text-right">
+                    <span><i class="mdui-icon material-icons">remove_red_eye</i> 999+</span>
+                  </div>
+                </div>
+              </a>
+                            <a href="news-info/134.html" class="mdui-row mdui-text-color-black mdui-ripple mdui-sm-valign mdui-m-x-1 mdui-m-b-1 best-new " target="_blank">
+                <div class="mdui-col-xs-12 mdui-col-sm-9">
+                  <div class="mdui-typo-body-2 best-new-title">中国经济总量突破80万亿元</div>
+                  <div class="mdui-typo-body-1 best-new-content mdui-text-color-grey-600 mdui-list-item-two-line">1月18日，国家统计局对外公布，初步核算，全年国内生产总值（GDP）827122亿元，我国经济总量首次站上80万亿元的历史新台阶。</div>
+                </div>
+                <div class="mdui-col-12 mdui-col-sm-3 mdui-xs-valign mdui-p-y-1">
+                  <div class="mdui-typo-body-1 mdui-m-t-1 mdui-flex-item mdui-sm-text-right"><small>2018-03-13</small></div>
+                  <div class="mdui-typo-body-1 mdui-m-t-1 mdui-text-color-grey-600 mdui-sm-text-right">
+                    <span><i class="mdui-icon material-icons">remove_red_eye</i> 999+</span>
+                  </div>
+                </div>
+              </a>
+                            <a href="news-info/186.html" class="mdui-row mdui-text-color-black mdui-ripple mdui-sm-valign mdui-m-x-1 mdui-m-b-1 best-new " target="_blank">
+                <div class="mdui-col-xs-12 mdui-col-sm-9">
+                  <div class="mdui-typo-body-2 best-new-title">商务部部长钟山：中国跨境电商规模已稳居世界第一</div>
+                  <div class="mdui-typo-body-1 best-new-content mdui-text-color-grey-600 mdui-list-item-two-line">商务部部长钟山3月5日在人民大会堂“部长通道”接受媒体采访时谈到，去年中国进出口总额增幅创六年新高，成为世界第一贸易大国。</div>
+                </div>
+                <div class="mdui-col-12 mdui-col-sm-3 mdui-xs-valign mdui-p-y-1">
+                  <div class="mdui-typo-body-1 mdui-m-t-1 mdui-flex-item mdui-sm-text-right"><small>2018-03-13</small></div>
+                  <div class="mdui-typo-body-1 mdui-m-t-1 mdui-text-color-grey-600 mdui-sm-text-right">
+                    <span><i class="mdui-icon material-icons">remove_red_eye</i> 999+</span>
+                  </div>
+                </div>
+              </a>
+                            <a href="news-info/191.html" class="mdui-row mdui-text-color-black mdui-ripple mdui-sm-valign mdui-m-x-1 mdui-m-b-1 best-new " target="_blank">
+                <div class="mdui-col-xs-12 mdui-col-sm-9">
+                  <div class="mdui-typo-body-2 best-new-title">中国外贸取得超预期“开门红”</div>
+                  <div class="mdui-typo-body-1 best-new-content mdui-text-color-grey-600 mdui-list-item-two-line">3月8日，海关总署发布最新统计数据显示：2018年前2个月，我国货物贸易进出口总值4.52万亿元人民币，比去年同期增长16.7%，中国外贸取得超预期“开门红”</div>
+                </div>
+                <div class="mdui-col-12 mdui-col-sm-3 mdui-xs-valign mdui-p-y-1">
+                  <div class="mdui-typo-body-1 mdui-m-t-1 mdui-flex-item mdui-sm-text-right"><small>2018-03-13</small></div>
+                  <div class="mdui-typo-body-1 mdui-m-t-1 mdui-text-color-grey-600 mdui-sm-text-right">
+                    <span><i class="mdui-icon material-icons">remove_red_eye</i> 999+</span>
+                  </div>
+                </div>
+              </a>
+                            <a href="news-info/192.html" class="mdui-row mdui-text-color-black mdui-ripple mdui-sm-valign mdui-m-x-1 mdui-m-b-1 best-new " target="_blank">
+                <div class="mdui-col-xs-12 mdui-col-sm-9">
+                  <div class="mdui-typo-body-2 best-new-title">跨境B2B正在变革，你准备好了吗</div>
+                  <div class="mdui-typo-body-1 best-new-content mdui-text-color-grey-600 mdui-list-item-two-line">日前，阿里巴巴中小企业国际贸易事业部联席总经理张阔以阿里的数据为基础分享了跨境B2B目前的变化。从客户和世界发展角度，整个跨境B2B行业有三个不能逆转的趋势。</div>
+                </div>
+                <div class="mdui-col-12 mdui-col-sm-3 mdui-xs-valign mdui-p-y-1">
+                  <div class="mdui-typo-body-1 mdui-m-t-1 mdui-flex-item mdui-sm-text-right"><small>2018-03-13</small></div>
+                  <div class="mdui-typo-body-1 mdui-m-t-1 mdui-text-color-grey-600 mdui-sm-text-right">
+                    <span><i class="mdui-icon material-icons">remove_red_eye</i> 999+</span>
+                  </div>
+                </div>
+              </a>
+                            <a href="news-info/200.html" class="mdui-row mdui-text-color-black mdui-ripple mdui-sm-valign mdui-m-x-1 mdui-m-b-1 best-new " target="_blank">
+                <div class="mdui-col-xs-12 mdui-col-sm-9">
+                  <div class="mdui-typo-body-2 best-new-title">2013-2017年中国出口跨境电商十四大政策盘点</div>
+                  <div class="mdui-typo-body-1 best-new-content mdui-text-color-grey-600 mdui-list-item-two-line">3月7日，国内知名电商智库——电子商务研究中心(100EC.CN)发布《2017年度中国跨境电商政策研究报告》，报告对包括国务院、商务部等各部委发布的出口跨境电商十四大政策进行深度解读。</div>
+                </div>
+                <div class="mdui-col-12 mdui-col-sm-3 mdui-xs-valign mdui-p-y-1">
+                  <div class="mdui-typo-body-1 mdui-m-t-1 mdui-flex-item mdui-sm-text-right"><small>2018-03-13</small></div>
+                  <div class="mdui-typo-body-1 mdui-m-t-1 mdui-text-color-grey-600 mdui-sm-text-right">
+                    <span><i class="mdui-icon material-icons">remove_red_eye</i> 999+</span>
+                  </div>
+                </div>
+              </a>
+                            <a href="news-info/243.html" class="mdui-row mdui-text-color-black mdui-ripple mdui-sm-valign mdui-m-x-1 mdui-m-b-1 best-new " target="_blank">
+                <div class="mdui-col-xs-12 mdui-col-sm-9">
+                  <div class="mdui-typo-body-2 best-new-title">中国跨境电商行业发展十二大政策建议</div>
+                  <div class="mdui-typo-body-1 best-new-content mdui-text-color-grey-600 mdui-list-item-two-line">电子商务研究中心发布《2017年度中国跨境电商政策研究报告》，对2013-2017年中国跨境电商政策进行了全面系统的梳理，并对进出口跨境电商政策进行了详细解读，最后给出跨境电商未来发展十二大政策建议
+</div>
+                </div>
+                <div class="mdui-col-12 mdui-col-sm-3 mdui-xs-valign mdui-p-y-1">
+                  <div class="mdui-typo-body-1 mdui-m-t-1 mdui-flex-item mdui-sm-text-right"><small>2018-03-21</small></div>
+                  <div class="mdui-typo-body-1 mdui-m-t-1 mdui-text-color-grey-600 mdui-sm-text-right">
+                    <span><i class="mdui-icon material-icons">remove_red_eye</i> 999+</span>
+                  </div>
+                </div>
+              </a>
+                            <a href="news-info/268.html" class="mdui-row mdui-text-color-black mdui-ripple mdui-sm-valign mdui-m-x-1 mdui-m-b-1 best-new " target="_blank">
+                <div class="mdui-col-xs-12 mdui-col-sm-9">
+                  <div class="mdui-typo-body-2 best-new-title">跨境出口：“一带一路”沿线国家偏爱哪些产品？</div>
+                  <div class="mdui-typo-body-1 best-new-content mdui-text-color-grey-600 mdui-list-item-two-line">“一带一路”建设涉及众多国家和地区，利用大数据，我们可以窥见“一带一路”沿线贸易信息更为精致的轮廓。</div>
+                </div>
+                <div class="mdui-col-12 mdui-col-sm-3 mdui-xs-valign mdui-p-y-1">
+                  <div class="mdui-typo-body-1 mdui-m-t-1 mdui-flex-item mdui-sm-text-right"><small>2018-03-26</small></div>
+                  <div class="mdui-typo-body-1 mdui-m-t-1 mdui-text-color-grey-600 mdui-sm-text-right">
+                    <span><i class="mdui-icon material-icons">remove_red_eye</i> 999+</span>
+                  </div>
+                </div>
+              </a>
+                          </div>
+          </div>
+
+          <div id="company-album" class="mdui-color-white mdui-p-a-1">
+            <div class="best-partition mdui-m-b-1 mdui-p-x-2 mdui-p-y-1 mdui-color-grey-100">公司相册</div>
+            <div class="swiper-container mdui-shadow-5 mdui-color-grey-100">
+              <div class="swiper-wrapper">
+                                <div class="swiper-slide">
+                  <img data-src="uploads/photo/20171214/24725e7843ff87a450aa660ac5a4a706.JPG" class="swiper-lazy" alt="公司正面">
+                </div>
+                                <div class="swiper-slide">
+                  <img data-src="uploads/photo/20171214/ca9361382c2af12e7b8782ce660c187c.JPG" class="swiper-lazy" alt="公司侧面">
+                </div>
+                                <div class="swiper-slide">
+                  <img data-src="uploads/photo/20171214/ceba628aa3d87f5aad239c267da220e2.JPG" class="swiper-lazy" alt="上线合照">
+                </div>
+                                <div class="swiper-slide">
+                  <img data-src="uploads/photo/20171214/c7534a49ccfca2a7ca24e84c1292b05d.JPG" class="swiper-lazy" alt="签名">
+                </div>
+                                <div class="swiper-slide">
+                  <img data-src="uploads/photo/20171214/c47c9f8577320b3c87088596711cae08.JPG" class="swiper-lazy" alt="CEO致辞">
+                </div>
+                                <div class="swiper-slide">
+                  <img data-src="uploads/photo/20171229/0b4216366e782ba655117ecfd3a75106.jpg" class="swiper-lazy" alt="热烈祝贺中国外贸家第一份㚈贸工厂服务合同顺利签定">
+                </div>
+                                <div class="swiper-slide">
+                  <img data-src="uploads/photo/20171229/483ce34e98f5da3d8b06eb88494e74f5.jpg" class="swiper-lazy" alt="中国外贸家第二份㚈贸工厂服务合同顺利签定">
+                </div>
+                                <div class="swiper-slide">
+                  <img data-src="uploads/photo/20180115/3f7fbdf2f01fb929813d306eeb4b8aa8.JPG" class="swiper-lazy" alt="2018年中国外贸家第一期拓展训练营">
+                </div>
+                                <div class="swiper-slide">
+                  <img data-src="uploads/photo/20180115/03c39a2cd0dd168c85267e4565c16b3f.JPG" class="swiper-lazy" alt="2018年中国外贸家第一期拓展训练营圆满结束">
+                </div>
+                              </div>
+              <div class="swiper-button-prev swiper-button-black mdui-hidden-sm-down"></div>
+              <div class="swiper-button-next swiper-button-black mdui-hidden-sm-down"></div>
+              <div class="swiper-scrollbar"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <footer class="mdui-container mdui-p-y-auto">
+      <div class="mdui-row-xs-1 mdui-row-sm-2 mdui-sm-valign">
+          <div class="mdui-col order-right mdui-text-right mdui-xs-text-center">
+              <a href="tel://{:comconf('phone')}" class="mdui-btn mdui-btn-icon mdui-ripple mdui-color-indigo-500 mdui-m-r-2" mdui-tooltip="{content: '{:comconf('phone')}', position: 'top'}">
+                  <i class="iconfont mdui-icon icon-phone"></i>
+              </a>
+              <a href="mailto:{:comconf('email')}" class="mdui-btn mdui-ripple mdui-btn-icon mdui-color-red-500 mdui-m-r-2" mdui-tooltip="{content: '{:comconf('email')}', position: 'top'}">
+                  <i class="mdui-icon material-icons">email</i>
+              </a>
+              <button type="button" class="mdui-btn mdui-btn-icon mdui-ripple mdui-hidden-md-up mdui-color-green-500 mdui-m-r-2 mdui-text-color-white" mdui-dialog="{target: '#wechat'}">
+                  <i class="iconfont mdui-icon icon-wechat"></i>
+              </button>
+              <button type="button" class="mdui-btn mdui-btn-icon mdui-ripple mdui-hidden-sm-down mdui-color-green-500 mdui-m-r-2 mdui-text-color-white" id="click-wechat">
+                  <i class="iconfont mdui-icon icon-wechat"></i>
+              </button>
+              <a href="{:comconf('weibo')}" target="_blank" rel="nofollow" class="mdui-btn mdui-ripple mdui-btn-icon mdui-text-color-white mdui-color-amber-500" mdui-tooltip="{content: '欢迎访问{:sysconf('site_name')}官方微博', position: 'top'}">
+                  <i class="iconfont mdui-icon icon-weibo"></i>
+              </a>
+          </div>
+          <div class="mdui-col mdui-xs-text-center mdui-p-y-1">
+              {:sysconf('site_copy')} {:sysconf('site_name')}网络科技 All Rights Reserved {:sysconf('miitbeian')}
+          </div>
+      </div>
+  </footer>
+  <div class="mdui-dialog" id="wechat">
+    <img src="{:comconf('wechat_img')}" alt="{:sysconf('site_name')}微信公众号二维码">
+    <div class="mdui-typo-subheading mdui-text-center mdui-m-b-1">欢迎关注{:sysconf('site_name')}官方微信</div>
+  </div>
+  <div id="outdated"></div>
+  <script src="https://cdn.bootcss.com/outdated-browser/1.1.5/outdatedbrowser.min.js"></script>
+  <script>
+    outdatedBrowser({
+      bgColor: '#f25648',
+      color: '#ffffff',
+      lowerThan: 'transform',
+      languagePath: '/static//index/zh-cn.html'
+    })
+  </script>
+  <script src="https://cdn.bootcss.com/viewerjs/1.0.0-beta.1/viewer.min.js"></script>
+  <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://cdn.bootcss.com/mdui/0.3.0/js/mdui.min.js"></script>
+  <script src="https://cdn.bootcss.com/Swiper/4.0.6/js/swiper.min.js"></script>
+  <script>
+    var viewer = new Viewer(document.getElementById('company-album'), {
+      url: 'data-src'
+    });
+    var swiper = new Swiper('.swiper-container', {
+      // loop: true,
+      lazy: {
+        loadPrevNext: true,
+        loadPrevNextAmount: 3
+      },
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+      // autoplay:true,
+      slidesPerView: 'auto',
+      spaceBetween: 10,
+      scrollbar: {
+        el: '.swiper-scrollbar',
+        draggable: true
+      }
+    });
+    var wechat = new mdui.Tooltip('#click-wechat', {
+      position: 'top',
+      content: '<img src="{:comconf(\'wechat_img\')}" alt="微信公众号二维码"><div class="best-arrow"></div>'
+    });
+
+    $('.best-menu .mdui-list').on('click', ' .mdui-list-item', function() {
+      $(this).addClass('mdui-list-item-active').siblings().removeClass('mdui-list-item-active');
+      $("html,body").animate({
+        scrollTop: ($($(this).attr("href")).offset().top - 100) + "px"
+      }, {
+        duration: 300,
+        easing: "swing"
+      });
+    });
+
+    $(window).scroll(function() {
+      if ($(window).scrollTop() >= $('.best-main').offset().top) {
+        $('.best-menu').addClass('fixed');
+      } else {
+        $('.best-menu').removeClass('fixed');
+      }
+      $('.best-main .best-item >div').each(function(i, el) {
+        var thistop = $(this).offset().top - $(window).scrollTop();
+        if (thistop > 0 && thistop < 150) {
+          var needid = $(this).attr('id');
+          $('.best-menu .mdui-list .mdui-list-item').each(function() {
+            if ($(this).attr('href') == ('#' + needid)) {
+              $(this).addClass('mdui-list-item-active').siblings().removeClass('mdui-list-item-active');
+            }
+          });
+        }
+      });
+    });
+  </script>
+  <!--<script type="text/javascript">-->
+    <!--var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");-->
+    <!--document.write(unescape("%3Cspan class='mdui-hidden' id='cnzz_stat_icon_1272450297'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s22.cnzz.com/z_stat.php%3Fid%3D1272450297%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));-->
+  <!--</script>-->
+</body>
+
+</html>
