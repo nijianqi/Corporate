@@ -1,0 +1,53 @@
+<form class="layui-form layui-box modal-form-box" action="{:request()->url()}" data-auto="true" method="post">
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">标题</label>
+        <div class="layui-input-block">
+            {if $vo and isset($vo.title)}
+            <input readonly="readonly" disabled="disabled" name="title" value='{$vo.title|default=""}' required="required" title="请输入标题" placeholder="请输入标题" class="layui-input layui-bg-gray">
+            {else}
+            <input name="title" value='{$vo.title|default=""}' required="required" pattern="^.{2,}$" title="请输入标题" placeholder="请输入2位及以上字符标题" class="layui-input">
+            {/if}
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">图片</label>
+        <div class="layui-input-block">
+            <img data-tips-image style="height:auto;max-height:100px;min-width:100px" src='{$vo.img_url|default=""}'/>
+            <input type="hidden" name="img_url" onchange="$(this).prev('img').attr('src', this.value)"
+                   value="{$vo.img_url|default=''}" class="layui-input">
+            <a class="btn btn-link" data-file="one" data-type="jpg,jpeg,png" data-field="img_url">上传图片</a>
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">地址</label>
+        <div class="layui-input-block">
+            <input type="url" autofocus name="url" value='{$vo.url|default=""}' title="请输入地址" placeholder="请输入地址" class="layui-input">
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">新窗口</label>
+        <div class="layui-input-block">
+            <input name="target"  value='{$vo.target|default=""}' title="请输入新窗口" placeholder="请输入新窗口" class="layui-input">
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">排序</label>
+        <div class="layui-input-block">
+            <input name="sort"  value='{$vo.sort|default=""}' title="请输入排序" placeholder="请输入排序" class="layui-input">
+        </div>
+    </div>
+
+    <div class="hr-line-dashed"></div>
+
+    <div class="layui-form-item text-center">
+        {if isset($vo['id'])}<input type='hidden' value='{$vo.id}' name='id'>{/if}
+        <button class="layui-btn" type='submit'>保存数据</button>
+        <button class="layui-btn layui-btn-danger" type='button' data-confirm="确定要取消编辑吗？" data-close>取消编辑</button>
+    </div>
+    <script>window.form.render();</script>
+</form>

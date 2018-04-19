@@ -14,7 +14,7 @@ class Index extends Controller
 
     public function initialize()
     {
-        $nav_list = Db::table('company_nav')->order('sort asc')->select();
+        $nav_list = Db::table('company_nav')->where('is_deleted','0')->order('sort asc')->select();
         $this->assign('nav_list', $nav_list);
     }
 
