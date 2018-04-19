@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50714
 File Encoding         : 65001
 
-Date: 2018-04-18 16:35:32
+Date: 2018-04-19 15:07:21
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -24,14 +24,16 @@ CREATE TABLE `company_album` (
   `title` varchar(255) DEFAULT NULL,
   `img_url` varchar(255) DEFAULT NULL,
   `create_by` varchar(20) DEFAULT NULL,
-  `create_at` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+  `create_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `is_deleted` int(1) DEFAULT '0',
   `sort` int(20) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
 -- Records of company_album
 -- ----------------------------
+INSERT INTO `company_album` VALUES ('1', '公司正面', 'http://company.znmya.com:8080/static/upload/cec6a0aa758bf704/161aab739b019adb.jpg', 'admin', '2018-04-19 10:24:11', '0', '1');
 
 -- ----------------------------
 -- Table structure for company_info
@@ -64,40 +66,67 @@ CREATE TABLE `company_nav` (
   `title` varchar(255) NOT NULL,
   `url` varchar(255) NOT NULL,
   `target` varchar(20) NOT NULL,
-  `create_by` bigint(20) NOT NULL,
-  `create_at` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+  `create_by` varchar(20) NOT NULL,
+  `create_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `sort` int(11) DEFAULT NULL,
+  `is_deleted` int(1) DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4;
+) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
 -- Records of company_nav
 -- ----------------------------
-INSERT INTO `company_nav` VALUES ('1', '中国外贸家', 'bestsuppliers.html', '_self', '0', '2018-04-18 10:27:14', '1');
-INSERT INTO `company_nav` VALUES ('2', '关于我们', 'about-us.html', '_self', '0', '2018-04-18 10:26:47', '2');
-INSERT INTO `company_nav` VALUES ('3', '新闻资讯', 'news.html', '_self', '0', '2018-04-18 10:26:53', '3');
-INSERT INTO `company_nav` VALUES ('4', '诚聘英才', 'join-us.html', '_self', '0', '2018-04-18 10:27:00', '4');
-INSERT INTO `company_nav` VALUES ('5', '联系我们', 'contact-us.html', '_self', '0', '2018-04-18 10:27:05', '5');
+INSERT INTO `company_nav` VALUES ('1', '中国外贸家', 'bestsuppliers.html', '_self', '0', '2018-04-19 09:32:40', '1', '0');
+INSERT INTO `company_nav` VALUES ('2', '关于我们', 'about-us.html', '_self', '0', '2018-04-19 09:32:41', '2', '0');
+INSERT INTO `company_nav` VALUES ('3', '新闻资讯', 'news.html', '_self', '0', '2018-04-19 09:32:41', '3', '0');
+INSERT INTO `company_nav` VALUES ('4', '诚聘英才', 'join-us.html', '_self', '0', '2018-04-19 09:32:42', '4', '0');
+INSERT INTO `company_nav` VALUES ('5', '联系我们', 'contact-us.html', '_self', '0', '2018-04-19 09:32:44', '5', '0');
+INSERT INTO `company_nav` VALUES ('6', '测试', '#', '_bank', 'admin', '2018-04-19 09:45:39', '6', '1');
+INSERT INTO `company_nav` VALUES ('7', '测试', '#', '_bank', 'admin', '2018-04-19 09:47:33', '6', '1');
 
 -- ----------------------------
 -- Table structure for company_news
 -- ----------------------------
 DROP TABLE IF EXISTS `company_news`;
 CREATE TABLE `company_news` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `title` varchar(20) NOT NULL,
-  `content` text NOT NULL,
-  `create_by` varchar(20) NOT NULL,
-  `create_at` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
-  `click` int(20) DEFAULT NULL,
-  `author` varchar(20) NOT NULL,
-  `nav_id` int(20) NOT NULL,
-  PRIMARY KEY (`id`,`nav_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
+  `id` int(20) NOT NULL AUTO_INCREMENT,
+  `local_url` varchar(255) DEFAULT NULL,
+  `article_id` varchar(60) DEFAULT NULL,
+  `is_deleted` tinyint(1) DEFAULT '0',
+  `create_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `create_by` varchar(20) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
 -- Records of company_news
 -- ----------------------------
+INSERT INTO `company_news` VALUES ('1', null, '1', '0', '2018-04-19 15:01:57', 'admin');
+
+-- ----------------------------
+-- Table structure for company_news_article
+-- ----------------------------
+DROP TABLE IF EXISTS `company_news_article`;
+CREATE TABLE `company_news_article` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `title` varchar(20) DEFAULT NULL,
+  `content` longtext,
+  `local_url` varchar(300) DEFAULT NULL,
+  `create_by` varchar(20) DEFAULT NULL,
+  `create_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `author` varchar(20) DEFAULT NULL,
+  `show_cover_pic` tinyint(4) DEFAULT NULL,
+  `digest` varchar(300) DEFAULT NULL,
+  `content_source_url` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
+
+-- ----------------------------
+-- Records of company_news_article
+-- ----------------------------
+INSERT INTO `company_news_article` VALUES ('1', '测试', '<p>文章内容不能留空，请输入内容！</p>', 'http://company.znmya.com:8080/static/upload/8adbd6ea173f0d4a/379f5e4cc33181ba.jpg', '10000', '2018-04-19 14:46:30', '测试', '0', '文章内容不能留空，请输入内容！', '');
+INSERT INTO `company_news_article` VALUES ('2', '测试', '<p>文章内容不能留空，请输入内容！</p>', 'http://company.znmya.com:8080/static/upload/cec6a0aa758bf704/161aab739b019adb.jpg', '10000', '2018-04-19 14:46:33', '测试', '0', '文章内容不能留空，请输入内容！', '');
+INSERT INTO `company_news_article` VALUES ('3', '测试', '<p>文章内容不能留空，请输入内容！订单对对对多多多</p>', 'http://company.znmya.com:8080/static/upload/8adbd6ea173f0d4a/379f5e4cc33181ba.jpg', 'admin', '2018-04-19 14:47:48', '测试', '0', '文章内容不能留空，请输入内容！订单对对对多多多', '');
 
 -- ----------------------------
 -- Table structure for company_news_nav
@@ -106,19 +135,19 @@ DROP TABLE IF EXISTS `company_news_nav`;
 CREATE TABLE `company_news_nav` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `title` varchar(255) DEFAULT NULL,
-  `icon` varchar(255) DEFAULT NULL,
   `sort` int(20) DEFAULT NULL,
   `create_by` varchar(20) DEFAULT NULL,
-  `create_at` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+  `create_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `is_deleted` int(1) DEFAULT '0',
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
 -- Records of company_news_nav
 -- ----------------------------
-INSERT INTO `company_news_nav` VALUES ('1', '公司新闻', null, null, null, null);
-INSERT INTO `company_news_nav` VALUES ('2', '电商资讯', null, null, null, null);
-INSERT INTO `company_news_nav` VALUES ('3', '财经资讯', null, null, null, null);
+INSERT INTO `company_news_nav` VALUES ('1', '公司新闻', '1', '', '2018-04-19 10:10:22', '0');
+INSERT INTO `company_news_nav` VALUES ('2', '电商资讯', '2', null, '2018-04-19 10:10:24', '0');
+INSERT INTO `company_news_nav` VALUES ('3', '财经资讯', '3', null, '2018-04-19 10:10:26', '0');
 
 -- ----------------------------
 -- Table structure for company_slides
@@ -131,17 +160,18 @@ CREATE TABLE `company_slides` (
   `url` varchar(255) DEFAULT NULL,
   `target` varchar(255) NOT NULL,
   `create_by` varchar(20) NOT NULL,
-  `create_at` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+  `create_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `sort` int(20) DEFAULT NULL,
+  `is_deleted` int(1) DEFAULT '0',
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
 -- Records of company_slides
 -- ----------------------------
-INSERT INTO `company_slides` VALUES ('1', '中国外贸家', 'uploads/obo/20171218/a447a08213e3e4e51cf5124b3f8ff087.jpg', 'bestsuppliers.html', '_blank', '0', '2018-04-18 14:50:58', '1');
-INSERT INTO `company_slides` VALUES ('2', '加入我们', 'uploads/obo/20180122/a2249073dee226a3bb6d3baf6a8bf787.jpg', 'join-us.html', '_blank', '0', '2018-04-18 14:50:59', '2');
-INSERT INTO `company_slides` VALUES ('3', '关于我们', 'uploads/obo/20180122/4a266476202629c0b0de6345edbb9d01.png.jpeg', 'about-us.html', '_blank', '0', '2018-04-18 14:51:01', '3');
+INSERT INTO `company_slides` VALUES ('1', '中国外贸家', 'uploads/obo/20171218/a447a08213e3e4e51cf5124b3f8ff087.jpg', 'bestsuppliers.html', '_blank', '0', '2018-04-18 14:50:58', '1', '0');
+INSERT INTO `company_slides` VALUES ('2', '加入我们', 'uploads/obo/20180122/a2249073dee226a3bb6d3baf6a8bf787.jpg', 'join-us.html', '_blank', '0', '2018-04-18 14:50:59', '2', '0');
+INSERT INTO `company_slides` VALUES ('3', '关于我们', 'uploads/obo/20180122/4a266476202629c0b0de6345edbb9d01.png.jpeg', 'about-us.html', '_blank', '0', '2018-04-18 14:51:01', '3', '0');
 
 -- ----------------------------
 -- Table structure for system_auth
@@ -244,7 +274,7 @@ CREATE TABLE `system_log` (
   `content` text NOT NULL COMMENT '操作内容描述',
   `create_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8 COMMENT='系统操作日志表';
+) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8 COMMENT='系统操作日志表';
 
 -- ----------------------------
 -- Records of system_log
@@ -273,6 +303,7 @@ INSERT INTO `system_log` VALUES ('21', '127.0.0.1', 'company/info/index', 'admin
 INSERT INTO `system_log` VALUES ('22', '127.0.0.1', 'company/info/index', 'admin', '企业管理', '公司信息配置成功', '2018-04-18 16:17:51');
 INSERT INTO `system_log` VALUES ('23', '127.0.0.1', 'company/info/index', 'admin', '企业管理', '公司信息配置成功', '2018-04-18 16:17:54');
 INSERT INTO `system_log` VALUES ('24', '127.0.0.1', 'company/info/index', 'admin', '企业管理', '公司信息配置成功', '2018-04-18 16:19:28');
+INSERT INTO `system_log` VALUES ('25', '127.0.0.1', 'admin/login/index', 'admin', '系统管理', '用户登录系统成功', '2018-04-19 09:00:08');
 
 -- ----------------------------
 -- Table structure for system_menu
@@ -332,8 +363,8 @@ INSERT INTO `system_menu` VALUES ('40', '39', '幻灯片管理', '', 'fa fa-arch
 INSERT INTO `system_menu` VALUES ('41', '39', '相册管理', '', 'fa fa-asterisk', '/company/album/index', '', '_self', '60', '1', '0', '2018-04-18 15:24:35');
 INSERT INTO `system_menu` VALUES ('42', '39', '招聘管理', '', 'fa fa-automobile', '/company/work/index', '', '_self', '70', '1', '0', '2018-04-18 15:25:47');
 INSERT INTO `system_menu` VALUES ('43', '39', '留言管理', '', 'fa fa-bullhorn', '/company/message/index', '', '_self', '90', '1', '0', '2018-04-18 15:26:39');
-INSERT INTO `system_menu` VALUES ('44', '39', '地址管理', '', 'fa fa-product-hunt', '/company/adress/index', '', '_self', '80', '1', '0', '2018-04-18 15:28:19');
-INSERT INTO `system_menu` VALUES ('45', '39', '信息管理', '', 'fa fa-percent', '/company/info/index', '', '_self', '10', '1', '0', '2018-04-18 15:29:52');
+INSERT INTO `system_menu` VALUES ('44', '39', '地址管理', '', 'fa fa-product-hunt', '/company/address/index', '', '_self', '80', '1', '0', '2018-04-18 15:28:19');
+INSERT INTO `system_menu` VALUES ('45', '39', '网站管理', '', 'fa fa-codiepie', '/company/info/index', '', '_self', '10', '1', '0', '2018-04-18 15:29:52');
 INSERT INTO `system_menu` VALUES ('46', '39', '合作管理', '', 'fa fa-shopping-basket', '/company/cooperate/index', '', '_self', '100', '1', '0', '2018-04-18 15:57:11');
 
 -- ----------------------------
@@ -631,11 +662,12 @@ CREATE TABLE `wechat_news_article` (
   `create_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   `create_by` bigint(20) DEFAULT NULL COMMENT '创建人',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='微信素材表';
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='微信素材表';
 
 -- ----------------------------
 -- Records of wechat_news_article
 -- ----------------------------
+INSERT INTO `wechat_news_article` VALUES ('1', '标题', 'http://company.znmya.com:8080/static/upload/8adbd6ea173f0d4a/379f5e4cc33181ba.jpg', '0', '测试', '文章内容不能留空，请输入内容！', '<p>文章内容不能留空，请输入内容！</p>', '', '2018-04-19 15:01:27', '10000');
 
 -- ----------------------------
 -- Table structure for wechat_news_image
