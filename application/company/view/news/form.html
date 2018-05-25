@@ -55,6 +55,23 @@
 
             <div class="form-group">
                 <div class="col-md-12">
+                    <div class="input-group">
+                        <span class="input-group-addon">所属栏目</span>
+                        <select name='nav_id' class='layui-select full-width' lay-ignore>
+                            <!--{foreach $navs as $nav}-->
+                            <!--{eq name='nav.id' value='$vo.nav_id|default=1'}-->
+                            <option selected value='{$nav.id}'>{$nav.title}</option>
+                            <!--{else}-->
+                            <option value='{$nav.id}'>{$nav.title}</option>
+                            <!--{/eq}-->
+                            <!--{/foreach}-->
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-12">
                     <div class="form-control border-radius-none" style="height:auto">
                         <label class="color-desc font-s12 margin-bottom-5">图文封面大图片设置</label>
                         <div class="row nowrap">
@@ -161,6 +178,7 @@
                 var data = {};
                 data.id = $form.find('[name=id]').val();
                 data.title = $form.find('[name=title]').val();
+                data.nav_id = $form.find('[name=nav_id]').val();
                 data.local_url = $form.find('[name=local_url]').val();
                 data.content = editor.getData() || '';
                 data.author = $form.find('[name=author]').val();
@@ -186,6 +204,7 @@
                 var data = $item.data('item') || {};
                 data.id = data.id || 0;
                 data.title = data.title || '';
+                data.nav_id = data.nav_id || 0;
                 data.local_url = data.local_url || '__STATIC__/plugs/uploader/theme/image.png';
                 data.content = data.content || '';
                 data.author = data.author || '';

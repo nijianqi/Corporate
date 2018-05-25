@@ -5,3 +5,4 @@
 /.git
 /runtime
 /composer.lock
+/static/upload

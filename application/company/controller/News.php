@@ -34,8 +34,24 @@ class News extends BasicAdmin
     public function index()
     {
         $this->title = '新闻列表';
-        $db = Db::name($this->table)->where(['is_deleted' => '0']);
-        return parent::_list($db->order('id desc'));
+        $get = $this->request->get();
+        $db = Db::name($this->table)
+            ->alias('a')
+            ->join('company_news_article b','a.article_id = b.id','left')
+            ->join('company_news_nav c','b.nav_id = c.id and c.is_deleted = 0','left')
+            ->where(['a.is_deleted' => '0'])
+            ->field('a.*,b.title,b.local_url as img_url,c.title as nav_title,b.author');
+        foreach (['title'] as $key) {
+            (isset($get[$key]) && $get[$key] !== '') && $db->whereLike('b.title', "%{$get[$key]}%");
+        }
+        if (isset($get['tag']) && $get['tag'] !== '') {
+            $db->where(['b.nav_id' => $get['tag']]);
+        }
+        if (isset($get['create_at']) && $get['create_at'] !== '') {
+            list($start, $end) = explode(' - ', $get['create_at']);
+            $db->whereBetween('a.create_at', ["{$start} 00:00:00", "{$end} 23:59:59"]);
+        }
+        return parent::_list($db);
     }
 
     /**
@@ -47,9 +63,8 @@ class News extends BasicAdmin
      */
     protected function _index_data_filter(&$data)
     {
-        foreach ($data as &$vo) {
-            $vo = $this->getNewsById($vo['id']);
-        }
+        $tags = Db::name('company_news_nav')->where(['is_deleted' => '0'])->column('id,title');
+        $this->assign('tags', $tags);
     }
 
     /**
@@ -88,6 +103,8 @@ class News extends BasicAdmin
     public function add()
     {
         if ($this->request->isGet()) {
+            $navs = Db::name('company_news_nav')->where(['is_deleted' => '0'])->order('sort asc,id asc')->select();
+            $this->assign('navs',$navs);
             return $this->fetch('form', ['title' => '新建文章']);
         }
         if ($this->request->isPost()) {
@@ -114,6 +131,8 @@ class News extends BasicAdmin
         $id = $this->request->get('id', '');
         if ($this->request->isGet()) {
             empty($id) && $this->error('参数错误，请稍候再试！');
+            $navs = Db::name('company_news_nav')->where(['is_deleted' => '0'])->order('sort asc,id asc')->select();
+            $this->assign('navs',$navs);
             return $this->fetch('form', ['title' => '编辑文章', 'vo' => $this->getNewsById($id)]);
         }
         $data = $this->request->post();
@@ -145,10 +164,10 @@ class News extends BasicAdmin
                 $vo['digest'] = mb_substr(strip_tags(str_replace(["\s", '　'], '', $vo['content'])), 0, 120);
             }
             if (empty($vo['id'])) {
-                $result = $id = Db::name('WechatNewsArticle')->insertGetId($vo);
+                $result = $id = Db::name('CompanyNewsArticle')->insertGetId($vo);
             } else {
                 $id = intval($vo['id']);
-                $result = Db::name('WechatNewsArticle')->where('id', $id)->update($vo);
+                $result = Db::name('CompanyNewsArticle')->where('id', $id)->update($vo);
             }
             if ($result !== false) {
                 $ids[] = $id;
@@ -173,11 +192,20 @@ class News extends BasicAdmin
         $this->error("新闻删除失败，请稍候再试！");
     }
 
+    /**
+     * 通过图文ID读取图文信息
+     * @param int $id 本地图文ID
+     * @param array $where 额外的查询条件
+     * @return array
+     * @throws \think\db\exception\DataNotFoundException
+     * @throws \think\db\exception\ModelNotFoundException
+     * @throws \think\exception\DbException
+     */
     public static function getNewsById($id, $where = [])
     {
         $data = Db::name('CompanyNews')->where(['id' => $id])->where($where)->find();
         $article_ids = explode(',', $data['article_id']);
-        $articles = Db::name('CompanyNewsArticle')->whereIn('id', $article_ids)->select();
+        $articles = Db::name('companyNewsArticle')->whereIn('id', $article_ids)->select();
         $data['articles'] = [];
         foreach ($article_ids as $article_id) {
             foreach ($articles as $article) {
@@ -189,4 +217,5 @@ class News extends BasicAdmin
         }
         return $data;
     }
+
 }

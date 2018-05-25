@@ -1,166 +1,121 @@
 {extend name='admin@public/content'}
 
 {block name="button"}
-<button data-open="{:url('add')}" class='layui-btn layui-btn-sm'>添加图文</button>
+<!--{if auth("$classuri/add")}-->
+<button data-open='{:url("$classuri/add")}' data-title="添加新闻" class='layui-btn layui-btn-sm'>添加新闻</button>
+<!--{/if}-->
+<!--{if auth("$classuri/del")}-->
+<button data-update data-field='delete' data-action='{:url("$classuri/del")}' class='layui-btn layui-btn-sm layui-btn-danger'>删除新闻</button>
+<!--{/if}-->
 {/block}
 
-{block name='content'}
+{block name="content"}
 
-<div id="news_box">
-    {foreach $list as $vo}
-    <div class="news_item">
-        <div class='news_tools hide'>
-            <a data-open='{:url("edit")}?id={$vo.id}' href='javascript:void(0)'>编辑</a>
-            <a data-news-del="{$vo.id}" href='javascript:void(0)'>删除</a>
+<!-- 表单搜索 开始 -->
+<form class="layui-form layui-form-pane form-search" action="{:request()->url()}" onsubmit="return false" method="get">
+
+    <div class="layui-form-item layui-inline">
+        <label class="layui-form-label">标题</label>
+        <div class="layui-input-inline">
+            <input name="title" value="{$Think.get.title|default=''}" placeholder="请输入新闻名" class="layui-input">
         </div>
-        {foreach $vo.articles as $k => $v}
-        {if $k < 1}
-        <div data-tips-image='{$v.local_url}' class='news_articel_item' style='background-image:url("{$v.local_url}")'>
-            {if $v.title}<p>{$v.title}</p>{/if}
-        </div>
-        <div class="hr-line-dashed"></div>
-        {else}
-        <div class='news_articel_item other'>
-            <div class='right-text'>{$v.title}</div>
-            <div data-tips-image='{$v.local_url}' class='left-image' style='background-image:url("{$v.local_url}");'></div>
-        </div>
-        <div class="hr-line-dashed"></div>
-        {/if}
-        {/foreach}
     </div>
-    {/foreach}
-    <div style="clear:both"></div>
-    {if empty($list)}
-    <p class="help-block text-center well">没 有 记 录 哦！</p>
-    {/if}
-</div>
-{if isset($page)}<p>{$page|raw}</p>{/if}
 
-{/block}
+    <div class="layui-form-item layui-inline">
+        <label class="layui-form-label">栏 目</label>
+        <div class="layui-input-inline">
+            <select name="tag" class="layui-select" lay-search="true">
+                <option value="">- 新闻栏目 -</option>
+                <!--{foreach $tags as $key=>$tag}-->
+                <!--{if $Think.get.tag eq $key}-->
+                <option selected value="{$key}">{$tag}</option>
+                <!--{else}-->
+                <option value="{$key}">{$tag}</option>
+                <!--{/if}-->
+                <!--{/foreach}-->
+            </select>
+        </div>
+    </div>
 
-{block name='script'}
+    <div class="layui-form-item layui-inline">
+        <label class="layui-form-label">创建时间</label>
+        <div class="layui-input-inline">
+            <input name="create_at" id='range-date' value="{$Think.get.create_at|default=''}" placeholder="请选择登录时间" class="layui-input">
+        </div>
+    </div>
+
+
+    <div class="layui-form-item layui-inline">
+        <button class="layui-btn layui-btn-primary"><i class="layui-icon">&#xe615;</i> 搜 索</button>
+    </div>
+
+</form>
 <script>
-
-    $('body').on('mouseenter', '.news_item', function () {
-        $(this).find('.news_tools').removeClass('hide');
-    }).on('mouseleave', '.news_item', function () {
-        $(this).find('.news_tools').addClass('hide');
-    });
-
-    require(['jquery.masonry'], function (Masonry) {
-        var container = document.querySelector('#news_box');
-        var msnry = new Masonry(container, {itemSelector: '.news_item', columnWidth: 0});
-        msnry.layout();
-        $('body').on('click', '[data-news-del]', function () {
-            var self = this;
-            var dialogIndex = $.msg.confirm('确定要删除图文吗？', function () {
-                $.form.load('{:url("del")}', {
-                    field: 'delete',
-                    value: 0,
-                    id: self.getAttribute('data-news-del')
-                }, 'post', function (ret) {
-                    if (ret.code) {
-                        $(self).parents('.news_item').remove();
-                        return $.msg.success(ret.msg), msnry.layout(), false;
-                    }
-                    return $.msg.error(ret.msg), false;
-                });
-                $.msg.close(dialogIndex);
-            });
-        });
-    });
-
+    window.laydate.render({range: true, elem: '#range-date'});
+	window.form.render();
 </script>
-{/block}
+<!-- 表单搜索 结束 -->
 
-{block name="style"}
-<style>
+<form onsubmit="return false;" data-auto="true" method="post">
+    <!--{empty name='list'}-->
+    <p class="help-block text-center well">没 有 记 录 哦！</p>
+    <!--{else}-->
+    <input type="hidden" value="resort" name="action">
+    <table class="layui-table" lay-skin="line">
+        <thead>
+        <tr>
+            <th class='list-table-check-td'>
+                <input data-auto-none="" data-check-target='.list-check-box' type='checkbox'>
+            </th>
+            <th class='text-left nowrap'>新闻标题</th>
+            <th class='text-left nowrap'>标题图片</th>
+            <th class='text-left nowrap'>所属栏目</th>
+            <th class='text-left nowrap'>作者</th>
+            <th class='text-left nowrap'>创建时间</th>
+            <th class='text-left nowrap'>创建者</th>
+            <th class='text-left nowrap'>操作</th>
+        </tr>
+        </thead>
+        <tbody>
+        <!--{foreach $list as $key=>$vo}-->
+        <tr>
+            <td class='list-table-check-td'>
+                <input class="list-check-box" value='{$vo.id}' type='checkbox'>
+            </td>
+            <td class='text-left nowrap'>
+                {$vo.title}
+            </td>
+            <td class="text-left"><img data-tips-image="" src="{$vo.img_url}" style="height: 50px;width: 100px;"></td>
+            <td class='text-left nowrap'>
+                {$vo.nav_title}
+            </td>
+            <td class='text-left nowrap'>
+                {$vo.author}
+            </td>
+            <td class='text-left nowrap'>
+                {$vo.create_at|default="<span class='color-desc'>创建时间</span>"|raw}
+            </td>
+            <td class='text-left nowrap'>
+                {$vo.create_by}
+            </td>
+            <td class='text-left nowrap'>
 
-    #news_box {
-        position: relative;
-    }
+                {if auth("$classuri/edit")}
+                <span class="text-explode">|</span>
+                <a data-title="编辑新闻" data-open='{:url("$classuri/edit")}?id={$vo.id}'>编辑</a>
+                {/if}
 
-    #news_box .news_item {
-        top: 0;
-        left: 0;
-        padding: 5px;
-        margin: 10px;
-        width: 300px;
-        position: relative;
-        border: 1px solid #ccc;
-        box-sizing: content-box;
-    }
+                {if auth("$classuri/del")}
+                <span class="text-explode">|</span>
+                <a data-update="{$vo.id}" data-field='delete' data-action='{:url("$classuri/del")}'>删除</a>
+                {/if}
 
-    #news_box .news_item .news_articel_item {
-        width: 100%;
-        height: 150px;
-        overflow: hidden;
-        position: relative;
-        background-size: 100%;
-        background-position: center center;
-    }
-
-    #news_box .news_item .news_articel_item p {
-        bottom: 0;
-        width: 100%;
-        color: #fff;
-        padding: 5px;
-        max-height: 5em;
-        font-size: 12px;
-        overflow: hidden;
-        position: absolute;
-        text-overflow: ellipsis;
-        background: rgba(0, 0, 0, 0.7);
-    }
-
-    #news_box .news_item .news_articel_item.other {
-        height: 50px;
-        padding: 5px 0;
-    }
-
-    #news_box .news_item .news_articel_item .left-image {
-        width: 50px;
-        height: 50px;
-        float: left;
-        overflow: hidden;
-        position: relative;
-        background-size: 100%;
-        background-position: center center;
-    }
-
-    #news_box .news_item .news_articel_item .right-text {
-        float: left;
-        width: 250px;
-        padding-right: 10px;
-        overflow: hidden;
-        text-overflow: ellipsis;
-    }
-
-    #news_box .news_item .hr-line-dashed:last-child {
-        display: none
-    }
-
-    #news_box .hr-line-dashed {
-        margin: 6px 0 1px 0
-    }
-
-    #news_box .news_tools {
-        top: 0;
-        z-index: 80;
-        color: #fff;
-        width: 312px;
-        padding: 0 5px;
-        margin-left: -6px;
-        line-height: 38px;
-        text-align: right;
-        position: absolute;
-        background: rgba(0, 0, 0, 0.7);
-    }
-
-    #news_box .news_tools a {
-        color: #fff;
-        margin-left: 10px
-    }
-
-</style>
+            </td>
+        </tr>
+        <!--{/foreach}-->
+        </tbody>
+    </table>
+    {if isset($page)}<p>{$page|raw}</p>{/if}
+    <!--{/empty}-->
+</form>
 {/block}
