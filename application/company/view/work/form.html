@@ -1,0 +1,91 @@
+<form class="layui-form layui-box modal-form-box" action="{:request()->url()}" data-auto="true" method="post">
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">职位名称</label>
+        <div class="layui-input-block">
+            {if $vo and isset($vo.title)}
+            <input readonly="readonly" disabled="disabled" name="title" value='{$vo.title|default=""}' required="required" title="请输入标题" placeholder="请输入标题" class="layui-input layui-bg-gray">
+            {else}
+            <input name="title" value='{$vo.title|default=""}' required="required" pattern="^.{2,}$" title="请输入标题" placeholder="请输入2位及以上字符标题" class="layui-input">
+            {/if}
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">薪酬待遇</label>
+        <div class="layui-input-block">
+            <input name="target"  value='{$vo.money|default=""}' title="请输入薪酬待遇" placeholder="请输入薪酬待遇" class="layui-input">
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">工作性质</label>
+        <div class="layui-input-block">
+            <input name="target"  value='{$vo.work_type|default=""}' title="请输入工作性质" placeholder="请输入工作性质" class="layui-input">
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">招聘人数</label>
+        <div class="layui-input-block">
+            <input name="target"  value='{$vo.number|default=""}' title="请输入招聘人数" placeholder="请输入招聘人数" class="layui-input">
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">联系人名称</label>
+        <div class="layui-input-block">
+            <input name="target"  value='{$vo.contacts|default=""}' title="请输入联系人名称" placeholder="请输入联系人名称" class="layui-input">
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">工作地点</label>
+        <div class="layui-input-block">
+            <input type="url" autofocus name="url" value='{$vo.url|default=""}' title="请输入地址" placeholder="请输入地址" class="layui-input">
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">联系电话</label>
+        <div class="layui-input-block">
+            <input name="target"  value='{$vo.telphone|default=""}' title="请输入联系电话" placeholder="请输入联系电话" class="layui-input">
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">工作职责</label>
+        <div class="layui-input-block">
+            <input name="target"  value='{$vo.work_content|default=""}' title="请输入工作职责" placeholder="请输入工作职责" class="layui-input">
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">任职资格</label>
+        <div class="layui-input-block">
+            <input name="target"  value='{$vo.qualifications|default=""}' title="请输入工作职责" placeholder="请输入工作职责" class="layui-input">
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">邮箱地址</label>
+        <div class="layui-input-block">
+            <input name="target"  value='{$vo.email|default=""}' title="请输入邮箱地址" placeholder="请输入邮箱地址" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">排序</label>
+        <div class="layui-input-block">
+            <input name="sort"  value='{$vo.sort|default=""}' title="请输入排序" placeholder="请输入排序" class="layui-input">
+        </div>
+    </div>
+
+    <div class="hr-line-dashed"></div>
+
+    <div class="layui-form-item text-center">
+        {if isset($vo['id'])}<input type='hidden' value='{$vo.id}' name='id'>{/if}
+        <button class="layui-btn" type='submit'>保存数据</button>
+        <button class="layui-btn layui-btn-danger" type='button' data-confirm="确定要取消编辑吗？" data-close>取消编辑</button>
+    </div>
+    <script>window.form.render();</script>
+</form>

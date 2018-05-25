@@ -138,7 +138,7 @@ class News extends BasicAdmin
         $data = $this->request->post();
         $ids = $this->_apply_news_article($data['data']);
         if (!empty($ids)) {
-            $post = ['id' => $id, 'article_id' => $ids, 'create_by' => session('user.id')];
+            $post = ['id' => $id, 'article_id' => $ids, 'create_by' => session('user.username')];
             if (false !== DataService::save('company_news', $post, 'id')) {
                 $url = url('@admin') . '#' . url('@company/news/index') . '?spm=' . $this->request->get('spm');
                 $this->success('文章更新成功!', $url);

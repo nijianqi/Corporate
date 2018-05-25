@@ -7,7 +7,7 @@ use service\DataService;
 use think\Db;
 
 /**
- * 新闻管理控制器
+ * 招聘管理控制器
  * Created by PhpStorm.
  * User: admin
  * Date: 2018/4/18
@@ -21,10 +21,10 @@ class Work extends BasicAdmin
      * 指定当前数据表
      * @var string
      */
-    public $table = 'CompanyNews';
+    public $table = 'CompanyWork';
 
     /**
-     * 新闻列表
+     * 招聘列表
      * @return array|string
      * @throws \think\db\exception\DataNotFoundException
      * @throws \think\db\exception\ModelNotFoundException
@@ -33,7 +33,7 @@ class Work extends BasicAdmin
      */
     public function index()
     {
-        $this->title = '新闻管理';
+        $this->title = '招聘管理';
         list($get, $db) = [$this->request->get(), Db::name($this->table)];
         foreach (['title'] as $key) {
             (isset($get[$key]) && $get[$key] !== '') && $db->whereLike($key, "%{$get[$key]}%");
@@ -46,7 +46,7 @@ class Work extends BasicAdmin
     }
 
     /**
-     * 新闻添加
+     * 招聘添加
      * @return array|string
      * @throws \think\db\exception\DataNotFoundException
      * @throws \think\db\exception\ModelNotFoundException
@@ -60,7 +60,7 @@ class Work extends BasicAdmin
     }
 
     /**
-     * 新闻编辑
+     * 招聘编辑
      * @return array|string
      * @throws \think\db\exception\DataNotFoundException
      * @throws \think\db\exception\ModelNotFoundException
@@ -86,13 +86,13 @@ class Work extends BasicAdmin
             if (isset($data['id'])) {
                 unset($data['title']);
             } elseif (Db::name($this->table)->where(['title' => $data['title'],'is_deleted'=>'0'])->count() > 0) {
-                $this->error('新闻账号已经存在，请使用其它账号！');
+                $this->error('招聘标题已经存在，请使用其它招聘标题！');
             }
         }
     }
 
     /**
-     * 删除新闻
+     * 删除招聘
      * @throws \think\Exception
      * @throws \think\exception\PDOException
      */
@@ -102,9 +102,9 @@ class Work extends BasicAdmin
             $this->error('系统超级账号禁止删除！');
         }
         if (DataService::update($this->table)) {
-            $this->success("新闻删除成功！", '');
+            $this->success("招聘信息删除成功！", '');
         }
-        $this->error("新闻删除失败，请稍候再试！");
+        $this->error("招聘信息删除失败，请稍候再试！");
     }
 
 }
