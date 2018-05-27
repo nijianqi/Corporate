@@ -1,0 +1,54 @@
+<form class="layui-form layui-box modal-form-box" action="{:request()->url()}" data-auto="true" method="post">
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">姓名</label>
+        <div class="layui-input-block">
+            {if $vo and isset($vo.name)}
+            <input readonly="readonly" disabled="disabled" name="name" value='{$vo.name|default=""}'
+                   required="required" title="请输入姓名" placeholder="请输入姓名" class="layui-input layui-bg-gray">
+            {else}
+            <input name="name" value='{$vo.name|default=""}' required="required" pattern="^.{2,}$" title="请输入姓名"
+                   placeholder="请输入2位及以上字符姓名" class="layui-input">
+            {/if}
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">邮箱</label>
+        <div class="layui-input-block">
+            <input name="email" value='{$vo.email|default=""}' required="required" pattern="^.{2,}$" title="请输入邮箱"
+                   placeholder="请输入2位及以上字符标题" class="layui-input">
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">手机</label>
+        <div class="layui-input-block">
+            <input name="phone" value='{$vo.phone|default=""}' required="required" pattern="^.{2,}$"
+                   title="请输入手机" placeholder="请输入2位及以上字符标题" class="layui-input">
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">留言</label>
+        <div class="layui-input-block">
+            <textarea name="content" placeholder="请输入留言" title="请输入留言" class="layui-textarea">{$vo.content|default=""}</textarea>
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">备注</label>
+        <div class="layui-input-block">
+            <textarea name="remark" placeholder="请输入备注" title="请输入备注" class="layui-textarea">{$vo.remark|default=""}</textarea>
+        </div>
+    </div>
+
+    <div class="hr-line-dashed"></div>
+
+    <div class="layui-form-item text-center">
+        {if isset($vo['id'])}<input type='hidden' value='{$vo.id}' name='id'>{/if}
+        <button class="layui-btn" type='submit'>保存数据</button>
+        <button class="layui-btn layui-btn-danger" type='button' data-confirm="确定要取消编辑吗？" data-close>取消编辑</button>
+    </div>
+    <script>window.form.render();</script>
+</form>

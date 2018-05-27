@@ -51,7 +51,7 @@ class News extends BasicAdmin
             list($start, $end) = explode(' - ', $get['create_at']);
             $db->whereBetween('a.create_at', ["{$start} 00:00:00", "{$end} 23:59:59"]);
         }
-        return parent::_list($db);
+        return parent::_list($db->where(['a.is_deleted' => '0'])->order('a.create_at','asc'));
     }
 
     /**

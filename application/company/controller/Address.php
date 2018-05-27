@@ -7,24 +7,24 @@ use service\DataService;
 use think\Db;
 
 /**
- * 新闻管理控制器
+ * 地址管理控制器
  * Created by PhpStorm.
  * User: admin
  * Date: 2018/4/18
  * Time: 16:00
  */
 
-class Adress extends BasicAdmin
+class Address extends BasicAdmin
 {
 
     /**
      * 指定当前数据表
      * @var string
      */
-    public $table = 'CompanyNews';
+    public $table = 'CompanyAddress';
 
     /**
-     * 新闻列表
+     * 地址列表
      * @return array|string
      * @throws \think\db\exception\DataNotFoundException
      * @throws \think\db\exception\ModelNotFoundException
@@ -33,7 +33,7 @@ class Adress extends BasicAdmin
      */
     public function index()
     {
-        $this->title = '新闻管理';
+        $this->title = '地址管理';
         list($get, $db) = [$this->request->get(), Db::name($this->table)];
         foreach (['title'] as $key) {
             (isset($get[$key]) && $get[$key] !== '') && $db->whereLike($key, "%{$get[$key]}%");
@@ -42,11 +42,11 @@ class Adress extends BasicAdmin
             list($start, $end) = explode(' - ', $get['date']);
             $db->whereBetween('create_at', ["{$start} 00:00:00", "{$end} 23:59:59"]);
         }
-        return parent::_list($db->where(['is_deleted' => '0'])->order('sort','asc'));
+        return parent::_list($db->where(['is_deleted' => '0'])->order('create_at','asc'));
     }
 
     /**
-     * 新闻添加
+     * 地址添加
      * @return array|string
      * @throws \think\db\exception\DataNotFoundException
      * @throws \think\db\exception\ModelNotFoundException
@@ -60,7 +60,7 @@ class Adress extends BasicAdmin
     }
 
     /**
-     * 新闻编辑
+     * 地址编辑
      * @return array|string
      * @throws \think\db\exception\DataNotFoundException
      * @throws \think\db\exception\ModelNotFoundException
@@ -86,13 +86,13 @@ class Adress extends BasicAdmin
             if (isset($data['id'])) {
                 unset($data['title']);
             } elseif (Db::name($this->table)->where(['title' => $data['title'],'is_deleted'=>'0'])->count() > 0) {
-                $this->error('新闻账号已经存在，请使用其它账号！');
+                $this->error('地址账号已经存在，请使用其它账号！');
             }
         }
     }
 
     /**
-     * 删除新闻
+     * 删除地址
      * @throws \think\Exception
      * @throws \think\exception\PDOException
      */
@@ -102,9 +102,9 @@ class Adress extends BasicAdmin
             $this->error('系统超级账号禁止删除！');
         }
         if (DataService::update($this->table)) {
-            $this->success("新闻删除成功！", '');
+            $this->success("地址删除成功！", '');
         }
-        $this->error("新闻删除失败，请稍候再试！");
+        $this->error("地址删除失败，请稍候再试！");
     }
 
 }

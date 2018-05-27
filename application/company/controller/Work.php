@@ -42,7 +42,7 @@ class Work extends BasicAdmin
             list($start, $end) = explode(' - ', $get['date']);
             $db->whereBetween('create_at', ["{$start} 00:00:00", "{$end} 23:59:59"]);
         }
-        return parent::_list($db->where(['is_deleted' => '0'])->order('sort','asc'));
+        return parent::_list($db->where(['is_deleted' => '0'])->order('create_at','asc'));
     }
 
     /**
