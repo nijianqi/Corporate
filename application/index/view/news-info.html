@@ -7,12 +7,14 @@
     <meta name="renderer" content="webkit">
     <meta http-equiv="Cache-Control" content="no-siteapp">
     <meta name="applicable-device" content="pc,mobile">
-        <meta name="keywords" content="{:sysconf('site_name')},中国外贸家,外贸服务平台,外贸B2B平台,外贸平台,外贸网站
+    <meta name="keywords" content="{:sysconf('site_name')},中国外贸家,外贸服务平台,外贸B2B平台,外贸平台,外贸网站
 ">
-    <meta name="description" content="近日，联合国在纽约总部发布《2018年世界经济形势与展望》，指出2017年全球经济增长速度达到3%，是自2011年以来的最快增长。其中，中国对全球经济增长的贡献最多，约占1/3。">
-    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0">
+    <meta name="description"
+          content="近日，联合国在纽约总部发布《2018年世界经济形势与展望》，指出2017年全球经济增长速度达到3%，是自2011年以来的最快增长。其中，中国对全球经济增长的贡献最多，约占1/3。">
+    <meta name="viewport"
+          content="width=device-width,user-scalable=no,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0">
     <title>中国拉动全球经济增长最给力</title>
-        <link rel="shortcut icon" href="{:sysconf('browser_icon')}">
+    <link rel="shortcut icon" href="{:sysconf('browser_icon')}">
     <link rel="dns-prefetch" href="https://cdn.bootcss.com/">
     <link href="https://cdn.bootcss.com/mdui/0.3.0/css/mdui.min.css" rel="stylesheet">
     <link href="https://cdn.bootcss.com/Swiper/4.0.6/css/swiper.min.css" rel="stylesheet">
@@ -26,175 +28,158 @@
 </head>
 
 <body class="mdui-theme-primary-red mdui-theme-accent-red">
-    <header class="mdui-color-grey-900 mdui-shadow-5">
-        <div class="mdui-container mdui-xs-fluid mdui-p-a-0">
-            <div class="mdui-appbar mdui-shadow-0">
-                <div class="mdui-toolbar">
-                    <a href="../index.html" class="mdui-btn mdui-ripple mdui-m-x-2 mdui-p-a-0 best-logo">
-                        {:sysconf('site_name')}<span class="mdui-hidden-xs">网络科技</span>
-                    </a>
-                    <div class="mdui-toolbar-spacer"></div>
-                    <a href="../index.html" class="mdui-btn mdui-ripple mdui-ripple-white">首页</a>
-                    <a href="../bestsuppliers.html" class="mdui-btn mdui-ripple mdui-ripple-white">中国外贸家</a>
-                    <div class="mdui-hidden-sm-down mdui-m-a-0">
-                        <a href="../about-us.html" class="mdui-btn mdui-ripple mdui-ripple-white">关于我们</a>
-                        <a href="../news.html" class="mdui-btn mdui-ripple mdui-ripple-white  mdui-text-color-theme">新闻资讯</a>
-                        <a href="../join-us.html" class="mdui-btn mdui-ripple mdui-ripple-white">诚聘英才</a>
-                        <a href="../contact-us.html" class="mdui-btn mdui-ripple mdui-ripple-white">联系我们</a>
-                    </div>
-                    <a href="javascript:;" class="mdui-btn mdui-btn-icon mdui-hidden-md-up mdui-ripple mdui-ripple-white" mdui-drawer="{target: '#left-drawer',swipe:'true'}">
-                        <i class="mdui-icon material-icons">more_horiz</i>
-                    </a>
+<header class="mdui-color-grey-900 mdui-shadow-5">
+    <div class="mdui-container mdui-xs-fluid mdui-p-a-0">
+        <div class="mdui-appbar mdui-shadow-0">
+            <div class="mdui-toolbar">
+                <a href="../index.html" class="mdui-btn mdui-ripple mdui-m-x-2 mdui-p-a-0 best-logo">
+                    {:sysconf('site_name')}<span class="mdui-hidden-xs">网络科技</span>
+                </a>
+                <div class="mdui-toolbar-spacer"></div>
+                <a href="../index.html" class="mdui-btn mdui-ripple mdui-ripple-white">首页</a>
+                <a href="../bestsuppliers.html" class="mdui-btn mdui-ripple mdui-ripple-white">中国外贸家</a>
+                <div class="mdui-hidden-sm-down mdui-m-a-0">
+                    <a href="../about-us.html" class="mdui-btn mdui-ripple mdui-ripple-white">关于我们</a>
+                    <a href="../news.html"
+                       class="mdui-btn mdui-ripple mdui-ripple-white  mdui-text-color-theme">新闻资讯</a>
+                    <a href="../join-us.html" class="mdui-btn mdui-ripple mdui-ripple-white">诚聘英才</a>
+                    <a href="../contact-us.html" class="mdui-btn mdui-ripple mdui-ripple-white">联系我们</a>
                 </div>
+                <a href="javascript:;" class="mdui-btn mdui-btn-icon mdui-hidden-md-up mdui-ripple mdui-ripple-white"
+                   mdui-drawer="{target: '#left-drawer',swipe:'true'}">
+                    <i class="mdui-icon material-icons">more_horiz</i>
+                </a>
             </div>
         </div>
-    </header>
-    <div class="mdui-drawer mdui-drawer-close" id="left-drawer">
-        <div class="mdui-list">
-            {volist name="nav_list" id="vo" offset="1" length='10'}
-            <a href="{$vo.url}" target="{$vo.target}" class="mdui-list-item mdui-ripple">{$vo.title}</a>
-            {/volist}
-        </div>
     </div>
-        <div class="mdui-container-fluid best-bg-img best-bannar" style="background-image:url('../uploads/banner/20171214/65dca4354ce97e47c1260ef3e682ee03.jpg')"></div>
-    
-    <main class="mdui-p-y-auto mdui-color-grey-100">
-        <div class="mdui-container mdui-xs-fluid">
-            <div class="mdui-row">
-                <div class="mdui-col-xs-12 mdui-col-md-9 mdui-m-b-1">
-                    <div class="mdui-color-white mdui-p-y-2 mdui-border mdui-border-radius">
-                                                <h1 class="article-title mdui-p-x-2">中国拉动全球经济增长最给力</h1>
-                        <div class="mdui-p-y-2 article-sub">
-                            <span class="mdui-m-r-3">2017-12-22</span>
-                            <span>来源：人民日报海外版</span>
-                        </div>
-                        <div class="article-content mdui-typo">
-                            <p>近日，联合国在纽约总部发布《2018年世界经济形势与展望》，指出2017年全球经济增长速度达到3%，是自2011年以来的最快增长。其中，中国对全球经济增长的贡献最多，约占1/3。</p><p><img src="../neditor/php/upload/image/20171218/1513568666131272.jpg" alt="129768405_15135567706191n.jpg"/></p><p>一直以来，中国经济在全球范围内始终保持“最优生”的表现，成绩亮眼。2017年，中国同样没有让世界失望。频超预期的经济数据、亮点纷呈的增长动能、力度不变的全球贡献，让外媒纷纷感叹，中国的经济活力令人倍感振奋。</p><p><strong>数据亮眼 预期上调</strong></p><p>这一年来，在全球经济仍在努力从危机中复苏的大环境里，世界第二大经济体的表现成为一抹绝对的亮色。数据是最有说服力的依据。</p><p>拉美社注意到，自9月以来，世界银行、摩根大通银行、野村证券公司等国际机构纷纷修改了对今年中国经济的预期报告，认为中国今年的经济增长率应在6.7%至6.8%之间。</p><p>根据今年3月发布的政府工作报告，2017年中国GDP预期增长目标为6.5%左右。为何近来这些国际机构不约而同地选择看好中国？拉美社认为，一个重要原因是，在内需强劲和出口复苏的带动下，中国今年前三季度GDP同比增长6.9%，这一数字令人振奋。</p><p>在近日报道中，英国路透社同样罗列了一组中国经济的亮眼数据：在电子产品和高科技产品销售强劲的推动下，11月中国出口同比增长12.3%，这一数据高于此前分析人士5.0%的预测值，为8个月来最快增速。与此同时，大宗商品采购推动了进口增长。根据中国海关总署12月8日的消息，中国11月进口比去年同期增长17.7%，大大高于11.3%的预测值，为9月以来最快增速。</p><p>“11月的进口数据显示，我们可能需要上调对中国经济的展望。”路透社援引英国牛津经济咨询社亚洲经济部门负责人高路易的观点如是称。该社认为，这些数据或将有助于缓解外界对于中国增长放缓的担忧。</p><p>面对今年以来中国经济交出的一张张耀眼成绩单，外媒不再吝啬自己的赞美。</p><p>“大大超出预期”，对于今年中国经济的表现，美国财经媒体CNBC日前给予盛赞，指出中国政府正在积极引导经济向更加可持续的方向发展，中国经济在未来10年内将继续稳步发展。</p><p>美国《华尔街日报》则从另一个角度肯定了中国经济最新一年的表现。该报称，2017年做空中国经济的投资者代价惨重，苦不堪言。因为，这是与中国经济向好的大趋势背道而驰。在临近年尾之际，对于中国经济的全年成绩单，该报援引经济学家的分析做出一个颇为乐观的判断：全年至少6.5%的增长目标可轻松实现。</p><p><img src="../neditor/php/upload/image/20171218/1513568678518530.jpg" alt="129768405_15135567707491n.jpg"/></p><p><strong>数字经济 动能强劲</strong></p><p>可观的数据背后，国际社会讨论更多的，是中国经济的转型和升级。不少外媒认为，中国经济已由以往追求数量转为更注重经济增长的质量，这是今年10月召开的中共十九大释放的明确信号，也是中国经济步入新常态的重要特征。</p><p>对此，香港《南华早报》称，通过淡化硬性经济目标，中国未来的增长将更平衡、更可持续。新加坡《联合早报》也在日前报道中引述专家预测称，在即将召开的中央经济工作会议中，高质量发展将成为主题词。</p><p>当然，在外媒看来，中国经济不再一味追求速度，并不意味着就将失去活力。恰恰相反，新常态下中国经济发展呈现新动能，与技术进步紧密联系的数字经济正是其中非常强劲的动能之一，这在2017年中国经济发展中尤为突出。</p><p>美国《福布斯》双周刊网站刊文指出，在一些顶尖技术公司的推动下，数字经济的新领域正在中国快速发展，包括物联网、虚拟货币、金融技术、人工智能、先进的机器人技术和大数据。此外，在教育、工业和医疗保健等传统行业，数字经济也变得日益常见，并带动这些行业提效增值。</p><p>数字经济的浪潮何以在中国如此澎湃？文章进一步指出，推动中国数字经济的不仅是风险投资者和消费者，中国政府也通过“互联网+”政策，鼓励企业使用互联网来发展和创新，并鼓励投资包含人工智能的项目。文章还引用波士顿咨询公司的数据称，中国的数字经济规模到2035年预计将达到16万亿美元，渗透到整体经济的48%。</p><p>此外，还有外媒敏锐地观察到一个新现象——如今，在中国，数字经济的蓬勃发展不只在城市可见。</p><p>美国《纽约时报》在日前的报道中描述了这样一个生动的画面：装满大大小小纸盒的物流货车隆隆地行驶在稻田之间，穿过乡间小路，越来越深地进入中国广阔的腹地。该报随后指出，中国的数字化革命、农业技术进步以及对新公路和铁路进行的几百亿元投资，让中国经济奇迹的好处正在越来越多地渗透到中小城镇和农村地区。“这对中国经济乃至全世界有潜在的长远利益。”</p><p>英国《金融时报》也认为，数字技术的进步让中国经济获得全新活力，中国数字经济的繁荣发展使中国成为全球数字经济革命的中心。该报引述麦肯锡全球研究所的数据称，全球共有262家“独角兽”企业（即估值在10亿美元以上的初创企业），其中1/3在中国。“这就是数字技术所释放的经济活力。”</p><p><strong>牵引全球 贡献最大</strong></p><p>对于全球而言，世界第二大经济体的健康发展无疑是一个重要的利好消息。</p><p>2016年，中国经济对世界经济的贡献率超过30%，被外媒称赞为世界经济增长的“第一引擎”。今年，中国依然是表现最佳的“优等生”。</p><p>俄新社日前引述专家观点称，如今，中国将全球发展与内部发展联系起来，将成为拉动世界经济的“牵引船”。</p><p>国际贸易就是观察中国“牵引”世界的一个窗口。荷兰经济政策分析局近日发布统计数据称，7至9月全球贸易量同比增长5.1%，增长率创出6年半以来的新高。对此，《日本经济新闻》报道称，国际贸易迅速回春的源头是中国。自2016年下半年起，中国基础设施投资等恢复了增长势头。通过中国倡议的“一带一路”政策，新兴市场国家也与欧洲加强联系。正是这些源自中国的良性循环，使得即便保护主义风险愈演愈烈，但是包括发达国家在内的各国经济往来依然日趋活跃，全球已经出现摆脱贸易增加率低于经济增长率这一状态的迹象。</p><p>世界银行还有预测称，中美两国将为未来几年世界经济的增长贡献53%的力量。估计到2050年，中国GDP将占世界的40%，成为无可争辩的唯一超级强国，中国将再次成为世界经济的中心。</p><p>中国经济的优异表现赢得了国际社会越来越多的认可。美国CNBC近日公布的一项面向25国民众的全球调查显示，美国经济体正逐渐失去其在国际舞台上的正面形象，排名位于中国之后。根据民调结果，过去一年中，只有40%的受访者认为美国对全球经济事务能发挥“积极影响”，相比之下，对中国持正面看法的受访者比例升至49%。</p><p>不仅如此，在全球范围内，“中国经济”开始成为一个具有吸引力的名词。许多国家不仅搭乘中国经济发展的快车，也希望借鉴中国经济成功的经验。《南华早报》称，巴拿马正打算“学习中国的铁路技术”。英国《经济学人》也曾称，越南正在借鉴中国经济发展的模式。</p><p>“2017，中国国际地位增强年”，拉美社日前作出这样的判断。当然，中国经济的耀眼成绩以及中国带给全球经济的利好，正是其重要依据。</p><p><br/></p>                        </div>
-                                            </div>
-                </div>
-                <div class="mdui-col-xs-12 mdui-col-md-3">
-                    <div class="mdui-text-center best-new-more-title mdui-p-y-1 mdui-m-b-1 mdui-border mdui-border-radius mdui-color-white">相关推荐</div>
-                    <div class="best-list best-new-more mdui-row">
+</header>
+<div class="mdui-drawer mdui-drawer-close" id="left-drawer">
+    <div class="mdui-list">
+        {volist name="nav_list" id="vo" offset="1" length='10'}
+        <a href="{$vo.url}" target="{$vo.target}" class="mdui-list-item mdui-ripple">{$vo.title}</a>
+        {/volist}
+    </div>
+</div>
+<div class="mdui-container-fluid best-bg-img best-bannar"
+     style="background-image:url('../uploads/banner/20171214/65dca4354ce97e47c1260ef3e682ee03.jpg')"></div>
 
-                                                <div class="mdui-col-xs-12 mdui-col-sm-6 mdui-col-md-12 ">
-                            <a href="268.html" class="best-list-item mdui-ripple mdui-p-a-1">
-                                <div class="best-list-img best-list-img-xs"><img src="../uploads/new_img/20180326/0781245ecfe85f95b9e0cacf49592ba7.jpg" class="mdui-img-fluid best-img" alt="跨境出口：“一带一路”沿线国家偏爱哪些产品？"></div>
-                                <div class="best-list-bd">
-                                      <div class="best-list-title mdui-list-item-two-line">跨境出口：“一带一路”沿线国家偏爱哪些产品？</div>
-                                      <div class="best-b-time-sm ">2018-03-26</div>
-                                </div>
-                            </a>
-                        </div>
-                                                <div class="mdui-col-xs-12 mdui-col-sm-6 mdui-col-md-12 ">
-                            <a href="243.html" class="best-list-item mdui-ripple mdui-p-a-1">
-                                <div class="best-list-img best-list-img-xs"><img src="../uploads/new_img/20180321/169286f47d98e2df5ce4e3858b775f51.png" class="mdui-img-fluid best-img" alt="中国跨境电商行业发展十二大政策建议"></div>
-                                <div class="best-list-bd">
-                                      <div class="best-list-title mdui-list-item-two-line">中国跨境电商行业发展十二大政策建议</div>
-                                      <div class="best-b-time-sm ">2018-03-21</div>
-                                </div>
-                            </a>
-                        </div>
-                                                <div class="mdui-col-xs-12 mdui-col-sm-6 mdui-col-md-12 ">
-                            <a href="200.html" class="best-list-item mdui-ripple mdui-p-a-1">
-                                <div class="best-list-img best-list-img-xs"><img src="../uploads/new_img/20180313/cef665831d461e54de8e6ec386f011d4.jpg" class="mdui-img-fluid best-img" alt="2013-2017年中国出口跨境电商十四大政策盘点"></div>
-                                <div class="best-list-bd">
-                                      <div class="best-list-title mdui-list-item-two-line">2013-2017年中国出口跨境电商十四大政策盘点</div>
-                                      <div class="best-b-time-sm ">2018-03-13</div>
-                                </div>
-                            </a>
-                        </div>
-                                                <div class="mdui-col-xs-12 mdui-col-sm-6 mdui-col-md-12 ">
-                            <a href="192.html" class="best-list-item mdui-ripple mdui-p-a-1">
-                                <div class="best-list-img best-list-img-xs"><img src="../uploads/new_img/20180309/16fb17af24b4e2b3578e192838921f34.jpg" class="mdui-img-fluid best-img" alt="跨境B2B正在变革，你准备好了吗"></div>
-                                <div class="best-list-bd">
-                                      <div class="best-list-title mdui-list-item-two-line">跨境B2B正在变革，你准备好了吗</div>
-                                      <div class="best-b-time-sm ">2018-03-13</div>
-                                </div>
-                            </a>
-                        </div>
-                                                <div class="mdui-col-xs-12 mdui-col-sm-6 mdui-col-md-12 ">
-                            <a href="191.html" class="best-list-item mdui-ripple mdui-p-a-1">
-                                <div class="best-list-img best-list-img-xs"><img src="../uploads/new_img/20180309/919ed2e1a699b0837e38175bd91d55ef.jpg" class="mdui-img-fluid best-img" alt="中国外贸取得超预期“开门红”"></div>
-                                <div class="best-list-bd">
-                                      <div class="best-list-title mdui-list-item-two-line">中国外贸取得超预期“开门红”</div>
-                                      <div class="best-b-time-sm ">2018-03-13</div>
-                                </div>
-                            </a>
-                        </div>
-                        
+<main class="mdui-p-y-auto mdui-color-grey-100">
+    <div class="mdui-container mdui-xs-fluid">
+        <div class="mdui-row">
+            <div class="mdui-col-xs-12 mdui-col-md-9 mdui-m-b-1">
+                <div class="mdui-color-white mdui-p-y-2 mdui-border mdui-border-radius">
+                    <h1 class="article-title mdui-p-x-2">{$new_info.title}</h1>
+                    <div class="mdui-p-y-2 article-sub">
+                        <span class="mdui-m-r-3">{:date('Y-m-d',strtotime($new_info['create_at']))}</span>
+                        <span>来源：{$new_info.author}</span>
+                    </div>
+                    <div class="article-content mdui-typo">
+                        {:html_entity_decode($new_info.content)}
                     </div>
                 </div>
             </div>
-        </div>
-    </main>
-
-
-    <footer class="mdui-container mdui-p-y-auto">
-        <div class="mdui-row-xs-1 mdui-row-sm-2 mdui-sm-valign">
-            <div class="mdui-col order-right mdui-text-right mdui-xs-text-center">
-                <a href="tel://{:comconf('phone')}" class="mdui-btn mdui-btn-icon mdui-ripple mdui-color-indigo-500 mdui-m-r-2" mdui-tooltip="{content: '{:comconf('phone')}', position: 'top'}">
-                    <i class="iconfont mdui-icon icon-phone"></i>
-                </a>
-                <a href="mailto:{:comconf('email')}" class="mdui-btn mdui-ripple mdui-btn-icon mdui-color-red-500 mdui-m-r-2" mdui-tooltip="{content: '{:comconf('email')}', position: 'top'}">
-                    <i class="mdui-icon material-icons">email</i>
-                </a>
-                <button type="button" class="mdui-btn mdui-btn-icon mdui-ripple mdui-hidden-md-up mdui-color-green-500 mdui-m-r-2 mdui-text-color-white" mdui-dialog="{target: '#wechat'}">
-                    <i class="iconfont mdui-icon icon-wechat"></i>
-                </button>
-                <button type="button" class="mdui-btn mdui-btn-icon mdui-ripple mdui-hidden-sm-down mdui-color-green-500 mdui-m-r-2 mdui-text-color-white" id="click-wechat">
-                    <i class="iconfont mdui-icon icon-wechat"></i>
-                </button>
-                <a href="{:comconf('weibo')}" target="_blank" rel="nofollow" class="mdui-btn mdui-ripple mdui-btn-icon mdui-text-color-white mdui-color-amber-500" mdui-tooltip="{content: '欢迎访问{:sysconf('site_name')}官方微博', position: 'top'}">
-                    <i class="iconfont mdui-icon icon-weibo"></i>
-                </a>
-            </div>
-            <div class="mdui-col mdui-xs-text-center mdui-p-y-1">
-                {:sysconf('site_copy')} {:sysconf('site_name')}网络科技 All Rights Reserved {:sysconf('miitbeian')}
+            <div class="mdui-col-xs-12 mdui-col-md-3">
+                <div class="mdui-text-center best-new-more-title mdui-p-y-1 mdui-m-b-1 mdui-border mdui-border-radius mdui-color-white">
+                    相关推荐
+                </div>
+                <div class="best-list best-new-more mdui-row">
+                    {volist name="new_list" id="vo" offset="0" length='5'}
+                    <div class="mdui-col-xs-12 mdui-col-sm-6 mdui-col-md-12 ">
+                        <a href="268.html" class="best-list-item mdui-ripple mdui-p-a-1">
+                            <div class="best-list-img best-list-img-xs"><img
+                                    src="{$vo.local_url}"
+                                    class="mdui-img-fluid best-img" alt="{$vo.title}"></div>
+                            <div class="best-list-bd">
+                                <div class="best-list-title mdui-list-item-two-line">{$vo.title}</div>
+                                <div class="best-b-time-sm ">{:date('Y-m-d',strtotime($vo['create_at']))}</div>
+                            </div>
+                        </a>
+                    </div>
+                    {/volist}
+                </div>
             </div>
         </div>
-    </footer>
-    <div class="mdui-dialog" id="wechat">
-        <img src="{:comconf('wechat_img')}" alt="{:sysconf('site_name')}微信公众号二维码">
-        <div class="mdui-typo-subheading mdui-text-center mdui-m-b-1">欢迎关注{:sysconf('site_name')}官方微信</div>
     </div>
-    <button class="mdui-fab best-top mdui-fab-hide mdui-fab-mini mdui-shadow-0 mdui-hidden-sm-down mdui-ripple mdui-ripple-white"><i class="iconfont mdui-icon icon-top"></i></button>
-    <div id="outdated"></div>
-    <script src="https://cdn.bootcss.com/outdated-browser/1.1.5/outdatedbrowser.min.js"></script>
-    <script>
-        outdatedBrowser({
-            bgColor: '#f25648',
-            color: '#ffffff',
-            lowerThan: 'transform',
-            languagePath: '/static//index/zh-cn.html'
-        })
-    </script>
-    <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://cdn.bootcss.com/mdui/0.3.0/js/mdui.min.js"></script>
-    <script src="https://cdn.bootcss.com/Swiper/4.0.6/js/swiper.min.js"></script>
-    <script>
-        var wechat = new mdui.Tooltip('#click-wechat', {
-            position: 'top',
-            content: '<img src="{:comconf(\'wechat_img\')}" alt="微信公众号二维码"><div class="best-arrow"></div>'
-        });
-        $(document).on('click', '.best-top', function() {
-            $("html,body").animate({
-                scrollTop: 0 + "px"
-            }, {
-                duration: 300,
-                easing: "swing"
-            });
-        });
-        $(window).scroll(function() {
-            if ($(window).scrollTop() > 400) {
-                $('.best-top').removeClass('mdui-fab-hide')
-            } else {
-                $('.best-top').addClass('mdui-fab-hide')
-            }
-        });
-    </script>
+</main>
 
-    <!--<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan class='mdui-hidden' id='cnzz_stat_icon_1272450297'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s22.cnzz.com/z_stat.php%3Fid%3D1272450297%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));-->
-    <!--</script>-->
+
+<footer class="mdui-container mdui-p-y-auto">
+    <div class="mdui-row-xs-1 mdui-row-sm-2 mdui-sm-valign">
+        <div class="mdui-col order-right mdui-text-right mdui-xs-text-center">
+            <a href="tel://{:comconf('phone')}"
+               class="mdui-btn mdui-btn-icon mdui-ripple mdui-color-indigo-500 mdui-m-r-2"
+               mdui-tooltip="{content: '{:comconf('phone')}', position: 'top'}">
+                <i class="iconfont mdui-icon icon-phone"></i>
+            </a>
+            <a href="mailto:{:comconf('email')}"
+               class="mdui-btn mdui-ripple mdui-btn-icon mdui-color-red-500 mdui-m-r-2"
+               mdui-tooltip="{content: '{:comconf('email')}', position: 'top'}">
+                <i class="mdui-icon material-icons">email</i>
+            </a>
+            <button type="button"
+                    class="mdui-btn mdui-btn-icon mdui-ripple mdui-hidden-md-up mdui-color-green-500 mdui-m-r-2 mdui-text-color-white"
+                    mdui-dialog="{target: '#wechat'}">
+                <i class="iconfont mdui-icon icon-wechat"></i>
+            </button>
+            <button type="button"
+                    class="mdui-btn mdui-btn-icon mdui-ripple mdui-hidden-sm-down mdui-color-green-500 mdui-m-r-2 mdui-text-color-white"
+                    id="click-wechat">
+                <i class="iconfont mdui-icon icon-wechat"></i>
+            </button>
+            <a href="{:comconf('weibo')}" target="_blank" rel="nofollow"
+               class="mdui-btn mdui-ripple mdui-btn-icon mdui-text-color-white mdui-color-amber-500"
+               mdui-tooltip="{content: '欢迎访问{:sysconf('site_name')}官方微博', position: 'top'}">
+                <i class="iconfont mdui-icon icon-weibo"></i>
+            </a>
+        </div>
+        <div class="mdui-col mdui-xs-text-center mdui-p-y-1">
+            {:sysconf('site_copy')} {:sysconf('site_name')}网络科技 All Rights Reserved {:sysconf('miitbeian')}
+        </div>
+    </div>
+</footer>
+<div class="mdui-dialog" id="wechat">
+    <img src="{:comconf('wechat_img')}" alt="{:sysconf('site_name')}微信公众号二维码">
+    <div class="mdui-typo-subheading mdui-text-center mdui-m-b-1">欢迎关注{:sysconf('site_name')}官方微信</div>
+</div>
+<button class="mdui-fab best-top mdui-fab-hide mdui-fab-mini mdui-shadow-0 mdui-hidden-sm-down mdui-ripple mdui-ripple-white">
+    <i class="iconfont mdui-icon icon-top"></i></button>
+<div id="outdated"></div>
+<script src="https://cdn.bootcss.com/outdated-browser/1.1.5/outdatedbrowser.min.js"></script>
+<script>
+    outdatedBrowser({
+        bgColor: '#f25648',
+        color: '#ffffff',
+        lowerThan: 'transform',
+        languagePath: '/static//index/zh-cn.html'
+    })
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/mdui/0.3.0/js/mdui.min.js"></script>
+<script src="https://cdn.bootcss.com/Swiper/4.0.6/js/swiper.min.js"></script>
+<script>
+    var wechat = new mdui.Tooltip('#click-wechat', {
+        position: 'top',
+        content: '<img src="{:comconf(\'wechat_img\')}" alt="微信公众号二维码"><div class="best-arrow"></div>'
+    });
+    $(document).on('click', '.best-top', function () {
+        $("html,body").animate({
+            scrollTop: 0 + "px"
+        }, {
+            duration: 300,
+            easing: "swing"
+        });
+    });
+    $(window).scroll(function () {
+        if ($(window).scrollTop() > 400) {
+            $('.best-top').removeClass('mdui-fab-hide')
+        } else {
+            $('.best-top').addClass('mdui-fab-hide')
+        }
+    });
+</script>
+
+<!--<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan class='mdui-hidden' id='cnzz_stat_icon_1272450297'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s22.cnzz.com/z_stat.php%3Fid%3D1272450297%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));-->
+<!--</script>-->
 </body>
 
 </html>

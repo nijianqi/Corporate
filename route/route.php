@@ -16,11 +16,10 @@ use think\facade\Route;
 
 Route::rule('index','index/index/index');
 Route::rule('contact-us','index/index/contact_us');
-Route::rule('bestsuppliers','index/index/bestsuppliers');
 Route::rule('about-us','index/index/about_us');
 Route::rule('join-us','index/index/join_us');
 Route::rule('news','index/index/news');
-Route::rule('news-info/:id','index/index/news_info');
+Route::rule('info/:id','index/index/info');
 /* 去除下面注释可启用禁用功能 */
  return [];
 

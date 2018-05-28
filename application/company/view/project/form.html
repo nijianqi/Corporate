@@ -1,0 +1,102 @@
+<form class="layui-form layui-box modal-form-box" action="{:request()->url()}" data-auto="true" method="post">
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">标题</label>
+        <div class="layui-input-block">
+            {if $vo and isset($vo.title)}
+            <input readonly="readonly" disabled="disabled" name="title" value='{$vo.title|default=""}' required="required" title="请输入标题" placeholder="请输入标题" class="layui-input layui-bg-gray">
+            {else}
+            <input name="title" value='{$vo.title|default=""}' required="required" pattern="^.{2,}$" title="请输入标题" placeholder="请输入2位及以上字符标题" class="layui-input">
+            {/if}
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">英文标题</label>
+        <div class="layui-input-block">
+            {if $vo and isset($vo.title_en)}
+            <input readonly="readonly" disabled="disabled" name="title_en" value='{$vo.title_en|default=""}' required="required" title="请输入标题" placeholder="请输入标题" class="layui-input layui-bg-gray">
+            {else}
+            <input name="title_en" value='{$vo.title|default=""}' required="required" pattern="^.{2,}$" title="请输入标题" placeholder="请输入2位及以上字符标题" class="layui-input">
+            {/if}
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">所属栏目</label>
+        <div class="layui-input-block">
+            <select name='type_id'>
+                <!--{foreach $types as $type}-->
+                <!--{eq name='type.id' value='$vo.type_id|default=1'}-->
+                <option selected value='{$type.id}'>{$type.title}</option>
+                <!--{else}-->
+                <option value='{$type.id}'>{$type.title}</option>
+                <!--{/eq}-->
+                <!--{/foreach}-->
+            </select>
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">规格</label>
+        <div class="layui-input-block">
+            <input name="format"  value='{$vo.format|default=""}' title="请输入规格" placeholder="请输入规格" class="layui-input">
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">英文规格</label>
+        <div class="layui-input-block">
+            <input name="format_en"  value='{$vo.format_en|default=""}' title="请输入英文规格" placeholder="请输入英文规格" class="layui-input">
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">等级</label>
+        <div class="layui-input-block">
+            <input name="level"  value='{$vo.level|default=""}' title="请输入等级" placeholder="请输入等级" class="layui-input">
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">英文等级</label>
+        <div class="layui-input-block">
+            <input name="level_en"  value='{$vo.level_en|default=""}' title="请输入英文等级" placeholder="请输入英文等级" class="layui-input">
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">包装方式</label>
+        <div class="layui-input-block">
+            <input name="packing"  value='{$vo.packing|default=""}' title="请输入包装方式" placeholder="请输入包装方式" class="layui-input">
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">英文包装方式</label>
+        <div class="layui-input-block">
+            <input name="packing_en"  value='{$vo.packing_en|default=""}' title="请输入英文包装方式" placeholder="请输入英文包装方式" class="layui-input">
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">图片</label>
+        <div class="layui-input-block">
+            <img data-tips-image style="height:auto;max-height:100px;min-width:100px" src='{$vo.img_url|default=""}'/>
+            <input type="hidden" name="img_url" onchange="$(this).prev('img').attr('src', this.value)"
+                   value="{$vo.img_url|default=''}" class="layui-input">
+            <a class="btn btn-link" data-file="one" data-type="jpg,jpeg,png" data-field="img_url">上传图片</a>
+        </div>
+    </div>
+
+
+
+    <div class="hr-line-dashed"></div>
+
+    <div class="layui-form-item text-center">
+        {if isset($vo['id'])}<input type='hidden' value='{$vo.id}' name='id'>{/if}
+        <button class="layui-btn" type='submit'>保存数据</button>
+        <button class="layui-btn layui-btn-danger" type='button' data-confirm="确定要取消编辑吗？" data-close>取消编辑</button>
+    </div>
+    <script>window.form.render();</script>
+</form>

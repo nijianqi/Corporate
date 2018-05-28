@@ -12,6 +12,17 @@
     </div>
 
     <div class="layui-form-item">
+        <label class="layui-form-label">英文标题</label>
+        <div class="layui-input-block">
+            {if $vo and isset($vo.title_en)}
+            <input readonly="readonly" disabled="disabled" name="title_en" value='{$vo.title_en|default=""}' required="required" title="请输入标题" placeholder="请输入标题" class="layui-input layui-bg-gray">
+            {else}
+            <input name="title_en" value='{$vo.title_en|default=""}' required="required" pattern="^.{2,}$" title="请输入标题" placeholder="请输入2位及以上字符标题" class="layui-input">
+            {/if}
+        </div>
+    </div>
+    
+    <div class="layui-form-item">
         <label class="layui-form-label">图片</label>
         <div class="layui-input-block">
             <img data-tips-image style="height:auto;max-height:100px;min-width:100px" src='{$vo.img_url|default=""}'/>
