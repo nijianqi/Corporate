@@ -48,16 +48,35 @@ class Index extends Controller
 
     public function contact_us()
     {
+        if($this->request->post()){
+            Db::table('company_message')->insert($_POST);
+            $this->success('提交成功');
+        }
+        $address_list= Db::table('company_address')->where('is_deleted','0')->order('create_at asc')->select();
+        $this->assign('address_list', $address_list);
         return $this->fetch('/contact-us');
     }
 
     public function about_us()
     {
+        $album_list= Db::table('company_album')->where('is_deleted','0')->order('create_at asc')->select();
+        $new_list = Db::table('company_news')   //大事记
+        ->alias('a')
+            ->join('company_news_article b','a.article_id = b.id','left')
+            ->join('company_news_nav c','b.nav_id = c.id','left')
+            ->where('a.is_deleted','0')
+            ->field('a.id,b.title,b.local_url,a.create_at,b.digest,b.nav_id,c.title as nav_title,c.title_en as nav_title_en')
+            ->order('a.create_at asc')
+            ->select();
+        $this->assign('album_list', $album_list);
+        $this->assign('new_list', $new_list);
         return $this->fetch('/about-us');
     }
 
     public function join_us()
     {
+        $work_list= Db::table('company_work')->where('is_deleted','0')->order('create_at asc')->select();
+        $this->assign('work_list', $work_list);
         return $this->fetch('/join-us');
     }
 

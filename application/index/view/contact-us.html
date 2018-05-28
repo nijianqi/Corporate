@@ -58,86 +58,48 @@
     </div>
         <div class="mdui-container-fluid best-bannar best-bg-img" style="background-image:url('uploads/banner/20171214/7b78e8149ea5b751ad2b4534231d5d12.jpg')"></div>
         <main class="mdui-color-grey-50 mdui-p-y-auto">
+            {volist name="address_list" id="vo"}
         <div class="mdui-container mdui-shadow-2 mdui-border-radius mdui-color-white mdui-m-b-2 mdui-p-y-auto mdui-p-x-auto">
             <div class="mdui-row">
                 <div class="mdui-col-xs-12 mdui-col-sm-5">
-                    <h3 class="mdui-m-t-0 best-t1">杭州总部</h3>
+                    <h3 class="mdui-m-t-0 best-t1">{$vo.title}</h3>
                     <div class="best-list">
                         <div class="best-list-item">
                             <i class="iconfont mdui-icon icon-phone"></i>
                             <div class="best-list-hd">服务热线</div>:
-                            <div class="best-list-bd">400-880-1735</div>
+                            <div class="best-list-bd">{$vo.phone}</div>
                         </div>
                         <div class="best-list-item">
                             <i class="iconfont mdui-icon icon-fax"></i>
                             <div class="best-list-hd">传真</div>:
-                            <div class="best-list-bd">0571-86160915</div>
+                            <div class="best-list-bd">{$vo.fax}</div>
                         </div>
                         <div class="best-list-item">
                             <i class="iconfont mdui-icon icon-letter"></i>
                             <div class="best-list-hd">邮箱地址</div>:
-                            <div class="best-list-bd">info@bestsuppliers.com</div>
+                            <div class="best-list-bd">{$vo.email}</div>
                         </div>
                         <div class="best-list-item start">
                             <div class="best-list-item">
                                 <i class="iconfont mdui-icon icon-location"></i>
                                 <div class="best-list-hd">公司地址</div>:
                             </div>
-                            <div class="best-list-bd">中国杭州余杭区文一西路1218号恒生科技园35号楼</div>
+                            <div class="best-list-bd">{$vo.address}</div>
                         </div>
                         <div class="best-list-item">
                             <i class="iconfont mdui-icon icon-mailbox"></i>
                             <div class="best-list-hd">邮编</div>:
-                            <div class="best-list-bd">311121</div>
+                            <div class="best-list-bd">{$vo.code}</div>
                         </div>
                     </div>
                 </div>
                 <div class="mdui-col-xs-12 mdui-col-offset-sm-1 mdui-col-sm-6">
-                    <a class="mdui-btn mdui-btn-block mdui-color-grey-200 mdui-ripple mdui-ripple-grey mdui-hidden-sm-up mdui-text-color-theme" target="_blank" href="http://uri.amap.com/marker?position=120.005154,30.277666&amp;name=%E6%B5%99%E6%B1%9F%E7%99%BE%E4%BD%B3%E8%8D%9F%E7%BD%91%E7%BB%9C%E7%A7%91%E6%8A%80%E6%9C%89%E9%99%90%E5%85%AC%E5%8F%B8&amp;src=%E6%B5%99%E6%B1%9F%E7%99%BE%E4%BD%B3%E8%8D%9F%E7%BD%91%E7%BB%9C%E7%A7%91%E6%8A%80%E6%9C%89%E9%99%90%E5%85%AC%E5%8F%B8&amp;coordinate=gaode&amp;callnative=0">查看地图</a>
+                    <a class="mdui-btn mdui-btn-block mdui-color-grey-200 mdui-ripple mdui-ripple-grey mdui-hidden-sm-up mdui-text-color-theme" target="_blank" href="{$vo.map_url}">查看地图</a>
                     <div class="mdui-hidden-xs" id="company-position" style="height:300px"></div>
                 </div>
             </div>
         </div>
-        <div class="mdui-container mdui-shadow-2 mdui-border-radius mdui-color-white mdui-m-b-2 mdui-p-y-auto mdui-p-x-auto">
-            <div class="mdui-row">
-                <div class="mdui-col-xs-12 mdui-col-sm-5">
-                    <h3 class="mdui-m-t-0 best-t1">浙中营销中心</h3>
-                    <div class="best-list">
-                        <div class="best-list-item">
-                            <i class="iconfont mdui-icon icon-phone"></i>
-                            <div class="best-list-hd">服务热线</div>:
-                            <div class="best-list-bd">400-880-1735</div>
-                        </div>
-                        <div class="best-list-item">
-                            <i class="iconfont mdui-icon icon-fax"></i>
-                            <div class="best-list-hd">传真</div>:
-                            <div class="best-list-bd">0579-88895863</div>
-                        </div>
-                        <div class="best-list-item">
-                            <i class="iconfont mdui-icon icon-letter"></i>
-                            <div class="best-list-hd">邮箱地址</div>:
-                            <div class="best-list-bd">sales@bestsuppliers.com</div>
-                        </div>
-                        <div class="best-list-item start">
-                            <div class="best-list-item">
-                                <i class="iconfont mdui-icon icon-location"></i>
-                                <div class="best-list-hd">公司地址</div>:
-                            </div>
-                            <div class="best-list-bd">浙江省兰溪经济开发区（兰江街道振兴路500号企业服务中心辅楼1107室-1）</div>
-                        </div>
-                        <div class="best-list-item">
-                            <i class="iconfont mdui-icon icon-mailbox"></i>
-                            <div class="best-list-hd">邮编</div>:
-                            <div class="best-list-bd">321102</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="mdui-col-xs-12 mdui-col-offset-sm-1 mdui-col-sm-6">
-                    <a class="mdui-btn mdui-btn-block mdui-color-grey-200 mdui-ripple mdui-ripple-grey mdui-hidden-sm-up mdui-text-color-blue" target="_blank" href="http://uri.amap.com/marker?position=119.438958,29.211348&amp;name=%E7%99%BE%E4%BD%B3%E8%8D%9F%E6%B5%99%E4%B8%AD%E8%90%A5%E9%94%80%E4%B8%AD%E5%BF%83&amp;src=%E6%B5%99%E6%B1%9F%E7%99%BE%E4%BD%B3%E8%8D%9F%E7%BD%91%E7%BB%9C%E7%A7%91%E6%8A%80%E6%9C%89%E9%99%90%E5%85%AC%E5%8F%B8&amp;coordinate=gaode&amp;callnative=0">查看地图</a>
-                    <div class="mdui-hidden-xs" id="branch-position" style="height:300px"></div>
-                </div>
-            </div>
-        </div>
+            {/volist}
         <div class="mdui-container mdui-shadow-1 mdui-border-radius mdui-color-white mdui-p-y-auto mdui-p-x-auto">
             <div class="best-partition mdui-color-grey-100 mdui-m-b-1 mdui-p-x-2 mdui-p-y-1">在线留言</div>
             <div class="mdui-row mdui-sm-valign">
@@ -157,13 +119,13 @@
                     <div class="mdui-textfield mdui-textfield-floating-label best-phone">
                         <i class="iconfont mdui-icon icon-phone1"></i>
                         <label class="mdui-textfield-label">手机</label>
-                        <input name="mob" class="mdui-textfield-input" type="tel" pattern="^[1][3,4,5,7,8][0-9]{9}$" required>
+                        <input name="phone" class="mdui-textfield-input" type="tel" pattern="^[1][3,4,5,7,8][0-9]{9}$" required>
                         <div class="mdui-textfield-error">请输入正确的手机号</div>
                     </div>
                     <div class="mdui-textfield mdui-textfield-floating-label">
                         <i class="iconfont mdui-icon icon-message"></i>
                         <label class="mdui-textfield-label">留言</label>
-                        <textarea name="msg" class="mdui-textfield-input" required maxlength="150" type="text"></textarea>
+                        <textarea name="content" class="mdui-textfield-input" required maxlength="150" type="text"></textarea>
                         <div class="mdui-textfield-error">请留言</div>
                     </div>
                     <div class="mdui-p-t-1 mdui-p-b-2 mdui-text-center">
@@ -230,10 +192,10 @@
                 type: 'POST',
                 data: $('#myform').serialize(),
                 success: function(data){
-                    if(data==1){
+                    if(data.code==1){
                         mdui.alert("留言成功，感谢您的光顾！");
                         document.getElementById("myform").reset();
-                    }else if (data==2) {
+                    }else{
                         mdui.alert("留言失败，请重新尝试！")
                     }
                 },
