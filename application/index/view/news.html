@@ -8,10 +8,12 @@
     <meta http-equiv="Cache-Control" content="no-siteapp">
     <meta name="applicable-device" content="pc,mobile">
     <meta name="keywords" content="{:sysconf('site_name')},外贸新闻资讯">
-    <meta name="description" content="{:sysconf('site_name')}新闻资讯囊括最新鲜最热辣的外贸新闻资讯网站,全球贸易国际国内时下热点事件,包罗公司新闻,电商外贸咨询,财经咨询，个性化推荐,{:sysconf('site_name')}新闻热搜为您量身定做.">
-    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0">
+    <meta name="description"
+          content="{:sysconf('site_name')}新闻资讯囊括最新鲜最热辣的外贸新闻资讯网站,全球贸易国际国内时下热点事件,包罗公司新闻,电商外贸咨询,财经咨询，个性化推荐,{:sysconf('site_name')}新闻热搜为您量身定做.">
+    <meta name="viewport"
+          content="width=device-width,user-scalable=no,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0">
     <title>{:sysconf('site_name')}新闻资讯中心-{:sysconf('site_name')}外贸新闻官网
-</title>
+    </title>
     <link rel="shortcut icon" href="{:sysconf('browser_icon')}">
     <link rel="dns-prefetch" href="https://cdn.bootcss.com/">
     <link href="https://cdn.bootcss.com/mdui/0.3.0/css/mdui.min.css" rel="stylesheet">
@@ -26,526 +28,197 @@
 </head>
 
 <body class="mdui-theme-primary-red mdui-theme-accent-red">
-    <header class="mdui-color-grey-900 mdui-shadow-5">
-        <div class="mdui-container mdui-xs-fluid mdui-p-a-0">
-            <div class="mdui-appbar mdui-shadow-0">
-                <div class="mdui-toolbar">
-                    <a href="index.html" class="mdui-btn mdui-ripple mdui-m-x-2 mdui-p-a-0 best-logo">
-                        {:sysconf('site_name')}<span class="mdui-hidden-xs">网络科技</span>
-                    </a>
-                    <div class="mdui-toolbar-spacer"></div>
-                    <a href="index.html" class="mdui-btn mdui-ripple mdui-ripple-white mdui-text-color-theme">首页</a>
-                    {volist name="nav_list" id="vo" offset="0" length='1'}
-                    <a href="{$vo.url}" target="{$vo.target}" class="mdui-btn mdui-ripple mdui-ripple-white">{$vo.title}</a>
+<header class="mdui-color-grey-900 mdui-shadow-5">
+    <div class="mdui-container mdui-xs-fluid mdui-p-a-0">
+        <div class="mdui-appbar mdui-shadow-0">
+            <div class="mdui-toolbar">
+                <a href="index.html" class="mdui-btn mdui-ripple mdui-m-x-2 mdui-p-a-0 best-logo">
+                    {:sysconf('site_name')}<span class="mdui-hidden-xs">网络科技</span>
+                </a>
+                <div class="mdui-toolbar-spacer"></div>
+                <a href="index.html" class="mdui-btn mdui-ripple mdui-ripple-white">首页</a>
+                {volist name="nav_list" id="vo" offset="0" length='1'}
+                <a href="{$vo.url}" target="{$vo.target}"
+                   class="mdui-btn mdui-ripple mdui-ripple-white mdui-text-color-theme">{$vo.title}</a>
+                {/volist}
+                <div class="mdui-hidden-sm-down mdui-m-a-0">
+                    {volist name="nav_list" id="vo" offset="1" length='10'}
+                    <a href="{$vo.url}" target="{$vo.target}"
+                       class="mdui-btn mdui-ripple mdui-ripple-white">{$vo.title}</a>
                     {/volist}
-                    <div class="mdui-hidden-sm-down mdui-m-a-0">
-                        {volist name="nav_list" id="vo" offset="1" length='10'}
-                        <a href="{$vo.url}" target="{$vo.target}" class="mdui-btn mdui-ripple mdui-ripple-white">{$vo.title}</a>
+                </div>
+                <a href="javascript:;" class="mdui-btn mdui-btn-icon mdui-hidden-md-up mdui-ripple mdui-ripple-white"
+                   mdui-drawer="{target: '#left-drawer',swipe:'true'}">
+                    <i class="mdui-icon material-icons">more_horiz</i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header>
+<div class="mdui-drawer mdui-drawer-close" id="left-drawer">
+    <div class="mdui-list">
+        {volist name="nav_list" id="vo" offset="1" length='10'}
+        <a href="{$vo.url}" target="{$vo.target}" class="mdui-list-item mdui-ripple">{$vo.title}</a>
+        {/volist}
+    </div>
+</div>
+
+<div class="mdui-container-fluid best-bg-img best-bannar"
+     style="background-image:url('uploads/banner/20171214/65dca4354ce97e47c1260ef3e682ee03.jpg')"></div>
+
+<main class="best-main mdui-p-y-auto mdui-color-grey-100">
+    <div class="mdui-container mdui-xs-fluid">
+        <div class="mdui-row">
+            <div class="mdui-col-xs-2 mdui-hidden-xs best-menu">
+                <div class="mdui-list mdui-color-white">
+                    {foreach name="new_nav" item="vo" key="k"}
+                    {if $k == '0'}
+                    <a href="#{$vo.title_en}" class="mdui-list-item mdui-ripple mdui-list-item-active">
+                        {else}
+                        <a href="#{$vo.title_en}" class="mdui-list-item mdui-ripple">
+                            {/if}
+                            {if $k == '0'}
+                            <i class="mdui-list-item-icon iconfont mdui-icon icon-company mdui-hidden-sm"></i>
+                            {elseif $k == '1'}
+                            <i class="mdui-list-item-icon iconfont mdui-icon icon-earth mdui-hidden-sm"></i>
+                            {else}
+                            <i class="mdui-list-item-icon iconfont mdui-icon icon-china mdui-hidden-sm"></i>
+                            {/if}
+                            <div class="mdui-list-item-content">{$vo.title}</div>
+                        </a>
+                        {/foreach}
+                </div>
+            </div>
+            <div class="mdui-col-xs-12 mdui-col-sm-10 mdui-float-right best-item">
+                {foreach name="data_list" item="new_list" key="k"}
+                <div id="{$new_list[0]['nav_title_en']}" class="mdui-color-white mdui-p-a-1">
+                    <div class="best-partition mdui-color-grey-50 mdui-m-b-1 mdui-p-x-2 mdui-p-y-1">{$k}</div>
+                    <div class="best-news-list">
+                        {volist name="new_list" id="vo"}
+                        <a href="info/{$vo.id}"
+                           class="mdui-row mdui-text-color-black mdui-ripple mdui-sm-valign mdui-m-x-1 mdui-m-b-1 best-new "
+                           target="_blank">
+                            <div class="mdui-col-xs-12 mdui-col-sm-9">
+                                <div class="mdui-typo-body-2 best-new-title">
+                                    {$vo.title}
+                                </div>
+                                <div class="mdui-typo-body-1 best-new-content mdui-text-color-grey-600 mdui-list-item-two-line">
+                                    {$vo.digest}
+                                </div>
+                            </div>
+                            <div class="mdui-col-12 mdui-col-sm-3 mdui-xs-valign mdui-p-y-1">
+                                <div class="mdui-typo-body-1 mdui-m-t-1 mdui-flex-item mdui-sm-text-right">
+                                    <small>{:date('Y-m-d',strtotime($vo['create_at']))}</small>
+                                </div>
+                                <div class="mdui-typo-body-1 mdui-m-t-1 mdui-text-color-grey-600 mdui-sm-text-right">
+                                    <span><i class="mdui-icon material-icons">remove_red_eye</i> 999+</span>
+                                </div>
+                            </div>
+                        </a>
                         {/volist}
                     </div>
-                    <a href="javascript:;" class="mdui-btn mdui-btn-icon mdui-hidden-md-up mdui-ripple mdui-ripple-white" mdui-drawer="{target: '#left-drawer',swipe:'true'}">
-                        <i class="mdui-icon material-icons">more_horiz</i>
-                    </a>
                 </div>
+                {/foreach}
             </div>
-        </div>
-    </header>
-    <div class="mdui-drawer mdui-drawer-close" id="left-drawer">
-        <div class="mdui-list">
-            {volist name="nav_list" id="vo" offset="1" length='10'}
-            <a href="{$vo.url}" target="{$vo.target}" class="mdui-list-item mdui-ripple">{$vo.title}</a>
-            {/volist}
         </div>
     </div>
 
-        <div class="mdui-container-fluid best-bg-img best-bannar" style="background-image:url('uploads/banner/20171214/65dca4354ce97e47c1260ef3e682ee03.jpg')"></div>
-    
-    <main class="best-main mdui-p-y-auto mdui-color-grey-100">
-        <div class="mdui-container mdui-xs-fluid">
-            <div class="mdui-row">
-                <div class="mdui-col-xs-2 mdui-hidden-xs best-menu">
-                    <div class="mdui-list mdui-color-white">
-                        <a href="#company-news" class="mdui-list-item mdui-ripple mdui-list-item-active">
-                            <i class="mdui-list-item-icon iconfont mdui-icon icon-company mdui-hidden-sm"></i>
-                            <div class="mdui-list-item-content">公司新闻</div>
-                        </a>
-                        <a href="#internation-info" class="mdui-list-item mdui-ripple">
-                            <i class="mdui-list-item-icon iconfont mdui-icon icon-earth mdui-hidden-sm"></i>
-                            <div class="mdui-list-item-content">电商资讯</div>
-                        </a>
-                        <a href="#domestic-info" class="mdui-list-item mdui-ripple">
-                            <i class="mdui-list-item-icon iconfont mdui-icon icon-china mdui-hidden-sm"></i>
-                            <div class="mdui-list-item-content">财经资讯</div>
-                        </a>
-                    </div>
-                </div>
-                <div class="mdui-col-xs-12 mdui-col-sm-10 mdui-float-right best-item">
-                    <div id="company-news" class="mdui-color-white mdui-p-a-1">
-                        <div class="best-partition mdui-color-grey-50 mdui-m-b-1 mdui-p-x-2 mdui-p-y-1">公司新闻</div>
-                        <div class="best-news-list">
-                                                        <a href="news-info/270.html" class="mdui-row mdui-text-color-black mdui-ripple mdui-sm-valign mdui-m-x-1 mdui-m-b-1 best-new " target="_blank">
-                                <div class="mdui-col-xs-12 mdui-col-sm-9">
-                                    <div class="mdui-typo-body-2 best-new-title">{:sysconf('site_name')}打造“中国外贸家”，助力企业拓展海外市场</div>
-                                    <div class="mdui-typo-body-1 best-new-content mdui-text-color-grey-600 mdui-list-item-two-line">中国外贸家一直将用户利益和专业放在首位，以“让天下没有做不成的生意” 为使命，致力于让中国制造企业更简单高效地参与全球采购，直达目标市场。因此，凭借着这些竞争优势的中国外贸家平台，势必将成为外贸B2B</div>
-                                </div>
-                                <div class="mdui-col-12 mdui-col-sm-3 mdui-xs-valign mdui-p-y-1">
-                                    <div class="mdui-typo-body-1 mdui-m-t-1 mdui-flex-item mdui-sm-text-right"><small>2018-04-02</small></div>
-                                    <div class="mdui-typo-body-1 mdui-m-t-1 mdui-text-color-grey-600 mdui-sm-text-right">
-                                        <span><i class="mdui-icon material-icons">remove_red_eye</i> 999+</span>
-                                    </div>
-                                </div>
-                            </a>
-                                                        <a href="news-info/269.html" class="mdui-row mdui-text-color-black mdui-ripple mdui-sm-valign mdui-m-x-1 mdui-m-b-1 best-new " target="_blank">
-                                <div class="mdui-col-xs-12 mdui-col-sm-9">
-                                    <div class="mdui-typo-body-2 best-new-title">外贸出口额持续走高，中国外贸家抢占市场先机</div>
-                                    <div class="mdui-typo-body-1 best-new-content mdui-text-color-grey-600 mdui-list-item-two-line">中国外贸家是三位一体的全球贸易B2B交易服务平台，它包含供应商优选平台、海外推广运营平台和外贸交易服务平台。一方面根据全球采购商的需求挖掘和整合最佳的中国供应商资源，利用互联网+帮助全球采购商找到中国</div>
-                                </div>
-                                <div class="mdui-col-12 mdui-col-sm-3 mdui-xs-valign mdui-p-y-1">
-                                    <div class="mdui-typo-body-1 mdui-m-t-1 mdui-flex-item mdui-sm-text-right"><small>2018-04-02</small></div>
-                                    <div class="mdui-typo-body-1 mdui-m-t-1 mdui-text-color-grey-600 mdui-sm-text-right">
-                                        <span><i class="mdui-icon material-icons">remove_red_eye</i> 999+</span>
-                                    </div>
-                                </div>
-                            </a>
-                                                        <a href="news-info/264.html" class="mdui-row mdui-text-color-black mdui-ripple mdui-sm-valign mdui-m-x-1 mdui-m-b-1 best-new " target="_blank">
-                                <div class="mdui-col-xs-12 mdui-col-sm-9">
-                                    <div class="mdui-typo-body-2 best-new-title">深思：我战胜了所有对手 却输给了时代</div>
-                                    <div class="mdui-typo-body-1 best-new-content mdui-text-color-grey-600 mdui-list-item-two-line">历史的车轮滚滚向前，它不会因任何人的消极缓慢而停止。时代抛弃你时，连一声再见都不会说。大润发创始人离职时说：我战胜了所有对手，却输给了时代。</div>
-                                </div>
-                                <div class="mdui-col-12 mdui-col-sm-3 mdui-xs-valign mdui-p-y-1">
-                                    <div class="mdui-typo-body-1 mdui-m-t-1 mdui-flex-item mdui-sm-text-right"><small>2018-03-23</small></div>
-                                    <div class="mdui-typo-body-1 mdui-m-t-1 mdui-text-color-grey-600 mdui-sm-text-right">
-                                        <span><i class="mdui-icon material-icons">remove_red_eye</i> 999+</span>
-                                    </div>
-                                </div>
-                            </a>
-                                                        <a href="news-info/263.html" class="mdui-row mdui-text-color-black mdui-ripple mdui-sm-valign mdui-m-x-1 mdui-m-b-1 best-new " target="_blank">
-                                <div class="mdui-col-xs-12 mdui-col-sm-9">
-                                    <div class="mdui-typo-body-2 best-new-title">如何有效避开FBA跨境物流发货的各种“坑”</div>
-                                    <div class="mdui-typo-body-1 best-new-content mdui-text-color-grey-600 mdui-list-item-two-line">跨境贸易中，物流方面吃的亏最多，货物没按时到，扣关，货件遗失，再有甚者，碰到不靠谱的货代收到货之后坐地起价，再加收各种费用，也不是没有的事，其中种种凶险，唯有卖家自知。</div>
-                                </div>
-                                <div class="mdui-col-12 mdui-col-sm-3 mdui-xs-valign mdui-p-y-1">
-                                    <div class="mdui-typo-body-1 mdui-m-t-1 mdui-flex-item mdui-sm-text-right"><small>2018-03-23</small></div>
-                                    <div class="mdui-typo-body-1 mdui-m-t-1 mdui-text-color-grey-600 mdui-sm-text-right">
-                                        <span><i class="mdui-icon material-icons">remove_red_eye</i> 999+</span>
-                                    </div>
-                                </div>
-                            </a>
-                                                        <a href="news-info/259.html" class="mdui-row mdui-text-color-black mdui-ripple mdui-sm-valign mdui-m-x-1 mdui-m-b-1 best-new " target="_blank">
-                                <div class="mdui-col-xs-12 mdui-col-sm-9">
-                                    <div class="mdui-typo-body-2 best-new-title">做外贸面谈禁忌须知</div>
-                                    <div class="mdui-typo-body-1 best-new-content mdui-text-color-grey-600 mdui-list-item-two-line">网商做外贸虽然大多是通过网络来洽谈交易，但是终归免不了会与外商见面，越来越多的网商开始走出国门做生意，如果因为一些细节上的差错而导致交易的失败，是相当遗憾的。所以了解一些小常识相当必要。</div>
-                                </div>
-                                <div class="mdui-col-12 mdui-col-sm-3 mdui-xs-valign mdui-p-y-1">
-                                    <div class="mdui-typo-body-1 mdui-m-t-1 mdui-flex-item mdui-sm-text-right"><small>2018-03-23</small></div>
-                                    <div class="mdui-typo-body-1 mdui-m-t-1 mdui-text-color-grey-600 mdui-sm-text-right">
-                                        <span><i class="mdui-icon material-icons">remove_red_eye</i> 999+</span>
-                                    </div>
-                                </div>
-                            </a>
-                                                        <a href="news-info/255.html" class="mdui-row mdui-text-color-black mdui-ripple mdui-sm-valign mdui-m-x-1 mdui-m-b-1 best-new " target="_blank">
-                                <div class="mdui-col-xs-12 mdui-col-sm-9">
-                                    <div class="mdui-typo-body-2 best-new-title">外贸重要的国际礼仪和行为禁忌，这些你了解了么</div>
-                                    <div class="mdui-typo-body-1 best-new-content mdui-text-color-grey-600 mdui-list-item-two-line">老话常说，百里不同俗。尤其对于做外贸的业务员来说，不同国家的客户的言谈、风俗、礼仪会更不一样。在与国外客户进行商业往来的过程中，无论是出于尊重还是为了更好的成交都需要注意客户的习俗。</div>
-                                </div>
-                                <div class="mdui-col-12 mdui-col-sm-3 mdui-xs-valign mdui-p-y-1">
-                                    <div class="mdui-typo-body-1 mdui-m-t-1 mdui-flex-item mdui-sm-text-right"><small>2018-03-22</small></div>
-                                    <div class="mdui-typo-body-1 mdui-m-t-1 mdui-text-color-grey-600 mdui-sm-text-right">
-                                        <span><i class="mdui-icon material-icons">remove_red_eye</i> 999+</span>
-                                    </div>
-                                </div>
-                            </a>
-                                                        <a href="news-info/253.html" class="mdui-row mdui-text-color-black mdui-ripple mdui-sm-valign mdui-m-x-1 mdui-m-b-1 best-new " target="_blank">
-                                <div class="mdui-col-xs-12 mdui-col-sm-9">
-                                    <div class="mdui-typo-body-2 best-new-title">干货分享，外贸物流报关知识</div>
-                                    <div class="mdui-typo-body-1 best-new-content mdui-text-color-grey-600 mdui-list-item-two-line">中国外贸物流报关知识，海上货物运输是国际运输的主要方式，国际贸易中约有90%的货物是以海上运输方式承运的。</div>
-                                </div>
-                                <div class="mdui-col-12 mdui-col-sm-3 mdui-xs-valign mdui-p-y-1">
-                                    <div class="mdui-typo-body-1 mdui-m-t-1 mdui-flex-item mdui-sm-text-right"><small>2018-03-22</small></div>
-                                    <div class="mdui-typo-body-1 mdui-m-t-1 mdui-text-color-grey-600 mdui-sm-text-right">
-                                        <span><i class="mdui-icon material-icons">remove_red_eye</i> 999+</span>
-                                    </div>
-                                </div>
-                            </a>
-                                                        <a href="news-info/249.html" class="mdui-row mdui-text-color-black mdui-ripple mdui-sm-valign mdui-m-x-1 mdui-m-b-1 best-new " target="_blank">
-                                <div class="mdui-col-xs-12 mdui-col-sm-9">
-                                    <div class="mdui-typo-body-2 best-new-title">外贸物流商品的禁忌包装材料各国有哪些</div>
-                                    <div class="mdui-typo-body-1 best-new-content mdui-text-color-grey-600 mdui-list-item-two-line">在国际贸易中，由于各国国情不同及文化差异的存在，对商品的包装材料要求不同，了解这些禁忌将对外贸出口大有裨益。</div>
-                                </div>
-                                <div class="mdui-col-12 mdui-col-sm-3 mdui-xs-valign mdui-p-y-1">
-                                    <div class="mdui-typo-body-1 mdui-m-t-1 mdui-flex-item mdui-sm-text-right"><small>2018-03-21</small></div>
-                                    <div class="mdui-typo-body-1 mdui-m-t-1 mdui-text-color-grey-600 mdui-sm-text-right">
-                                        <span><i class="mdui-icon material-icons">remove_red_eye</i> 999+</span>
-                                    </div>
-                                </div>
-                            </a>
-                                                        <a href="news-info/247.html" class="mdui-row mdui-text-color-black mdui-ripple mdui-sm-valign mdui-m-x-1 mdui-m-b-1 best-new " target="_blank">
-                                <div class="mdui-col-xs-12 mdui-col-sm-9">
-                                    <div class="mdui-typo-body-2 best-new-title">出口印度、俄罗斯、苏丹等国需注意新规</div>
-                                    <div class="mdui-typo-body-1 best-new-content mdui-text-color-grey-600 mdui-list-item-two-line">出口印度、俄罗斯、苏丹等国需注意新规</div>
-                                </div>
-                                <div class="mdui-col-12 mdui-col-sm-3 mdui-xs-valign mdui-p-y-1">
-                                    <div class="mdui-typo-body-1 mdui-m-t-1 mdui-flex-item mdui-sm-text-right"><small>2018-03-21</small></div>
-                                    <div class="mdui-typo-body-1 mdui-m-t-1 mdui-text-color-grey-600 mdui-sm-text-right">
-                                        <span><i class="mdui-icon material-icons">remove_red_eye</i> 999+</span>
-                                    </div>
-                                </div>
-                            </a>
-                                                        <a href="news-info/245.html" class="mdui-row mdui-text-color-black mdui-ripple mdui-sm-valign mdui-m-x-1 mdui-m-b-1 best-new " target="_blank">
-                                <div class="mdui-col-xs-12 mdui-col-sm-9">
-                                    <div class="mdui-typo-body-2 best-new-title">做外贸和外国人交往的颜色禁忌</div>
-                                    <div class="mdui-typo-body-1 best-new-content mdui-text-color-grey-600 mdui-list-item-two-line">在外贸行业中，与外国人的交往是很常见的，而国与国之间的习俗礼仪又不一样，所以了解清楚他国的文化禁忌，可以帮助我们在商务交流中事半功倍。</div>
-                                </div>
-                                <div class="mdui-col-12 mdui-col-sm-3 mdui-xs-valign mdui-p-y-1">
-                                    <div class="mdui-typo-body-1 mdui-m-t-1 mdui-flex-item mdui-sm-text-right"><small>2018-03-21</small></div>
-                                    <div class="mdui-typo-body-1 mdui-m-t-1 mdui-text-color-grey-600 mdui-sm-text-right">
-                                        <span><i class="mdui-icon material-icons">remove_red_eye</i> 999+</span>
-                                    </div>
-                                </div>
-                            </a>
-                                                    </div>
-                    </div>
-                    <div id="internation-info" class="mdui-color-white mdui-p-a-1">
-                        <div class="best-partition mdui-color-grey-50 mdui-m-b-1 mdui-p-x-2 mdui-p-y-1">电商资讯</div>
-                        <div class="best-news-list">
-                                                        <a href="news-info/262.html" class="mdui-row mdui-text-color-black mdui-ripple mdui-sm-valign mdui-m-x-1 mdui-m-b-1 best-new " target="_blank">
-                                <div class="mdui-col-xs-12 mdui-col-sm-9">
-                                    <div class="mdui-typo-body-2 best-new-title">印度将颁布新《消费者保护法》,卖家...</div>
-                                    <div class="mdui-typo-body-1 best-new-content mdui-text-color-grey-600 mdui-list-item-two-line">印度消费者事务、食品和公共分配部部长Ram Vilas Paswan 表示，已做好准备推动新《消费者保护法》（Consumer Protection Act, 2018）生效，电商市场将面临更多的法律</div>
-                                </div>
-                                <div class="mdui-col-12 mdui-col-sm-3 mdui-xs-valign mdui-p-y-1">
-                                    <div class="mdui-typo-body-1 mdui-flex-item mdui-sm-text-right"><small>2018-03-23</small></div>
-                                    <div class="mdui-typo-body-1 mdui-m-t-1 mdui-text-color-grey-600 mdui-sm-text-right">
-                                        <span><i class="mdui-icon material-icons">remove_red_eye</i> 999+</span>
-                                    </div>
-                                </div>
-                            </a>
-                                                        <a href="news-info/256.html" class="mdui-row mdui-text-color-black mdui-ripple mdui-sm-valign mdui-m-x-1 mdui-m-b-1 best-new " target="_blank">
-                                <div class="mdui-col-xs-12 mdui-col-sm-9">
-                                    <div class="mdui-typo-body-2 best-new-title">2018中国跨境贸易创新峰会深圳站圆满落幕</div>
-                                    <div class="mdui-typo-body-1 best-new-content mdui-text-color-grey-600 mdui-list-item-two-line">3月21日，由WorldFirst主办的“支付无界 贸易新生”2018中国跨境贸易创新峰会深圳站在深圳东海朗廷酒店隆重举行。</div>
-                                </div>
-                                <div class="mdui-col-12 mdui-col-sm-3 mdui-xs-valign mdui-p-y-1">
-                                    <div class="mdui-typo-body-1 mdui-flex-item mdui-sm-text-right"><small>2018-03-22</small></div>
-                                    <div class="mdui-typo-body-1 mdui-m-t-1 mdui-text-color-grey-600 mdui-sm-text-right">
-                                        <span><i class="mdui-icon material-icons">remove_red_eye</i> 999+</span>
-                                    </div>
-                                </div>
-                            </a>
-                                                        <a href="news-info/250.html" class="mdui-row mdui-text-color-black mdui-ripple mdui-sm-valign mdui-m-x-1 mdui-m-b-1 best-new " target="_blank">
-                                <div class="mdui-col-xs-12 mdui-col-sm-9">
-                                    <div class="mdui-typo-body-2 best-new-title">跨境电商迎发展新机遇</div>
-                                    <div class="mdui-typo-body-1 best-new-content mdui-text-color-grey-600 mdui-list-item-two-line">自2017年12月1日起，又以暂定税率方式降低部分消费品的进口关税。从长远来看，降低关税对于促进跨境电商与一般进口贸易的互补将会起到积极作用，并带来发展新机遇和巨大商机。</div>
-                                </div>
-                                <div class="mdui-col-12 mdui-col-sm-3 mdui-xs-valign mdui-p-y-1">
-                                    <div class="mdui-typo-body-1 mdui-flex-item mdui-sm-text-right"><small>2018-03-21</small></div>
-                                    <div class="mdui-typo-body-1 mdui-m-t-1 mdui-text-color-grey-600 mdui-sm-text-right">
-                                        <span><i class="mdui-icon material-icons">remove_red_eye</i> 999+</span>
-                                    </div>
-                                </div>
-                            </a>
-                                                        <a href="news-info/248.html" class="mdui-row mdui-text-color-black mdui-ripple mdui-sm-valign mdui-m-x-1 mdui-m-b-1 best-new " target="_blank">
-                                <div class="mdui-col-xs-12 mdui-col-sm-9">
-                                    <div class="mdui-typo-body-2 best-new-title">连亚马逊都对瑞士虎视眈眈，这个国家有怎样的市场诱惑？</div>
-                                    <div class="mdui-typo-body-1 best-new-content mdui-text-color-grey-600 mdui-list-item-two-line">听说，亚马逊也要准备开拓瑞士站了，并有望成为第六个欧洲国家站点。是什么吸引了亚马逊？瑞士究竟有怎样的电商潜力呢？</div>
-                                </div>
-                                <div class="mdui-col-12 mdui-col-sm-3 mdui-xs-valign mdui-p-y-1">
-                                    <div class="mdui-typo-body-1 mdui-flex-item mdui-sm-text-right"><small>2018-03-21</small></div>
-                                    <div class="mdui-typo-body-1 mdui-m-t-1 mdui-text-color-grey-600 mdui-sm-text-right">
-                                        <span><i class="mdui-icon material-icons">remove_red_eye</i> 999+</span>
-                                    </div>
-                                </div>
-                            </a>
-                                                        <a href="news-info/241.html" class="mdui-row mdui-text-color-black mdui-ripple mdui-sm-valign mdui-m-x-1 mdui-m-b-1 best-new " target="_blank">
-                                <div class="mdui-col-xs-12 mdui-col-sm-9">
-                                    <div class="mdui-typo-body-2 best-new-title">2018年5大热门电商选品</div>
-                                    <div class="mdui-typo-body-1 best-new-content mdui-text-color-grey-600 mdui-list-item-two-line">你知道消费者们此时在搜索什么产品吗？卖家如何迎合市场的需求？下面是2018年5大热门电商选品趋势，希望能给卖家一些灵感。</div>
-                                </div>
-                                <div class="mdui-col-12 mdui-col-sm-3 mdui-xs-valign mdui-p-y-1">
-                                    <div class="mdui-typo-body-1 mdui-flex-item mdui-sm-text-right"><small>2018-03-20</small></div>
-                                    <div class="mdui-typo-body-1 mdui-m-t-1 mdui-text-color-grey-600 mdui-sm-text-right">
-                                        <span><i class="mdui-icon material-icons">remove_red_eye</i> 999+</span>
-                                    </div>
-                                </div>
-                            </a>
-                                                        <a href="news-info/239.html" class="mdui-row mdui-text-color-black mdui-ripple mdui-sm-valign mdui-m-x-1 mdui-m-b-1 best-new " target="_blank">
-                                <div class="mdui-col-xs-12 mdui-col-sm-9">
-                                    <div class="mdui-typo-body-2 best-new-title">三招提高跨境B2B平台曝光率</div>
-                                    <div class="mdui-typo-body-1 best-new-content mdui-text-color-grey-600 mdui-list-item-two-line">随着电子商务的风生水起，B2B平台以推广手段成熟多样、客源稳定、运营成本低下等优势成为首次尝试跨境电商的起点，而如何增加产品在B2B平台的曝光率也成了众多商家思考的问题。</div>
-                                </div>
-                                <div class="mdui-col-12 mdui-col-sm-3 mdui-xs-valign mdui-p-y-1">
-                                    <div class="mdui-typo-body-1 mdui-flex-item mdui-sm-text-right"><small>2018-03-20</small></div>
-                                    <div class="mdui-typo-body-1 mdui-m-t-1 mdui-text-color-grey-600 mdui-sm-text-right">
-                                        <span><i class="mdui-icon material-icons">remove_red_eye</i> 999+</span>
-                                    </div>
-                                </div>
-                            </a>
-                                                        <a href="news-info/238.html" class="mdui-row mdui-text-color-black mdui-ripple mdui-sm-valign mdui-m-x-1 mdui-m-b-1 best-new " target="_blank">
-                                <div class="mdui-col-xs-12 mdui-col-sm-9">
-                                    <div class="mdui-typo-body-2 best-new-title">敦煌网发布报告：以技术为驱动的时代已来临</div>
-                                    <div class="mdui-typo-body-1 best-new-content mdui-text-color-grey-600 mdui-list-item-two-line">以技术为驱动的新贸易时代已来临；新贸易时代跨境B2B蕴藏巨大商业潜力，并呈现出新的商业特征；新贸易时代企业在借助平台进入新的生态圈</div>
-                                </div>
-                                <div class="mdui-col-12 mdui-col-sm-3 mdui-xs-valign mdui-p-y-1">
-                                    <div class="mdui-typo-body-1 mdui-flex-item mdui-sm-text-right"><small>2018-03-20</small></div>
-                                    <div class="mdui-typo-body-1 mdui-m-t-1 mdui-text-color-grey-600 mdui-sm-text-right">
-                                        <span><i class="mdui-icon material-icons">remove_red_eye</i> 999+</span>
-                                    </div>
-                                </div>
-                            </a>
-                                                        <a href="news-info/237.html" class="mdui-row mdui-text-color-black mdui-ripple mdui-sm-valign mdui-m-x-1 mdui-m-b-1 best-new " target="_blank">
-                                <div class="mdui-col-xs-12 mdui-col-sm-9">
-                                    <div class="mdui-typo-body-2 best-new-title">互联网的下半场：社交媒体与消费场景革命</div>
-                                    <div class="mdui-typo-body-1 best-new-content mdui-text-color-grey-600 mdui-list-item-two-line">我所以为的互联网下半场，正在以这样一种不可逆转之势到来，随之而来的就是品牌的社交媒体也就是网络数字化以及BAT相继走入线下，而NIKE在跳一跳上的一小步，便是社交媒体撕裂消费场景的一大步。</div>
-                                </div>
-                                <div class="mdui-col-12 mdui-col-sm-3 mdui-xs-valign mdui-p-y-1">
-                                    <div class="mdui-typo-body-1 mdui-flex-item mdui-sm-text-right"><small>2018-03-20</small></div>
-                                    <div class="mdui-typo-body-1 mdui-m-t-1 mdui-text-color-grey-600 mdui-sm-text-right">
-                                        <span><i class="mdui-icon material-icons">remove_red_eye</i> 999+</span>
-                                    </div>
-                                </div>
-                            </a>
-                                                        <a href="news-info/236.html" class="mdui-row mdui-text-color-black mdui-ripple mdui-sm-valign mdui-m-x-1 mdui-m-b-1 best-new " target="_blank">
-                                <div class="mdui-col-xs-12 mdui-col-sm-9">
-                                    <div class="mdui-typo-body-2 best-new-title">2017新零售十大关键词：无人零售、社区便利店上榜</div>
-                                    <div class="mdui-typo-body-1 best-new-content mdui-text-color-grey-600 mdui-list-item-two-line">2017年的新零售注定是要被时代记录的。或对或错，或起或伏，应新零售而生的各式概念以及物种，刨去其要经受时间沉淀考验的宿命之外，也终会因其背后的革新性价值为历史所关注。</div>
-                                </div>
-                                <div class="mdui-col-12 mdui-col-sm-3 mdui-xs-valign mdui-p-y-1">
-                                    <div class="mdui-typo-body-1 mdui-flex-item mdui-sm-text-right"><small>2018-03-20</small></div>
-                                    <div class="mdui-typo-body-1 mdui-m-t-1 mdui-text-color-grey-600 mdui-sm-text-right">
-                                        <span><i class="mdui-icon material-icons">remove_red_eye</i> 999+</span>
-                                    </div>
-                                </div>
-                            </a>
-                                                        <a href="news-info/230.html" class="mdui-row mdui-text-color-black mdui-ripple mdui-sm-valign mdui-m-x-1 mdui-m-b-1 best-new " target="_blank">
-                                <div class="mdui-col-xs-12 mdui-col-sm-9">
-                                    <div class="mdui-typo-body-2 best-new-title">巴基斯坦电商市场将破10亿美元大关！</div>
-                                    <div class="mdui-typo-body-1 best-new-content mdui-text-color-grey-600 mdui-list-item-two-line">据一位业内官员表示，巴基斯坦电子商务市场的规模预计将在2017至2018财政年度达到令人羡慕的10亿美元大关，这比前一次估计的要早</div>
-                                </div>
-                                <div class="mdui-col-12 mdui-col-sm-3 mdui-xs-valign mdui-p-y-1">
-                                    <div class="mdui-typo-body-1 mdui-flex-item mdui-sm-text-right"><small>2018-03-19</small></div>
-                                    <div class="mdui-typo-body-1 mdui-m-t-1 mdui-text-color-grey-600 mdui-sm-text-right">
-                                        <span><i class="mdui-icon material-icons">remove_red_eye</i> 999+</span>
-                                    </div>
-                                </div>
-                            </a>
-                                                    </div>
-                    </div>
-                    <div id="domestic-info" class="mdui-color-white mdui-p-a-1">
-                        <div class="best-partition mdui-color-grey-50 mdui-m-b-1 mdui-p-x-2 mdui-p-y-1">财经资讯</div>
-                        <div class="best-news-list">
-                                                        <a href="news-info/267.html" class="mdui-row mdui-text-color-black mdui-ripple mdui-sm-valign mdui-m-x-1 mdui-m-b-1 best-new " target="_blank">
-                                <div class="mdui-col-xs-12 mdui-col-sm-9">
-                                    <div class="mdui-typo-body-2 best-new-title">贸易战“山雨欲来”，外贸企业准备好了吗？</div>
-                                    <div class="mdui-typo-body-1 best-new-content mdui-text-color-grey-600 mdui-list-item-two-line">美国东部时间3月22日，美国总统特朗普依据“301调查”结果，将对从中国进口的商品大规模征收关税。3月23日，我国商务部发布了针对美国进口钢铁和铝产品232措施的中止减让产品清单并征求公众意见</div>
-                                </div>
-                                <div class="mdui-col-12 mdui-col-sm-3 mdui-xs-valign mdui-p-y-1">
-                                    <div class="mdui-typo-body-1 mdui-flex-item mdui-sm-text-right"><small>2018-03-26</small></div>
-                                    <div class="mdui-typo-body-1 mdui-m-t-1 mdui-text-color-grey-600 mdui-sm-text-right">
-                                        <span><i class="mdui-icon material-icons">remove_red_eye</i> 999+</span>
-                                    </div>
-                                </div>
-                            </a>
-                                                        <a href="news-info/266.html" class="mdui-row mdui-text-color-black mdui-ripple mdui-sm-valign mdui-m-x-1 mdui-m-b-1 best-new " target="_blank">
-                                <div class="mdui-col-xs-12 mdui-col-sm-9">
-                                    <div class="mdui-typo-body-2 best-new-title">中美贸易战爆发，看看对各上市公司有何影响？</div>
-                                    <div class="mdui-typo-body-1 best-new-content mdui-text-color-grey-600 mdui-list-item-two-line">中美贸易战的爆发，对依赖进出口业务的上市公司产生了不小的影响，众多投资者通过全景网互动平台向上市公司咨询关于“贸易战”的问题，从中整理了一部分投资者互动，一起来看看有没有你关心的公司吧。</div>
-                                </div>
-                                <div class="mdui-col-12 mdui-col-sm-3 mdui-xs-valign mdui-p-y-1">
-                                    <div class="mdui-typo-body-1 mdui-flex-item mdui-sm-text-right"><small>2018-03-26</small></div>
-                                    <div class="mdui-typo-body-1 mdui-m-t-1 mdui-text-color-grey-600 mdui-sm-text-right">
-                                        <span><i class="mdui-icon material-icons">remove_red_eye</i> 999+</span>
-                                    </div>
-                                </div>
-                            </a>
-                                                        <a href="news-info/265.html" class="mdui-row mdui-text-color-black mdui-ripple mdui-sm-valign mdui-m-x-1 mdui-m-b-1 best-new " target="_blank">
-                                <div class="mdui-col-xs-12 mdui-col-sm-9">
-                                    <div class="mdui-typo-body-2 best-new-title">中国拟对美国进口产品加征关税（附清单）</div>
-                                    <div class="mdui-typo-body-1 best-new-content mdui-text-color-grey-600 mdui-list-item-two-line">近日，商务部发布了针对美国进口钢铁和铝产品232措施的中止减让产品清单并征求公众意见，拟对自美进口部分产品加征关税，以平衡因美国对进口钢铁和铝产品加征关税给中方利益造成的损失。</div>
-                                </div>
-                                <div class="mdui-col-12 mdui-col-sm-3 mdui-xs-valign mdui-p-y-1">
-                                    <div class="mdui-typo-body-1 mdui-flex-item mdui-sm-text-right"><small>2018-03-26</small></div>
-                                    <div class="mdui-typo-body-1 mdui-m-t-1 mdui-text-color-grey-600 mdui-sm-text-right">
-                                        <span><i class="mdui-icon material-icons">remove_red_eye</i> 999+</span>
-                                    </div>
-                                </div>
-                            </a>
-                                                        <a href="news-info/261.html" class="mdui-row mdui-text-color-black mdui-ripple mdui-sm-valign mdui-m-x-1 mdui-m-b-1 best-new " target="_blank">
-                                <div class="mdui-col-xs-12 mdui-col-sm-9">
-                                    <div class="mdui-typo-body-2 best-new-title">特朗普如果对中国征收600亿美元关税，对哪些行业的打击最大？</div>
-                                    <div class="mdui-typo-body-1 best-new-content mdui-text-color-grey-600 mdui-list-item-two-line">白宫将于周四（3月22日）宣布对中国商品征收600多亿美元的新关税，科技、通信和知识产权行业可能成为重点征收对象。</div>
-                                </div>
-                                <div class="mdui-col-12 mdui-col-sm-3 mdui-xs-valign mdui-p-y-1">
-                                    <div class="mdui-typo-body-1 mdui-flex-item mdui-sm-text-right"><small>2018-03-23</small></div>
-                                    <div class="mdui-typo-body-1 mdui-m-t-1 mdui-text-color-grey-600 mdui-sm-text-right">
-                                        <span><i class="mdui-icon material-icons">remove_red_eye</i> 999+</span>
-                                    </div>
-                                </div>
-                            </a>
-                                                        <a href="news-info/260.html" class="mdui-row mdui-text-color-black mdui-ripple mdui-sm-valign mdui-m-x-1 mdui-m-b-1 best-new " target="_blank">
-                                <div class="mdui-col-xs-12 mdui-col-sm-9">
-                                    <div class="mdui-typo-body-2 best-new-title">超1300多种商品出口美国或将受阻，中国商务部闪电回击</div>
-                                    <div class="mdui-typo-body-1 best-new-content mdui-text-color-grey-600 mdui-list-item-two-line">美国总统特朗普宣布要对中国产品征收500亿美元的保护关税，2018年3月23日商务部发表题为《商务部新闻发言人就中方发布针对美国进口钢铁和铝产品232措施的中止减让产品清单发表谈话》的新闻。</div>
-                                </div>
-                                <div class="mdui-col-12 mdui-col-sm-3 mdui-xs-valign mdui-p-y-1">
-                                    <div class="mdui-typo-body-1 mdui-flex-item mdui-sm-text-right"><small>2018-03-23</small></div>
-                                    <div class="mdui-typo-body-1 mdui-m-t-1 mdui-text-color-grey-600 mdui-sm-text-right">
-                                        <span><i class="mdui-icon material-icons">remove_red_eye</i> 999+</span>
-                                    </div>
-                                </div>
-                            </a>
-                                                        <a href="news-info/258.html" class="mdui-row mdui-text-color-black mdui-ripple mdui-sm-valign mdui-m-x-1 mdui-m-b-1 best-new " target="_blank">
-                                <div class="mdui-col-xs-12 mdui-col-sm-9">
-                                    <div class="mdui-typo-body-2 best-new-title">特朗普或本周公布中国产品进口关税提升计划</div>
-                                    <div class="mdui-typo-body-1 best-new-content mdui-text-color-grey-600 mdui-list-item-two-line">从外媒获悉，美国总统特朗普将准备宣布其对中国产品的进口关税新方案。该新方案将让中国出口到美国的产品每年多缴纳600亿美金的税额。该方案或最早在美国时间3月22日宣布。</div>
-                                </div>
-                                <div class="mdui-col-12 mdui-col-sm-3 mdui-xs-valign mdui-p-y-1">
-                                    <div class="mdui-typo-body-1 mdui-flex-item mdui-sm-text-right"><small>2018-03-22</small></div>
-                                    <div class="mdui-typo-body-1 mdui-m-t-1 mdui-text-color-grey-600 mdui-sm-text-right">
-                                        <span><i class="mdui-icon material-icons">remove_red_eye</i> 999+</span>
-                                    </div>
-                                </div>
-                            </a>
-                                                        <a href="news-info/257.html" class="mdui-row mdui-text-color-black mdui-ripple mdui-sm-valign mdui-m-x-1 mdui-m-b-1 best-new " target="_blank">
-                                <div class="mdui-col-xs-12 mdui-col-sm-9">
-                                    <div class="mdui-typo-body-2 best-new-title">2018年春季广交会参展前期攻略</div>
-                                    <div class="mdui-typo-body-1 best-new-content mdui-text-color-grey-600 mdui-list-item-two-line">2018年春季广交会即将开展，第一期定于4月15-19日。每年广交会都会吸引上万家企业参展，境外采购商已经养成了在广交会下单的习惯，今年也不例外。</div>
-                                </div>
-                                <div class="mdui-col-12 mdui-col-sm-3 mdui-xs-valign mdui-p-y-1">
-                                    <div class="mdui-typo-body-1 mdui-flex-item mdui-sm-text-right"><small>2018-03-22</small></div>
-                                    <div class="mdui-typo-body-1 mdui-m-t-1 mdui-text-color-grey-600 mdui-sm-text-right">
-                                        <span><i class="mdui-icon material-icons">remove_red_eye</i> 999+</span>
-                                    </div>
-                                </div>
-                            </a>
-                                                        <a href="news-info/254.html" class="mdui-row mdui-text-color-black mdui-ripple mdui-sm-valign mdui-m-x-1 mdui-m-b-1 best-new " target="_blank">
-                                <div class="mdui-col-xs-12 mdui-col-sm-9">
-                                    <div class="mdui-typo-body-2 best-new-title">欧盟化学品新规出台 出口企业宜尽快注册</div>
-                                    <div class="mdui-typo-body-1 best-new-content mdui-text-color-grey-600 mdui-list-item-two-line">根据欧盟《关于化学品注册、评估、许可和限制法规》规定，自2018年6月1日起，年进口量为1吨以上的未注册化学品将不允许投放欧盟市场。</div>
-                                </div>
-                                <div class="mdui-col-12 mdui-col-sm-3 mdui-xs-valign mdui-p-y-1">
-                                    <div class="mdui-typo-body-1 mdui-flex-item mdui-sm-text-right"><small>2018-03-22</small></div>
-                                    <div class="mdui-typo-body-1 mdui-m-t-1 mdui-text-color-grey-600 mdui-sm-text-right">
-                                        <span><i class="mdui-icon material-icons">remove_red_eye</i> 999+</span>
-                                    </div>
-                                </div>
-                            </a>
-                                                        <a href="news-info/252.html" class="mdui-row mdui-text-color-black mdui-ripple mdui-sm-valign mdui-m-x-1 mdui-m-b-1 best-new " target="_blank">
-                                <div class="mdui-col-xs-12 mdui-col-sm-9">
-                                    <div class="mdui-typo-body-2 best-new-title">传苹果等45个贸易协会联名要求暂停对华加税</div>
-                                    <div class="mdui-typo-body-1 best-new-content mdui-text-color-grey-600 mdui-list-item-two-line">有外媒爆料称，美国45个贸易协会联合致信特朗普，请求美国政府停止对中国征收关税的计划，改而与他国合作联手向中国施压，以便让中国停止对外国公司施加限制。</div>
-                                </div>
-                                <div class="mdui-col-12 mdui-col-sm-3 mdui-xs-valign mdui-p-y-1">
-                                    <div class="mdui-typo-body-1 mdui-flex-item mdui-sm-text-right"><small>2018-03-22</small></div>
-                                    <div class="mdui-typo-body-1 mdui-m-t-1 mdui-text-color-grey-600 mdui-sm-text-right">
-                                        <span><i class="mdui-icon material-icons">remove_red_eye</i> 999+</span>
-                                    </div>
-                                </div>
-                            </a>
-                                                        <a href="news-info/251.html" class="mdui-row mdui-text-color-black mdui-ripple mdui-sm-valign mdui-m-x-1 mdui-m-b-1 best-new " target="_blank">
-                                <div class="mdui-col-xs-12 mdui-col-sm-9">
-                                    <div class="mdui-typo-body-2 best-new-title">亚马逊市值超过谷歌 成全球市值第二大公司</div>
-                                    <div class="mdui-typo-body-1 best-new-content mdui-text-color-grey-600 mdui-list-item-two-line">据国外媒体报道，得益于自身股价上涨和对方股价下跌，亚马逊市值在周二超过了谷歌母公司Alphabet，成为仅次于苹果的全球市值第二大公司</div>
-                                </div>
-                                <div class="mdui-col-12 mdui-col-sm-3 mdui-xs-valign mdui-p-y-1">
-                                    <div class="mdui-typo-body-1 mdui-flex-item mdui-sm-text-right"><small>2018-03-21</small></div>
-                                    <div class="mdui-typo-body-1 mdui-m-t-1 mdui-text-color-grey-600 mdui-sm-text-right">
-                                        <span><i class="mdui-icon material-icons">remove_red_eye</i> 999+</span>
-                                    </div>
-                                </div>
-                            </a>
-                                                    </div>
+</main>
 
-                    </div>
-                </div>
-            </div>
+<footer class="mdui-container mdui-p-y-auto">
+    <div class="mdui-row-xs-1 mdui-row-sm-2 mdui-sm-valign">
+        <div class="mdui-col order-right mdui-text-right mdui-xs-text-center">
+            <a href="tel://{:comconf('phone')}"
+               class="mdui-btn mdui-btn-icon mdui-ripple mdui-color-indigo-500 mdui-m-r-2"
+               mdui-tooltip="{content: '{:comconf('phone')}', position: 'top'}">
+                <i class="iconfont mdui-icon icon-phone"></i>
+            </a>
+            <a href="mailto:{:comconf('email')}"
+               class="mdui-btn mdui-ripple mdui-btn-icon mdui-color-red-500 mdui-m-r-2"
+               mdui-tooltip="{content: '{:comconf('email')}', position: 'top'}">
+                <i class="mdui-icon material-icons">email</i>
+            </a>
+            <button type="button"
+                    class="mdui-btn mdui-btn-icon mdui-ripple mdui-hidden-md-up mdui-color-green-500 mdui-m-r-2 mdui-text-color-white"
+                    mdui-dialog="{target: '#wechat'}">
+                <i class="iconfont mdui-icon icon-wechat"></i>
+            </button>
+            <button type="button"
+                    class="mdui-btn mdui-btn-icon mdui-ripple mdui-hidden-sm-down mdui-color-green-500 mdui-m-r-2 mdui-text-color-white"
+                    id="click-wechat">
+                <i class="iconfont mdui-icon icon-wechat"></i>
+            </button>
+            <a href="{:comconf('weibo')}" target="_blank" rel="nofollow"
+               class="mdui-btn mdui-ripple mdui-btn-icon mdui-text-color-white mdui-color-amber-500"
+               mdui-tooltip="{content: '欢迎访问{:sysconf('site_name')}官方微博', position: 'top'}">
+                <i class="iconfont mdui-icon icon-weibo"></i>
+            </a>
         </div>
-
-    </main>
-
-    <footer class="mdui-container mdui-p-y-auto">
-        <div class="mdui-row-xs-1 mdui-row-sm-2 mdui-sm-valign">
-            <div class="mdui-col order-right mdui-text-right mdui-xs-text-center">
-                <a href="tel://{:comconf('phone')}" class="mdui-btn mdui-btn-icon mdui-ripple mdui-color-indigo-500 mdui-m-r-2" mdui-tooltip="{content: '{:comconf('phone')}', position: 'top'}">
-                    <i class="iconfont mdui-icon icon-phone"></i>
-                </a>
-                <a href="mailto:{:comconf('email')}" class="mdui-btn mdui-ripple mdui-btn-icon mdui-color-red-500 mdui-m-r-2" mdui-tooltip="{content: '{:comconf('email')}', position: 'top'}">
-                    <i class="mdui-icon material-icons">email</i>
-                </a>
-                <button type="button" class="mdui-btn mdui-btn-icon mdui-ripple mdui-hidden-md-up mdui-color-green-500 mdui-m-r-2 mdui-text-color-white" mdui-dialog="{target: '#wechat'}">
-                    <i class="iconfont mdui-icon icon-wechat"></i>
-                </button>
-                <button type="button" class="mdui-btn mdui-btn-icon mdui-ripple mdui-hidden-sm-down mdui-color-green-500 mdui-m-r-2 mdui-text-color-white" id="click-wechat">
-                    <i class="iconfont mdui-icon icon-wechat"></i>
-                </button>
-                <a href="{:comconf('weibo')}" target="_blank" rel="nofollow" class="mdui-btn mdui-ripple mdui-btn-icon mdui-text-color-white mdui-color-amber-500" mdui-tooltip="{content: '欢迎访问{:sysconf('site_name')}官方微博', position: 'top'}">
-                    <i class="iconfont mdui-icon icon-weibo"></i>
-                </a>
-            </div>
-            <div class="mdui-col mdui-xs-text-center mdui-p-y-1">
-                {:sysconf('site_copy')} {:sysconf('site_name')}网络科技 All Rights Reserved {:sysconf('miitbeian')}
-            </div>
+        <div class="mdui-col mdui-xs-text-center mdui-p-y-1">
+            {:sysconf('site_copy')} {:sysconf('site_name')}网络科技 All Rights Reserved {:sysconf('miitbeian')}
         </div>
-    </footer>
-    <div class="mdui-dialog" id="wechat">
-        <img src="{:comconf('wechat_img')}" alt="{:sysconf('site_name')}微信公众号二维码">
-        <div class="mdui-typo-subheading mdui-text-center mdui-m-b-1">欢迎关注{:sysconf('site_name')}官方微信</div>
     </div>
-    <div id="outdated"></div>
-    <script src="https://cdn.bootcss.com/outdated-browser/1.1.5/outdatedbrowser.min.js"></script>
-    <script>
-        outdatedBrowser({
-            bgColor: '#f25648',
-            color: '#ffffff',
-            lowerThan: 'transform',
-            languagePath: '/static//index/zh-cn.html'
-        })
-    </script>
-    <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://cdn.bootcss.com/mdui/0.3.0/js/mdui.min.js"></script>
-    <script src="https://cdn.bootcss.com/Swiper/4.0.6/js/swiper.min.js"></script>
-    <script>
-        var wechat = new mdui.Tooltip('#click-wechat', {
-            position: 'top',
-            content: '<img src="{:comconf(\'wechat_img\')}" alt="微信公众号二维码"><div class="best-arrow"></div>'
-        });
+</footer>
+<div class="mdui-dialog" id="wechat">
+    <img src="{:comconf('wechat_img')}" alt="{:sysconf('site_name')}微信公众号二维码">
+    <div class="mdui-typo-subheading mdui-text-center mdui-m-b-1">欢迎关注{:sysconf('site_name')}官方微信</div>
+</div>
+<div id="outdated"></div>
+<script src="https://cdn.bootcss.com/outdated-browser/1.1.5/outdatedbrowser.min.js"></script>
+<script>
+    outdatedBrowser({
+        bgColor: '#f25648',
+        color: '#ffffff',
+        lowerThan: 'transform',
+        languagePath: '/static//index/zh-cn.html'
+    })
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/mdui/0.3.0/js/mdui.min.js"></script>
+<script src="https://cdn.bootcss.com/Swiper/4.0.6/js/swiper.min.js"></script>
+<script>
+    var wechat = new mdui.Tooltip('#click-wechat', {
+        position: 'top',
+        content: '<img src="{:comconf(\'wechat_img\')}" alt="微信公众号二维码"><div class="best-arrow"></div>'
+    });
 
-        $('.best-menu .mdui-list').on('click', ' .mdui-list-item', function() {
-            $(this).addClass('mdui-list-item-active').siblings().removeClass('mdui-list-item-active');
-            $("html,body").animate({
-                scrollTop: ($($(this).attr("href")).offset().top - 100) + "px"
-            }, {
-                duration: 300,
-                easing: "swing"
-            });
+    $('.best-menu .mdui-list').on('click', ' .mdui-list-item', function () {
+        $(this).addClass('mdui-list-item-active').siblings().removeClass('mdui-list-item-active');
+        $("html,body").animate({
+            scrollTop: ($($(this).attr("href")).offset().top - 100) + "px"
+        }, {
+            duration: 300,
+            easing: "swing"
         });
+    });
 
-        $(window).scroll(function() {
-            if ($(window).scrollTop() >= $('.best-main').offset().top) {
-                $('.best-menu').addClass('fixed');
-            } else {
-                $('.best-menu').removeClass('fixed');
+    $(window).scroll(function () {
+        if ($(window).scrollTop() >= $('.best-main').offset().top) {
+            $('.best-menu').addClass('fixed');
+        } else {
+            $('.best-menu').removeClass('fixed');
+        }
+        $('.best-main .best-item >div').each(function (i, el) {
+            var thistop = $(this).offset().top - $(window).scrollTop();
+            if (thistop > 0 && thistop < 150) {
+                var needid = $(this).attr('id');
+                $('.best-menu .mdui-list .mdui-list-item').each(function () {
+                    if ($(this).attr('href') == ('#' + needid)) {
+                        $(this).addClass('mdui-list-item-active').siblings().removeClass('mdui-list-item-active');
+                    }
+                });
             }
-            $('.best-main .best-item >div').each(function(i, el) {
-                var thistop = $(this).offset().top - $(window).scrollTop();
-                if (thistop > 0 && thistop < 150) {
-                    var needid = $(this).attr('id');
-                    $('.best-menu .mdui-list .mdui-list-item').each(function() {
-                        if ($(this).attr('href') == ('#' + needid)) {
-                            $(this).addClass('mdui-list-item-active').siblings().removeClass('mdui-list-item-active');
-                        }
-                    });
-                }
-            });
         });
+    });
 
-        // $(document).on('click', '.loadmore', function() {
-        //     $(this).hide().parent().find('.mdui-loading').removeClass('mdui-hidden');
-        // });
-    </script>
+    // $(document).on('click', '.loadmore', function() {
+    //     $(this).hide().parent().find('.mdui-loading').removeClass('mdui-hidden');
+    // });
+</script>
 
 
-    <!--<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan class='mdui-hidden' id='cnzz_stat_icon_1272450297'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s22.cnzz.com/z_stat.php%3Fid%3D1272450297%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));-->
-    <!--</script>-->
+<!--<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan class='mdui-hidden' id='cnzz_stat_icon_1272450297'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s22.cnzz.com/z_stat.php%3Fid%3D1272450297%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));-->
+<!--</script>-->
 </body>
 
 </html>

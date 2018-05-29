@@ -93,8 +93,8 @@
                          class="mdui-img-rounded mdui-hidden-md-up mdui-shadow-5 mdui-center"
                          alt="{:sysconf('site_name')}">
                     <p class="mdui-hidden-sm-up">
-                        立足于过去二十多年外贸实际经验和成果，{:sysconf('site_name')}网络科技目前已经打造并且投入运营重点项目“中国外贸家”平... <a
-                            href="about-us.html" class="mdui-text-color-theme mdui-float-right">更多精彩</a></p>
+                        立足于过去二十多年外贸实际经验和成果，{:sysconf('site_name')}网络科技目前已经打造并且投入运营重点项目“中国外贸家”平...
+                        <a href="about-us.html" class="mdui-text-color-theme mdui-float-right">更多精彩</a></p>
                     <div class="mdui-hidden-xs">
                         <p>
                             立足于过去二十多年外贸实际经验和成果，{:sysconf('site_name')}网络科技目前已经打造并且投入运营重点项目“中国外贸家”平台。平台定位为全球贸易B2B交易服务平台领跑者，旨在通过平台双向交易服务帮助全球采购商与中国最佳供应商达成长远、深度合作。它包含供应商优选平台、海外推广运营平台和外贸交易服务平台。“中国外贸家“以”让天下没有做不成的生意“为使命，让中国制造企业更简单高效地参与全球采购，直达目标市场。</p>
@@ -167,7 +167,7 @@
                 <div class="best-list-bd">
                     <div class="best-list-item">
                         <div class="best-list-bd best-t2 mdui-m-l-0 mdui-list-item-one-line">{$vo.title}</div>
-                        <!-- <div class="best-b-time-sm mdui-hidden-xs">{$vo.create_at}</div> -->
+                        <!-- <div class="best-b-time-sm mdui-hidden-xs">{:date('Y-m-d',strtotime($vo['create_at']))}</div> -->
                     </div>
                     <div class="best-text-content mdui-list-item-two-line">{$vo.digest}</div>
                     <div class="best-b-time-sm mdui-text-right">{:date('Y-m-d',strtotime($vo['create_at']))}</div>
@@ -207,23 +207,25 @@
                 <div class="mdui-card">
                     <div class="mdui-card-header mdui-text-center">
                         <div class="mdui-center best-t1">{$k}</div>
-                        <div class="mdui-center mdui-text-uppercase best-t-e">Company dynamics</div>
+                        <div class="mdui-center mdui-text-uppercase best-t-e">{$new_list[0]['nav_title_en']}</div>
                     </div>
-                    <a href="news-info/263.html" target="_blank" class="mdui-card-media mdui-ripple mdui-color-grey-100"
-                       title="如何有效避开FBA跨境物流发货的各种“坑”">
-                        <img src="uploads/new_img/20180323/c75ac22280f130833194ca7cece34b52.jpg"
-                             alt="如何有效避开FBA跨境物流发货的各种“坑”">
+                    {volist name="new_list" id="vo" offset="0" length='1'}
+                    <a href="info/{$vo.id}" target="_blank" class="mdui-card-media mdui-ripple mdui-color-grey-100"
+                       title="{$vo.title}">
+                        <img src="{$vo.local_url}"
+                             alt="{$vo.title}">
                         <div class="mdui-card-media-covered">
                             <div class="mdui-card-primary mdui-p-y-1">
                                 <div class="best-t2 mdui-p-x-1 best-b-l-white mdui-list-item-one-line">
-                                    如何有效避开FBA跨境物流发货的各种“坑”
+                                    {$vo.title}
                                 </div>
                             </div>
                         </div>
                     </a>
+                    {/volist}
                     <div class="mdui-card-content mdui-p-a-0">
                         <div class="mdui-list mdui-list-dense">
-                            {volist name="new_list" id="vo"}
+                            {volist name="new_list" id="vo" offset="1" length='6'}
                             <a class="mdui-list-item mdui-ripple" href="info/{$vo.id}" target="_blank"
                                title="{$vo.title}">
                                 <i class="mdui-icon iconfont icon-dot"></i>
@@ -238,7 +240,8 @@
                         </div>
                     </div>
                     <div class="mdui-card-actions mdui-p-t-0">
-                        <a href="news.html#{$vo.nav_title_en}" class="mdui-btn mdui-btn-dense mdui-btn-icon mdui-float-right"><i
+                        <a href="news.html#{$vo.nav_title_en}"
+                           class="mdui-btn mdui-btn-dense mdui-btn-icon mdui-float-right"><i
                                 class="mdui-icon material-icons">more_horiz</i></a>
                     </div>
                 </div>

@@ -54,6 +54,7 @@ class Index extends Controller
         }
         $address_list= Db::table('company_address')->where('is_deleted','0')->order('create_at asc')->select();
         $this->assign('address_list', $address_list);
+        $this->assign('navs', '联系我们');
         return $this->fetch('/contact-us');
     }
 
@@ -70,6 +71,7 @@ class Index extends Controller
             ->select();
         $this->assign('album_list', $album_list);
         $this->assign('new_list', $new_list);
+        $this->assign('navs', '关于我们');
         return $this->fetch('/about-us');
     }
 
@@ -77,12 +79,30 @@ class Index extends Controller
     {
         $work_list= Db::table('company_work')->where('is_deleted','0')->order('create_at asc')->select();
         $this->assign('work_list', $work_list);
+        $this->assign('navs', '诚聘英才');
         return $this->fetch('/join-us');
     }
 
     public function news()
     {
         $new_nav= Db::table('company_news_nav')->where('is_deleted','0')->order('create_at asc')->select();
+        $new_list = Db::table('company_news')   //大事记
+        ->alias('a')
+            ->join('company_news_article b','a.article_id = b.id','left')
+            ->join('company_news_nav c','b.nav_id = c.id','left')
+            ->where('a.is_deleted','0')
+            ->field('a.id,b.title,b.local_url,a.create_at,b.digest,b.nav_id,c.title as nav_title,c.title_en as nav_title_en')
+            ->order('a.create_at asc')
+            ->select();
+        $data = [];
+        foreach ($new_nav as $value){
+            foreach ($new_list as $val){
+                if($value['id'] == $val['nav_id']){
+                    $data[$value['title']][] = $val;
+                }
+            }
+        }
+        $this->assign('data_list', $data);
         $this->assign('new_nav', $new_nav);
         return $this->fetch('/news');
     }
