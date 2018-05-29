@@ -13,8 +13,6 @@
 // +----------------------------------------------------------------------
 
 use think\facade\Route;
-
-Route::rule('index','index/index/index');
 Route::rule('contact-us','index/index/contact_us');
 Route::rule('about-us','index/index/about_us');
 Route::rule('join-us','index/index/join_us');

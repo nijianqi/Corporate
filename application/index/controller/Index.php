@@ -14,27 +14,27 @@ class Index extends Controller
 
     public function initialize()
     {
-        $nav_list = Db::table('company_nav')->where('is_deleted','0')->order('sort asc')->select();
+        $nav_list = Db::table('company_nav')->where('is_deleted', '0')->order('sort asc')->select();
         $this->assign('nav_list', $nav_list);
     }
 
     public function index()
     {
-        $slide_list = Db::table('company_slides')->where('is_deleted','0')->order('sort asc')->select(); //幻灯片
-        $new_list = Db::table('company_news')   //大事记
-            ->alias('a')
-            ->join('company_news_article b','a.article_id = b.id','left')
-            ->join('company_news_nav c','b.nav_id = c.id','left')
-            ->where('a.is_deleted','0')
+        $slide_list = Db::table('company_slides')->where('is_deleted', '0')->order('sort asc')->select(); //幻灯片
+        $new_list = Db::table('company_news')//大事记
+        ->alias('a')
+            ->join('company_news_article b', 'a.article_id = b.id', 'left')
+            ->join('company_news_nav c', 'b.nav_id = c.id', 'left')
+            ->where('a.is_deleted', '0')
             ->field('a.id,b.title,b.local_url,a.create_at,b.digest,b.nav_id,c.title as nav_title,c.title_en as nav_title_en')
             ->order('a.create_at asc')
             ->select();
-        $partner_list = Db::table('company_partner')->where('is_deleted','0')->order('create_at asc')->select(); //合作伙伴
-        $new_nav = Db::table('company_news_nav')->where('is_deleted','0')->order('create_at asc')->select();
+        $partner_list = Db::table('company_partner')->where('is_deleted', '0')->order('create_at asc')->select(); //合作伙伴
+        $new_nav = Db::table('company_news_nav')->where('is_deleted', '0')->order('create_at asc')->select();
         $data = [];
-        foreach ($new_nav as $value){
-            foreach ($new_list as $val){
-                if($value['id'] == $val['nav_id']){
+        foreach ($new_nav as $value) {
+            foreach ($new_list as $val) {
+                if ($value['id'] == $val['nav_id']) {
                     $data[$value['title']][] = $val;
                 }
             }
@@ -48,11 +48,11 @@ class Index extends Controller
 
     public function contact_us()
     {
-        if($this->request->post()){
+        if ($this->request->post()) {
             Db::table('company_message')->insert($_POST);
             $this->success('提交成功');
         }
-        $address_list= Db::table('company_address')->where('is_deleted','0')->order('create_at asc')->select();
+        $address_list = Db::table('company_address')->where('is_deleted', '0')->order('create_at asc')->select();
         $this->assign('address_list', $address_list);
         $this->assign('navs', '联系我们');
         return $this->fetch('/contact-us');
@@ -60,12 +60,12 @@ class Index extends Controller
 
     public function about_us()
     {
-        $album_list= Db::table('company_album')->where('is_deleted','0')->order('create_at asc')->select();
-        $new_list = Db::table('company_news')   //大事记
+        $album_list = Db::table('company_album')->where('is_deleted', '0')->order('create_at asc')->select();
+        $new_list = Db::table('company_news')//大事记
         ->alias('a')
-            ->join('company_news_article b','a.article_id = b.id','left')
-            ->join('company_news_nav c','b.nav_id = c.id','left')
-            ->where('a.is_deleted','0')
+            ->join('company_news_article b', 'a.article_id = b.id', 'left')
+            ->join('company_news_nav c', 'b.nav_id = c.id', 'left')
+            ->where('a.is_deleted', '0')
             ->field('a.id,b.title,b.local_url,a.create_at,b.digest,b.nav_id,c.title as nav_title,c.title_en as nav_title_en')
             ->order('a.create_at asc')
             ->select();
@@ -77,7 +77,7 @@ class Index extends Controller
 
     public function join_us()
     {
-        $work_list= Db::table('company_work')->where('is_deleted','0')->order('create_at asc')->select();
+        $work_list = Db::table('company_work')->where('is_deleted', '0')->order('create_at asc')->select();
         $this->assign('work_list', $work_list);
         $this->assign('navs', '诚聘英才');
         return $this->fetch('/join-us');
@@ -85,19 +85,19 @@ class Index extends Controller
 
     public function news()
     {
-        $new_nav= Db::table('company_news_nav')->where('is_deleted','0')->order('create_at asc')->select();
-        $new_list = Db::table('company_news')   //大事记
+        $new_nav = Db::table('company_news_nav')->where('is_deleted', '0')->order('create_at asc')->select();
+        $new_list = Db::table('company_news')//大事记
         ->alias('a')
-            ->join('company_news_article b','a.article_id = b.id','left')
-            ->join('company_news_nav c','b.nav_id = c.id','left')
-            ->where('a.is_deleted','0')
+            ->join('company_news_article b', 'a.article_id = b.id', 'left')
+            ->join('company_news_nav c', 'b.nav_id = c.id', 'left')
+            ->where('a.is_deleted', '0')
             ->field('a.id,b.title,b.local_url,a.create_at,b.digest,b.nav_id,c.title as nav_title,c.title_en as nav_title_en')
             ->order('a.create_at asc')
             ->select();
         $data = [];
-        foreach ($new_nav as $value){
-            foreach ($new_list as $val){
-                if($value['id'] == $val['nav_id']){
+        foreach ($new_nav as $value) {
+            foreach ($new_list as $val) {
+                if ($value['id'] == $val['nav_id']) {
                     $data[$value['title']][] = $val;
                 }
             }
@@ -109,23 +109,23 @@ class Index extends Controller
 
     public function info($id)
     {
-        $new_info = Db::table('company_news')   //大事记
+        $new_info = Db::table('company_news')//大事记
         ->alias('a')
-            ->join('company_news_article b','a.article_id = b.id','left')
-            ->where(['a.id'=>$id,'a.is_deleted'=>'0'])
+            ->join('company_news_article b', 'a.article_id = b.id', 'left')
+            ->where(['a.id' => $id, 'a.is_deleted' => '0'])
             ->field('a.*,b.*')
             ->order('a.create_at asc')
             ->find();
-        if (empty($new_info)){
+        if (empty($new_info)) {
             $this->error('新闻不存在');
         }
-        $new_list = Db::table('company_news')   //大事记
+        $new_list = Db::table('company_news')//大事记
         ->alias('a')
-        ->join('company_news_article b','a.article_id = b.id','left')
-        ->where('a.is_deleted','0')
-        ->field('a.id,b.title,b.local_url,a.create_at,b.digest,b.nav_id')
-        ->order('a.create_at asc')
-        ->select();
+            ->join('company_news_article b', 'a.article_id = b.id', 'left')
+            ->where('a.is_deleted', '0')
+            ->field('a.id,b.title,b.local_url,a.create_at,b.digest,b.nav_id')
+            ->order('a.create_at asc')
+            ->select();
         $this->assign('new_list', $new_list);
         $this->assign('new_info', $new_info);
         return $this->fetch('/news-info');
@@ -133,12 +133,12 @@ class Index extends Controller
 
     public function project($type_id = 1)
     {
-        $project_type = Db::table('company_project_type')->where('id',$type_id)->where('is_deleted','0')->order('create_at asc')->find();
-        if(empty($project_type)){
+        $project_type = Db::table('company_project_type')->where('id', $type_id)->where('is_deleted', '0')->order('create_at asc')->find();
+        if (empty($project_type)) {
             $this->error('产品类型不存在');
         }
-        $project_list = Db::table('company_project')->where('is_deleted','0')->where('type_id',$type_id)->order('create_at asc')->select();
-        $project_type_list = Db::table('company_project_type')->where('is_deleted','0')->order('create_at asc')->select();
+        $project_list = Db::table('company_project')->where('is_deleted', '0')->where('type_id', $type_id)->order('create_at asc')->select();
+        $project_type_list = Db::table('company_project_type')->where('is_deleted', '0')->order('create_at asc')->select();
         $this->assign('project_list', $project_list);
         $this->assign('project_type_list', $project_type_list);
         $this->assign('navs', '产品中心');
@@ -146,4 +146,14 @@ class Index extends Controller
         return $this->fetch('/projects');
     }
 
+    public function lang($cn){
+        switch ($cn){
+            case 'cn':
+                cookie('think_var','zh-cn');
+                break;
+            case 'en':
+                cookie('think_var','en-us');
+                break;
+        }
+    }
 }
