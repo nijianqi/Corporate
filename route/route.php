@@ -20,6 +20,8 @@ Route::rule('about-us','index/index/about_us');
 Route::rule('join-us','index/index/join_us');
 Route::rule('news','index/index/news');
 Route::rule('info/:id','index/index/info');
+Route::rule('project','index/index/project');
+Route::rule('project/:id','index/index/project');
 /* 去除下面注释可启用禁用功能 */
  return [];
 

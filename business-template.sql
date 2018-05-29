@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50714
 File Encoding         : 65001
 
-Date: 2018-05-29 09:03:51
+Date: 2018-05-29 15:13:21
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -253,11 +253,13 @@ CREATE TABLE `company_project` (
   `create_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `create_by` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 ROW_FORMAT=DYNAMIC;
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 ROW_FORMAT=DYNAMIC;
 
 -- ----------------------------
 -- Records of company_project
 -- ----------------------------
+INSERT INTO `company_project` VALUES ('1', 'RDMO230型振弦式位移计', 'RDMO230型振弦式位移计', '安全形变传感器', '安全形变传感器', '111', '1111', '安全形变传感器', '安全形变传感器', 'http://image.znmya.com/c28328c2535e06ec/29e4d0474741a827.jpg', '2', '0', '2018-05-29 15:08:26', 'admin');
+INSERT INTO `company_project` VALUES ('2', 'RTCO250 型爆破测振仪', 'RTCO250 型爆破测振仪', '111', '111', '111', '111', '111', '111', 'http://image.znmya.com/c30a8ce7237ed0bd/45c6ae103d0ccb02.png', '1', '0', '2018-05-29 11:07:59', 'admin');
 
 -- ----------------------------
 -- Table structure for company_project_type
@@ -302,9 +304,9 @@ CREATE TABLE `company_slides` (
 -- ----------------------------
 -- Records of company_slides
 -- ----------------------------
-INSERT INTO `company_slides` VALUES ('1', '中国外贸家', 'Chinawaimao', 'uploads/obo/20171218/a447a08213e3e4e51cf5124b3f8ff087.jpg', 'contact-us.html', '_blank', 'admin', '2018-05-29 08:39:28', '1', '0');
-INSERT INTO `company_slides` VALUES ('2', '加入我们', null, 'uploads/obo/20180122/a2249073dee226a3bb6d3baf6a8bf787.jpg', 'join-us.html', '_blank', 'admin', '2018-05-26 18:03:01', '2', '0');
-INSERT INTO `company_slides` VALUES ('3', '关于我们', null, 'uploads/obo/20180122/4a266476202629c0b0de6345edbb9d01.png.jpeg', 'about-us.html', '_blank', 'admin', '2018-05-26 18:03:04', '3', '0');
+INSERT INTO `company_slides` VALUES ('1', '中国外贸家', 'Chinawaimao', 'http://image.znmya.com//1e3a49372b1b2b1b/d16b30fd0e7ef67c.jpg', 'contact-us.html', '_blank', 'admin', '2018-05-29 09:50:02', '1', '0');
+INSERT INTO `company_slides` VALUES ('2', '加入我们', 'join_us', 'http://image.znmya.com//f88324f0f7ac02b7/a8aa7c64b3ecc9a3.jpg', 'join-us.html', '_blank', 'admin', '2018-05-29 09:50:51', '2', '0');
+INSERT INTO `company_slides` VALUES ('3', '关于我们', 'aboutus', 'http://image.znmya.com//c30a8ce7237ed0bd/45c6ae103d0ccb02.png', 'about-us.html', '_blank', 'admin', '2018-05-29 09:50:38', '3', '0');
 
 -- ----------------------------
 -- Table structure for company_work
@@ -436,7 +438,7 @@ CREATE TABLE `system_log` (
   `content` text NOT NULL COMMENT '操作内容描述',
   `create_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=51 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='系统操作日志表';
+) ENGINE=InnoDB AUTO_INCREMENT=52 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='系统操作日志表';
 
 -- ----------------------------
 -- Records of system_log
@@ -491,6 +493,7 @@ INSERT INTO `system_log` VALUES ('47', '127.0.0.1', 'admin/config/index', 'admin
 INSERT INTO `system_log` VALUES ('48', '127.0.0.1', 'admin/config/index', 'admin', '系统管理', '系统参数配置成功', '2018-05-28 15:18:45');
 INSERT INTO `system_log` VALUES ('49', '127.0.0.1', 'admin/login/index', 'admin', '系统管理', '用户登录系统成功', '2018-05-28 19:43:38');
 INSERT INTO `system_log` VALUES ('50', '127.0.0.1', 'admin/login/index', 'admin', '系统管理', '用户登录系统成功', '2018-05-29 08:38:57');
+INSERT INTO `system_log` VALUES ('51', '127.0.0.1', 'admin/login/index', 'admin', '系统管理', '用户登录系统成功', '2018-05-29 09:43:30');
 
 -- ----------------------------
 -- Table structure for system_menu

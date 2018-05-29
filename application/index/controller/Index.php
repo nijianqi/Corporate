@@ -131,4 +131,19 @@ class Index extends Controller
         return $this->fetch('/news-info');
     }
 
+    public function project($type_id = 1)
+    {
+        $project_type = Db::table('company_project_type')->where('id',$type_id)->where('is_deleted','0')->order('create_at asc')->find();
+        if(empty($project_type)){
+            $this->error('产品类型不存在');
+        }
+        $project_list = Db::table('company_project')->where('is_deleted','0')->where('type_id',$type_id)->order('create_at asc')->select();
+        $project_type_list = Db::table('company_project_type')->where('is_deleted','0')->order('create_at asc')->select();
+        $this->assign('project_list', $project_list);
+        $this->assign('project_type_list', $project_type_list);
+        $this->assign('navs', '产品中心');
+        $this->assign('type_id', $type_id);
+        return $this->fetch('/projects');
+    }
+
 }
