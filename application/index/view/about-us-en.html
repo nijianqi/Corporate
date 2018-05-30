@@ -7,10 +7,10 @@
     <meta name="renderer" content="webkit">
     <meta http-equiv="Cache-Control" content="no-siteapp">
     <meta name="applicable-device" content="pc,mobile">
-    <meta name="keywords" content="{:comconf('keywords')}">
-    <meta name="description" content="{:comconf('description')}">
+    <meta name="keywords" content="{:comconf('keywords_en')}">
+    <meta name="description" content="{:comconf('description_en')}">
     <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0">
-    <title>{:comconf('title')}-{$navs}</title>
+    <title>{:comconf('title_en')}-{$navs}</title>
     <link rel="shortcut icon" href="{:sysconf('browser_icon')}">
     <link rel="dns-prefetch" href="https://cdn.bootcss.com/">
     <link href="https://cdn.bootcss.com/mdui/0.3.0/css/mdui.min.css" rel="stylesheet">
@@ -31,21 +31,21 @@
         <div class="mdui-appbar mdui-shadow-0">
             <div class="mdui-toolbar">
                 <a href="index.html" class="mdui-btn mdui-ripple mdui-m-x-2 mdui-p-a-0 best-logo">
-                    {:sysconf('site_name')}<span class="mdui-hidden-xs">网络科技</span>
+                    {:sysconf('site_name_en')}<span class="mdui-hidden-xs">Internet technology</span>
                 </a>
                 <div class="mdui-toolbar-spacer"></div>
-                <a href="index.html" class="mdui-btn mdui-ripple mdui-ripple-white">首页</a>
+                <a href="index.html" class="mdui-btn mdui-ripple mdui-ripple-white">Home</a>
                 {volist name="nav_list" id="vo" offset="0" length='1'}
-                <a href="{$vo.url}" target="{$vo.target}" class="mdui-btn mdui-ripple mdui-ripple-white">{$vo.title}</a>
+                <a href="{$vo.url}" target="{$vo.target}" class="mdui-btn mdui-ripple mdui-ripple-white">{$vo.title_en}</a>
                 {/volist}
                 <div class="mdui-hidden-sm-down mdui-m-a-0">
                     {volist name="nav_list" id="vo" offset="1" length='10'}
                     {if $navs == $vo.title }
                     <a href="{$vo.url}" target="{$vo.target}"
-                       class="mdui-btn mdui-ripple mdui-ripple-white mdui-text-color-theme">{$vo.title}</a>
+                       class="mdui-btn mdui-ripple mdui-ripple-white mdui-text-color-theme">{$vo.title_en}</a>
                     {else}
                     <a href="{$vo.url}" target="{$vo.target}"
-                       class="mdui-btn mdui-ripple mdui-ripple-white">{$vo.title}</a>
+                       class="mdui-btn mdui-ripple mdui-ripple-white">{$vo.title_en}</a>
                     {/if}
                     {/volist}
                     <a href="/index/index/lang.html?cn=cn" class="mdui-btn mdui-ripple mdui-ripple-white">中文</a> | <a href="/index/index/lang.html?cn=en" class="mdui-btn mdui-ripple mdui-ripple-white">ENGLISH</a>
@@ -61,7 +61,7 @@
 <div class="mdui-drawer mdui-drawer-close" id="left-drawer">
     <div class="mdui-list">
         {volist name="nav_list" id="vo" offset="1" length='10'}
-        <a href="{$vo.url}" target="{$vo.target}" class="mdui-list-item mdui-ripple">{$vo.title}</a>
+        <a href="{$vo.url}" target="{$vo.target}" class="mdui-list-item mdui-ripple">{$vo.title_en}</a>
         {/volist}
     </div>
     <div style="position: fixed;bottom: 0;">
@@ -77,15 +77,15 @@
                 <div class="mdui-list mdui-color-white">
                     <a href="#company-introduce" class="mdui-list-item mdui-ripple mdui-list-item-active">
                         <i class="mdui-list-item-icon iconfont mdui-icon icon-company"></i>
-                        <div class="mdui-list-item-content">公司介绍</div>
+                        <div class="mdui-list-item-content">Company Profile</div>
                     </a>
                     <a href="#company-culture" class="mdui-list-item mdui-ripple">
                         <i class="mdui-list-item-icon iconfont mdui-icon icon-culture"></i>
-                        <div class="mdui-list-item-content">企业文化</div>
+                        <div class="mdui-list-item-content">Company culture</div>
                     </a>
                     <a href="#company-structure" class="mdui-list-item mdui-ripple">
                         <i class="mdui-list-item-icon iconfont mdui-icon icon-structure"></i>
-                        <div class="mdui-list-item-content">组织架构</div>
+                        <div class="mdui-list-item-content">Organization</div>
                     </a>
                     <!-- <a href="#company-honor" class="mdui-list-item mdui-ripple">
                                     <i class="mdui-list-item-icon iconfont mdui-icon icon-honor"></i>
@@ -93,62 +93,66 @@
                                 </a> -->
                     <a href="#company-memorabilia" class="mdui-list-item mdui-ripple">
                         <i class="mdui-list-item-icon iconfont mdui-icon icon-memorabilia"></i>
-                        <div class="mdui-list-item-content">大事记</div>
+                        <div class="mdui-list-item-content">Memorabilia</div>
                     </a>
                     <a href="#company-album" class="mdui-list-item mdui-ripple">
                         <i class="mdui-list-item-icon iconfont mdui-icon icon-photos"></i>
-                        <div class="mdui-list-item-content">公司相册</div>
+                        <div class="mdui-list-item-content">Company Album</div>
                     </a>
                 </div>
             </div>
             <div class="mdui-col-xs-12 mdui-col-sm-10 mdui-float-right best-item mdui-typo">
                 <div id="company-introduce" class="company mdui-color-white mdui-p-a-1">
-                    <div class="best-partition mdui-m-b-1 mdui-p-x-2 mdui-p-y-1 mdui-color-grey-100">公司介绍</div>
+                    <div class="best-partition mdui-m-b-1 mdui-p-x-2 mdui-p-y-1 mdui-color-grey-100">Company Profile</div>
                     <p class="mdui-text-index-2">
-                        浙江{:sysconf('site_name')}网络科技有限公司（简称{:sysconf('site_name')}网络科技）成立于2017年，公司核心团队是由一批具有互联网、国际贸易、安全支付、法律等行业背景的资深精英组成。公司总部位于美丽的中国杭州，在杭州未来科技城拥有自己的办公大楼，目前已经在浙江兰溪设立了浙中运营中心。</p>
+                        Zhejiang Baijiahui Network Technology Co., Ltd. (abbreviated as Baijiahui Network Technology) was established in 2017. The core team of the company consists of a group of senior professionals with backgrounds in the Internet, international trade, security payments, and laws.
+                        The company is headquartered in beautiful Hangzhou, China. It has its own office building in Hangzhou Future Technology City. Currently, it has established the Zhejiang Central Operation Center in Lanxi, Zhejiang.</p>
 
                     <p class="mdui-text-index-2">
-                        立足于过去二十多年外贸实际经验和成果，{:sysconf('site_name')}网络科技目前已经打造并且投入运营重点项目“中国外贸家”平台。平台定位为全球贸易B2B交易服务平台领跑者，旨在通过平台双向交易服务帮助全球采购商与中国最佳供应商达成长远、深度合作。它包含供应商优选平台、海外推广运营平台和外贸交易服务平台。“中国外贸家“以”让天下没有做不成的生意“为使命，让中国制造企业更简单高效地参与全球采购，直达目标市场。</p>
+                        Based on the actual experience and achievements of foreign trade over the past two decades, Baijiahui Network Technology has already built and put into operation the key project “China Foreign Trade Home” platform.
+                        The platform is positioned as the leader of the global trade B2B trading service platform and aims to help the global buyers and the best suppliers in China achieve long-term and in-depth cooperation through the platform's two-way trading service.
+                        It includes a supplier optimization platform, an overseas promotion operation platform, and a foreign trade transaction service platform.
+                        "China's foreign trade homes" is the mission to "make the world do not do business", so that Chinese manufacturing companies can more easily and efficiently participate in global procurement and reach the target market.</p>
 
-                    <p class="mdui-text-index-2">面向未来，公司将秉承
-                        “开放、正直、责任、成长”的价值观，着力打造全球贸易B2B领域全新模式，以卓越的市场前瞻力和技术创新力推动中国互联网产业的发展，成就国际贸易新未来。</p>
-                    <h5 class="mdui-text-right">浙江{:sysconf('site_name')}网络科技有限公司<br>
+                    <p class="mdui-text-index-2">For the future, the company will uphold
+                        The values ​​of “Openness, Integrity, Responsibility, and Growth” strive to create a brand-new model in the global trade B2B field, promote the development of China’s Internet industry with outstanding market foresight and technological innovation, and achieve a new future in international trade.</p>
+                    <h5 class="mdui-text-right">Zhejiang Bestsuppliers Network technology<br>
                         <small>Zhejiang Bestsuppliers Network technology co. LTD</small>
                     </h5>
-                    <!-- <div class="mdui-text-right best-t2">浙江{:sysconf('site_name')}网络科技有限公司</div>
+                    <!-- <div class="mdui-text-right best-t2">浙江{:sysconf('site_name_en')}网络科技有限公司</div>
                                 <div class="mdui-text-right best-t-e">Zhejiang Bestsuppliers Network technology co. LTD</div> -->
                 </div>
                 <div id="company-culture" class="company mdui-color-white mdui-p-a-1">
-                    <div class="best-partition mdui-m-b-1 mdui-p-x-2 mdui-p-y-1 mdui-color-grey-100">企业文化</div>
-                    <p class="mdui-text-index-2"><strong>使命:</strong>让天下没有做不成的生意</p>
-                    <p class="mdui-text-index-2"><strong>价值观:</strong>开放、正直、责任、成长</p>
+                    <div class="best-partition mdui-m-b-1 mdui-p-x-2 mdui-p-y-1 mdui-color-grey-100">Company culture</div>
+                    <p class="mdui-text-index-2"><strong>mission:</strong>Let the world do not do business</p>
+                    <p class="mdui-text-index-2"><strong>Values:</strong>Openness, integrity, responsibility, growth</p>
                     <div class="mdui-p-l-1">
-                        <p class="mdui-text-index-2"><strong>开放:</strong>团结互助、分享包容、创新与激情</p>
-                        <p class="mdui-text-index-2"><strong>正直:</strong>坚守正道、求真务实、信念与信仰</p>
-                        <p class="mdui-text-index-2"><strong>责任:</strong>敬畏本职、信守承诺、勇于担当</p>
-                        <p class="mdui-text-index-2"><strong>成长:</strong>敢于挑战、达观协同、懂得坚持</p>
+                        <p class="mdui-text-index-2"><strong>Open:</strong>Unite, help, share, innovation and passion</p>
+                        <p class="mdui-text-index-2"><strong>Upright:</strong>Adhere to the right path, pragmatic, beliefs and beliefs</p>
+                        <p class="mdui-text-index-2"><strong>Responsibility:</strong>Fear your duty, keep your promises, and be bold</p>
+                        <p class="mdui-text-index-2"><strong>Growing up:</strong>Dare to challenge, achieve cooperation, understand</p>
                     </div>
                 </div>
 
                 <div id="company-structure" class="mdui-color-white mdui-p-a-1">
-                    <div class="best-partition mdui-m-b-1 mdui-p-x-2 mdui-p-y-1 mdui-color-grey-100">组织架构</div>
+                    <div class="best-partition mdui-m-b-1 mdui-p-x-2 mdui-p-y-1 mdui-color-grey-100">Organization</div>
                     <picture>
                         <source srcset="static/index/images/structure-xs.jpg" media="(max-width: 1024px)">
                         <img class="mdui-img-fluid" srcset="static/index/images/structure.jpg"
-                             alt="{:sysconf('site_name')}组织架构">
+                             alt="{:sysconf('site_name_en')}Organization">
                     </picture>
                 </div>
                 <div id="company-memorabilia" class="mdui-color-white mdui-p-a-1">
-                    <div class="best-partition mdui-m-b-1 mdui-p-x-2 mdui-p-y-1 mdui-color-grey-100">大事记</div>
+                    <div class="best-partition mdui-m-b-1 mdui-p-x-2 mdui-p-y-1 mdui-color-grey-100">Memorabilia</div>
                     <div class="best-news-list">
                         {volist name="new_list" id="vo"}
                         <a href="info/{$vo.id}"
                            class="mdui-row mdui-text-color-black mdui-ripple mdui-sm-valign mdui-m-x-1 mdui-m-b-1 best-new "
                            target="_blank">
                             <div class="mdui-col-xs-12 mdui-col-sm-9">
-                                <div class="mdui-typo-body-2 best-new-title">{$vo.title}</div>
+                                <div class="mdui-typo-body-2 best-new-title">{$vo.title_en}</div>
                                 <div class="mdui-typo-body-1 best-new-content mdui-text-color-grey-600 mdui-list-item-two-line">
-                                    {$vo.digest}
+                                    {$vo.digest_en}
                                 </div>
                             </div>
                             <div class="mdui-col-12 mdui-col-sm-3 mdui-xs-valign mdui-p-y-1">
@@ -165,13 +169,13 @@
                 </div>
 
                 <div id="company-album" class="mdui-color-white mdui-p-a-1">
-                    <div class="best-partition mdui-m-b-1 mdui-p-x-2 mdui-p-y-1 mdui-color-grey-100">公司相册</div>
+                    <div class="best-partition mdui-m-b-1 mdui-p-x-2 mdui-p-y-1 mdui-color-grey-100">Company Album</div>
                     <div class="swiper-container mdui-shadow-5 mdui-color-grey-100">
                         <div class="swiper-wrapper">
                             {volist name="album_list" id="vo"}
                             <div class="swiper-slide">
                                 <img data-src="{$vo.img_url}"
-                                     class="swiper-lazy" alt="{$vo.title}">
+                                     class="swiper-lazy" alt="{$vo.title_en}">
                             </div>
                             {/volist}
                         </div>
@@ -211,18 +215,18 @@
             </button>
             <a href="{:comconf('weibo')}" target="_blank" rel="nofollow"
                class="mdui-btn mdui-ripple mdui-btn-icon mdui-text-color-white mdui-color-amber-500"
-               mdui-tooltip="{content: '欢迎访问{:sysconf('site_name')}官方微博', position: 'top'}">
+               mdui-tooltip="{content: '欢迎访问{:sysconf('site_name_en')}官方微博', position: 'top'}">
                 <i class="iconfont mdui-icon icon-weibo"></i>
             </a>
         </div>
         <div class="mdui-col mdui-xs-text-center mdui-p-y-1">
-            {:sysconf('site_copy')} {:sysconf('site_name')}网络科技 All Rights Reserved {:sysconf('miitbeian')}
+            {:sysconf('site_copy')} {:sysconf('site_name_en')}网络科技 All Rights Reserved {:sysconf('miitbeian')}
         </div>
     </div>
 </footer>
 <div class="mdui-dialog" id="wechat">
-    <img src="{:comconf('wechat_img')}" alt="{:sysconf('site_name')}微信公众号二维码">
-    <div class="mdui-typo-subheading mdui-text-center mdui-m-b-1">欢迎关注{:sysconf('site_name')}官方微信</div>
+    <img src="{:comconf('wechat_img')}" alt="{:sysconf('site_name_en')}微信公众号二维码">
+    <div class="mdui-typo-subheading mdui-text-center mdui-m-b-1">欢迎关注{:sysconf('site_name_en')}官方微信</div>
 </div>
 <div id="outdated"></div>
 <script src="https://cdn.bootcss.com/outdated-browser/1.1.5/outdatedbrowser.min.js"></script>

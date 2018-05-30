@@ -7,11 +7,10 @@
     <meta name="renderer" content="webkit">
     <meta http-equiv="Cache-Control" content="no-siteapp">
     <meta name="applicable-device" content="pc,mobile">
-    <meta name="keywords" content="{:comconf('keywords')}">
-    <meta name="description" content="{:comconf('description')}">
-    <meta name="viewport"
-          content="width=device-width,user-scalable=no,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0">
-    <title>{:comconf('title')}-{$navs}</title>
+    <meta name="keywords" content="{:comconf('keywords_en')}">
+    <meta name="description" content="{:comconf('description_en')}">
+    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0">
+    <title>{:comconf('title_en')}-{$navs}</title>
     <link rel="shortcut icon" href="{:sysconf('browser_icon')}">
     <link rel="dns-prefetch" href="https://cdn.bootcss.com/">
     <link href="https://cdn.bootcss.com/mdui/0.3.0/css/mdui.min.css" rel="stylesheet">
@@ -223,22 +222,22 @@
         <div class="mdui-appbar mdui-shadow-0">
             <div class="mdui-toolbar">
                 <a href="../index.html" class="mdui-btn mdui-ripple mdui-m-x-2 mdui-p-a-0 best-logo">
-                    {:sysconf('site_name')}<span class="mdui-hidden-xs">网络科技</span>
+                    {:sysconf('site_name_en')}<span class="mdui-hidden-xs">Internet technology</span>
                 </a>
                 <div class="mdui-toolbar-spacer"></div>
-                <a href="../index.html" class="mdui-btn mdui-ripple mdui-ripple-white">首页</a>
+                <a href="../index.html" class="mdui-btn mdui-ripple mdui-ripple-white">HOME</a>
                 {volist name="nav_list" id="vo" offset="0" length='1'}
                 <a href="../{$vo.url}" target="{$vo.target}"
-                   class="mdui-btn mdui-ripple mdui-ripple-white">{$vo.title}</a>
+                   class="mdui-btn mdui-ripple mdui-ripple-white">{$vo.title_en}</a>
                 {/volist}
                 <div class="mdui-hidden-sm-down mdui-m-a-0">
                     {volist name="nav_list" id="vo" offset="1" length='10'}
                     {if $navs == $vo.title }
                     <a href="../{$vo.url}" target="{$vo.target}"
-                       class="mdui-btn mdui-ripple mdui-ripple-white mdui-text-color-theme">{$vo.title}</a>
+                       class="mdui-btn mdui-ripple mdui-ripple-white mdui-text-color-theme">{$vo.title_en}</a>
                     {else}
                     <a href="../{$vo.url}" target="{$vo.target}"
-                       class="mdui-btn mdui-ripple mdui-ripple-white">{$vo.title}</a>
+                       class="mdui-btn mdui-ripple mdui-ripple-white">{$vo.title_en}</a>
                     {/if}
                     {/volist}
                     <a href="/index/index/lang.html?cn=cn" class="mdui-btn mdui-ripple mdui-ripple-white">中文</a> | <a href="/index/index/lang.html?cn=en" class="mdui-btn mdui-ripple mdui-ripple-white">ENGLISH</a>
@@ -254,7 +253,7 @@
 <div class="mdui-drawer mdui-drawer-close" id="left-drawer">
     <div class="mdui-list">
         {volist name="nav_list" id="vo" offset="1" length='10'}
-        <a href="../{$vo.url}" target="{$vo.target}" class="mdui-list-item mdui-ripple">{$vo.title}</a>
+        <a href="../{$vo.url}" target="{$vo.target}" class="mdui-list-item mdui-ripple">{$vo.title_en}</a>
         {/volist}
     </div>
     <div style="position: fixed;bottom: 0;">
@@ -276,7 +275,7 @@
                         {else}
                         <div name="all" class="title " style="margin-left: 29px">
                         {/if}
-                        {$project_type_list.0.title}
+                        {$project_type_list.0.title_en}
                     </div>
                     </a>
                     <a href="../project.html?id={$project_type_list.1.id}" style="color: #666666">
@@ -285,7 +284,7 @@
                             {else}
                             <div name="company" class="title" style="margin-left: 115px;margin-right: 115px">
                             {/if}
-                            {$project_type_list.1.title}
+                            {$project_type_list.1.title_en}
                         </div>
                     </a>
                     <a href="../project.html?id={$project_type_list.2.id}" style="color: #666666">
@@ -294,7 +293,7 @@
                         {else}
                         <div name="hangye" class="title">
                         {/if}
-                            {$project_type_list.2.title}
+                            {$project_type_list.2.title_en}
                         </div>
                     </a>
                 </div>
@@ -311,10 +310,10 @@
                             </div>
                             <div class="newsbac">
                                 <div class="newsDi">
-                                    <div class="newsTit">{$vo.title}</div>
-                                    <div class="newsDetail">规格:{$vo.format}</div>
-                                    <div class="newsDetail">等级:{$vo.level}</div>
-                                    <div class="newsDetail">包装方式:{$vo.packing}</div>
+                                    <div class="newsTit">{$vo.title_en}</div>
+                                    <div class="newsDetail">Specification:{$vo.format_en}</div>
+                                    <div class="newsDetail">Grade:{$vo.level_en}</div>
+                                    <div class="newsDetail">Packing:{$vo.packing_en}</div>
                                 </div>
                                 <div style="clear: both"></div>
                             </div>
@@ -352,18 +351,18 @@
             </button>
             <a href="{:comconf('weibo')}" target="_blank" rel="nofollow"
                class="mdui-btn mdui-ripple mdui-btn-icon mdui-text-color-white mdui-color-amber-500"
-               mdui-tooltip="{content: '欢迎访问{:sysconf('site_name')}官方微博', position: 'top'}">
+               mdui-tooltip="{content: '欢迎访问{:sysconf('site_name_en')}官方微博', position: 'top'}">
                 <i class="iconfont mdui-icon icon-weibo"></i>
             </a>
         </div>
         <div class="mdui-col mdui-xs-text-center mdui-p-y-1">
-            {:sysconf('site_copy')} {:sysconf('site_name')}网络科技 All Rights Reserved {:sysconf('miitbeian')}
+            {:sysconf('site_copy')} {:sysconf('site_name_en')}网络科技 All Rights Reserved {:sysconf('miitbeian')}
         </div>
     </div>
 </footer>
 <div class="mdui-dialog" id="wechat">
-    <img src="{:comconf('wechat_img')}" alt="{:sysconf('site_name')}微信公众号二维码">
-    <div class="mdui-typo-subheading mdui-text-center mdui-m-b-1">欢迎关注{:sysconf('site_name')}官方微信</div>
+    <img src="{:comconf('wechat_img')}" alt="{:sysconf('site_name_en')}微信公众号二维码">
+    <div class="mdui-typo-subheading mdui-text-center mdui-m-b-1">欢迎关注{:sysconf('site_name_en')}官方微信</div>
 </div>
 <div id="outdated"></div>
 <script src="https://cdn.bootcss.com/outdated-browser/1.1.5/outdatedbrowser.min.js"></script>

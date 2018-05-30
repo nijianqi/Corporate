@@ -47,8 +47,26 @@
             <div class="form-group">
                 <div class="col-md-12">
                     <div class="input-group">
+                        <span class="input-group-addon">文章英文标题</span>
+                        <input maxlength="128" required title="文章的标题不能为空哦" placeholder="请在这里输入标题" name='title_en' class="layui-input">
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-12">
+                    <div class="input-group">
                         <span class="input-group-addon">文章作者</span>
                         <input maxlength="8" required title="文章的作者不能为空哦" placeholder="请输入作者" name='author' class="layui-input">
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-12">
+                    <div class="input-group">
+                        <span class="input-group-addon">文章作者英文名</span>
+                        <input maxlength="20" required title="文章的作者不能为空哦" placeholder="请输入作者" name='author_en' class="layui-input">
                     </div>
                 </div>
             </div>
@@ -94,13 +112,31 @@
             </div>
 
             <div class="form-group">
-                <div class="col-md-12"><textarea name='content'></textarea></div>
+                <div class="col-md-12">
+                    <div class="input-group">
+                        <span class="input-group-addon">文章主要内容</span>
+                    </div>
+                    <textarea name='content'></textarea></div>
+            </div>
+
+            <div class="form-group">
+                <div class="input-group">
+                    <span class="input-group-addon">英文文章主要内容</span>
+                </div>
+                <div class="col-md-12"><textarea name='content_en'></textarea></div>
             </div>
 
             <div class="form-group">
                 <div class="col-md-12">
                     <label class="color-desc">摘要选填，如果不填写会默认抓取正文前54个字</label>
                     <textarea name="digest" class="layui-textarea" style="height:80px;resize:none"></textarea>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-12">
+                    <label class="color-desc">摘要选填，如果不填写会默认抓取英文正文前54个字</label>
+                    <textarea name="digest_en" class="layui-textarea" style="height:80px;resize:none"></textarea>
                 </div>
             </div>
             <div class="form-group">
@@ -136,10 +172,11 @@
         }
 
         /*! 实例富文本编辑器  */
-        var editor, $item, $body = $('body'), $form = $('form[name="news"]');
+        var editor,editor_en, $item, $body = $('body'), $form = $('form[name="news"]');
 
         /*! 默认编辑第一篇图文 */
         editor = window.createEditor('[name="content"]');
+        editor_en = window.createEditor('[name="content_en"]');
         $form.vali();
 
         /*! 上传图片 */
@@ -154,11 +191,13 @@
             $form.submit();
             if (!syncEditor($('.news-item.active'))) {
                 editor.setData('文章内容不能留空，请输入内容！');
+                editor_en.setData('文章英文内容不能留空，请输入内容！');
                 return false;
             }
             $('.news-item').map(function () {
                 var item = $(this).data('item');
                 item.content = item.content || '文章内容不能留空，请输入内容！';
+                item.content_en = item.content_en || '英文文章内容不能留空，请输入内容！';
                 data.push(item);
             });
             $.form.load('{:request()->url()}', {data: data}, "post");
@@ -178,17 +217,21 @@
                 var data = {};
                 data.id = $form.find('[name=id]').val();
                 data.title = $form.find('[name=title]').val();
+                data.title_en = $form.find('[name=title_en]').val();
                 data.nav_id = $form.find('[name=nav_id]').val();
                 data.local_url = $form.find('[name=local_url]').val();
                 data.content = editor.getData() || '';
+                data.content_en = editor_en.getData() || '';
                 data.author = $form.find('[name=author]').val();
+                data.author_en = $form.find('[name=author_en]').val();
                 data.digest = $form.find('[name=digest]').val();
+                data.digest_en = $form.find('[name=digest_en]').val();
                 data.show_cover_pic = $form.find('[name="show_cover_pic"]').get(0).checked ? 1 : 0;
                 data.content_source_url = $form.find('[name="content_source_url"]').val();
                 $form.find('[name=local_url]').trigger('change');
                 $pItem.data('item', data), $form.submit();
-                if ($form.find('input.validate-error').size() > 0 || data.content.length < 1) {
-                    ((data.content || '').length < 1) && editor.setData('文章内容不能留空，请输入内容！');
+                if ($form.find('input.validate-error').size() > 0 || data.content.length < 1|| data.content_en.length < 1) {
+                    ((data.content || '').length < 1) && ((data.content_en || '').length < 1) && editor.setData('文章内容不能留空，请输入内容！')&& editor_en.setData('文章英文内容不能留空，请输入内容！');
                     $pItem.addClass('active').siblings().removeClass('active');
                     return false;
                 }
@@ -204,11 +247,15 @@
                 var data = $item.data('item') || {};
                 data.id = data.id || 0;
                 data.title = data.title || '';
+                data.title_en = data.title_en || '';
                 data.nav_id = data.nav_id || 0;
                 data.local_url = data.local_url || '__STATIC__/plugs/uploader/theme/image.png';
                 data.content = data.content || '';
+                data.content_en = data.content_en || '';
                 data.author = data.author || '';
+                data.author_en = data.author_en || '';
                 data.digest = data.digest || '';
+                data.digest_en = data.digest_en || '';
                 data.content_source_url = data.content_source_url || '';
                 data.show_cover_pic = data.show_cover_pic || 0;
                 return data;
@@ -227,6 +274,7 @@
             }
 
             editor.setData(htmldecode(data.content));
+            editor_en.setData(htmldecode(data.content_en));
 
             function htmldecode(string) {
                 var div = document.createElement('div');

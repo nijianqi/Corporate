@@ -42,6 +42,7 @@
                     <a href="../{$vo.url}" target="{$vo.target}"
                        class="mdui-btn mdui-ripple mdui-ripple-white">{$vo.title}</a>
                     {/volist}
+                    <a href="/index/index/lang.html?cn=cn" class="mdui-btn mdui-ripple mdui-ripple-white">中文</a> | <a href="/index/index/lang.html?cn=en" class="mdui-btn mdui-ripple mdui-ripple-white">ENGLISH</a>
                 </div>
                 <a href="javascript:;" class="mdui-btn mdui-btn-icon mdui-hidden-md-up mdui-ripple mdui-ripple-white" mdui-drawer="{target: '#left-drawer',swipe:'true'}">
                     <i class="mdui-icon material-icons">more_horiz</i>
@@ -56,9 +57,12 @@
         <a href="{$vo.url}" target="{$vo.target}" class="mdui-list-item mdui-ripple">{$vo.title}</a>
         {/volist}
     </div>
+    <div style="position: fixed;bottom: 0;">
+        <a href="/index/index/lang.html?cn=cn" class="mdui-btn mdui-ripple mdui-ripple-white">中文</a> | <a href="/index/index/lang.html?cn=en" class="mdui-btn mdui-ripple mdui-ripple-white">ENGLISH</a>
+    </div>
 </div>
 <div class="mdui-container-fluid best-bg-img best-bannar"
-     style="background-image:url('../uploads/banner/20171214/65dca4354ce97e47c1260ef3e682ee03.jpg')"></div>
+     style="background-image:url('../static/index/images/新闻资讯.jpg')"></div>
 
 <main class="mdui-p-y-auto mdui-color-grey-100">
     <div class="mdui-container mdui-xs-fluid">

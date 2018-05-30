@@ -14,6 +14,19 @@
     </div>
 
     <div class="layui-form-item">
+        <label class="layui-form-label">职位英文名称</label>
+        <div class="layui-input-block">
+            {if $vo and isset($vo.title_en)}
+            <input readonly="readonly" disabled="disabled" name="title_en" value='{$vo.title_en|default=""}'
+                   required="required" title="请输入标题" placeholder="请输入标题" class="layui-input layui-bg-gray">
+            {else}
+            <input name="title_en" value='{$vo.title_en|default=""}' required="required" pattern="^.{2,}$" title="请输入标题"
+                   placeholder="请输入2位及以上字符标题" class="layui-input">
+            {/if}
+        </div>
+    </div>
+
+    <div class="layui-form-item">
         <label class="layui-form-label">薪酬待遇</label>
         <div class="layui-input-block">
             <input name="money" value='{$vo.money|default=""}' required="required" pattern="^.{2,}$" title="请输入薪酬待遇"
@@ -22,9 +35,25 @@
     </div>
 
     <div class="layui-form-item">
+        <label class="layui-form-label">薪酬待遇英文</label>
+        <div class="layui-input-block">
+            <input name="money_en" value='{$vo.money_en|default=""}' required="required" pattern="^.{2,}$" title="请输入薪酬待遇"
+                   placeholder="请输入2位及以上字符标题" class="layui-input">
+        </div>
+    </div>
+
+    <div class="layui-form-item">
         <label class="layui-form-label">工作性质</label>
         <div class="layui-input-block">
             <input name="work_type" value='{$vo.work_type|default=""}' required="required" pattern="^.{2,}$"
+                   title="请输入工作性质" placeholder="请输入2位及以上字符标题" class="layui-input">
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">工作性质英文</label>
+        <div class="layui-input-block">
+            <input name="work_type_en" value='{$vo.work_type_en|default=""}' required="required" pattern="^.{2,}$"
                    title="请输入工作性质" placeholder="请输入2位及以上字符标题" class="layui-input">
         </div>
     </div>
@@ -46,9 +75,25 @@
     </div>
 
     <div class="layui-form-item">
+        <label class="layui-form-label">联系人英文名称</label>
+        <div class="layui-input-block">
+            <input name="contacts_en" value='{$vo.contacts_en|default=""}' required="required" pattern="^.{2,}$"
+                   title="请输入联系人名称" placeholder="请输入2位及以上字符标题" class="layui-input">
+        </div>
+    </div>
+
+    <div class="layui-form-item">
         <label class="layui-form-label">工作地点</label>
         <div class="layui-input-block">
             <input name="address" value='{$vo.address|default=""}' required="required" pattern="^.{2,}$" title="请输入地址"
+                   placeholder="请输入2位及以上字符标题" class="layui-input">
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">工作地点英文</label>
+        <div class="layui-input-block">
+            <input name="address_en" value='{$vo.address_en|default=""}' required="required" pattern="^.{2,}$" title="请输入地址"
                    placeholder="请输入2位及以上字符标题" class="layui-input">
         </div>
     </div>
@@ -69,9 +114,23 @@
     </div>
 
     <div class="layui-form-item">
+        <label class="layui-form-label">工作职责英文</label>
+        <div class="layui-input-block">
+            <textarea name="work_content_en" placeholder="请输入工作职责" title="请输入工作职责" class="layui-textarea">{$vo.work_content_en|default=""}</textarea>
+        </div>
+    </div>
+
+    <div class="layui-form-item">
         <label class="layui-form-label">任职资格</label>
         <div class="layui-input-block">
             <textarea name="qualifications" placeholder="请输入任职资格" title="请输入任职资格" class="layui-textarea">{$vo.qualifications|default=""}</textarea>
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">任职资格英文</label>
+        <div class="layui-input-block">
+            <textarea name="qualifications_en" placeholder="请输入任职资格" title="请输入任职资格" class="layui-textarea">{$vo.qualifications_en|default=""}</textarea>
         </div>
     </div>
 

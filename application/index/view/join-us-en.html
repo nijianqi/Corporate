@@ -7,10 +7,10 @@
     <meta name="renderer" content="webkit">
     <meta http-equiv="Cache-Control" content="no-siteapp">
     <meta name="applicable-device" content="pc,mobile">
-    <meta name="keywords" content="{:comconf('keywords')}">
-    <meta name="description" content="{:comconf('description')}">
+    <meta name="keywords" content="{:comconf('keywords_en')}">
+    <meta name="description" content="{:comconf('description_en')}">
     <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0">
-    <title>{:comconf('title')}-{$navs}</title>
+    <title>{:comconf('title_en')}-{$navs}</title>
     <link rel="shortcut icon" href="{:sysconf('browser_icon')}">
     <link rel="dns-prefetch" href="https://cdn.bootcss.com/">
     <link href="https://cdn.bootcss.com/mdui/0.3.0/css/mdui.min.css" rel="stylesheet">
@@ -30,21 +30,21 @@
         <div class="mdui-appbar mdui-shadow-0">
             <div class="mdui-toolbar">
                 <a href="index.html" class="mdui-btn mdui-ripple mdui-m-x-2 mdui-p-a-0 best-logo">
-                    {:sysconf('site_name')}<span class="mdui-hidden-xs">网络科技</span>
+                    {:sysconf('site_name_en')}<span class="mdui-hidden-xs">Internet technology</span>
                 </a>
                 <div class="mdui-toolbar-spacer"></div>
-                <a href="index.html" class="mdui-btn mdui-ripple mdui-ripple-white">首页</a>
+                <a href="index.html" class="mdui-btn mdui-ripple mdui-ripple-white">HOME</a>
                 {volist name="nav_list" id="vo" offset="0" length='1'}
-                <a href="{$vo.url}" target="{$vo.target}" class="mdui-btn mdui-ripple mdui-ripple-white">{$vo.title}</a>
+                <a href="{$vo.url}" target="{$vo.target}" class="mdui-btn mdui-ripple mdui-ripple-white">{$vo.title_en}</a>
                 {/volist}
                 <div class="mdui-hidden-sm-down mdui-m-a-0">
                     {volist name="nav_list" id="vo" offset="1" length='10'}
                     {if $navs == $vo.title }
                     <a href="{$vo.url}" target="{$vo.target}"
-                       class="mdui-btn mdui-ripple mdui-ripple-white mdui-text-color-theme">{$vo.title}</a>
+                       class="mdui-btn mdui-ripple mdui-ripple-white mdui-text-color-theme">{$vo.title_en}</a>
                     {else}
                     <a href="{$vo.url}" target="{$vo.target}"
-                       class="mdui-btn mdui-ripple mdui-ripple-white">{$vo.title}</a>
+                       class="mdui-btn mdui-ripple mdui-ripple-white">{$vo.title_en}</a>
                     {/if}
                     {/volist}
                     <a href="/index/index/lang.html?cn=cn" class="mdui-btn mdui-ripple mdui-ripple-white">中文</a> | <a href="/index/index/lang.html?cn=en" class="mdui-btn mdui-ripple mdui-ripple-white">ENGLISH</a>
@@ -60,7 +60,7 @@
 <div class="mdui-drawer mdui-drawer-close" id="left-drawer">
     <div class="mdui-list">
         {volist name="nav_list" id="vo" offset="1" length='10'}
-        <a href="{$vo.url}" target="{$vo.target}" class="mdui-list-item mdui-ripple">{$vo.title}</a>
+        <a href="{$vo.url}" target="{$vo.target}" class="mdui-list-item mdui-ripple">{$vo.title_en}</a>
         {/volist}
     </div>
     <div style="position: fixed;bottom: 0;">
@@ -77,7 +77,7 @@
                 <div class="mdui-list mdui-color-white">
                     <a href="#company-news" class="mdui-list-item mdui-ripple mdui-list-item-active">
                         <i class="mdui-list-item-icon iconfont mdui-icon icon-zhaopin"></i>
-                        <div class="mdui-list-item-content">招聘岗位</div>
+                        <div class="mdui-list-item-content">Recruitment</div>
                     </a>
                     <!-- <a href="#domestic-info" class="mdui-list-item mdui-ripple">
                         <i class="mdui-list-item-icon iconfont mdui-icon icon-benefits"></i>
@@ -91,10 +91,10 @@
             </div>
             <div class="mdui-col-xs-12 mdui-col-sm-10 mdui-float-right best-item">
                 <div id="company-news" class="mdui-color-white mdui-p-a-1">
-                    <div class="best-partition mdui-color-grey-50 mdui-m-b-1 mdui-p-x-2 mdui-p-y-1">招聘岗位</div>
+                    <div class="best-partition mdui-color-grey-50 mdui-m-b-1 mdui-p-x-2 mdui-p-y-1">Recruitment</div>
                     <div class="mdui-color-grey-200 best-recruit-head mdui-shadow-2">
-                        <div class="best-recruit-hd mdui-text-left">职位</div>
-                        <div class="best-recruit-item">薪酬待遇</div>
+                        <div class="best-recruit-hd mdui-text-left">Position</div>
+                        <div class="best-recruit-item">Remuneration</div>
                     </div>
                     <div class="mdui-panel mdui-panel-gapless" mdui-panel="{accordion: true}">
                         {foreach name="work_list" item="vo" key="k"}
@@ -104,34 +104,34 @@
                         <div class="mdui-panel-item ">
                         {/if}
                             <div class="mdui-panel-item-header">
-                                <div class="mdui-panel-item-title">{$vo.title}</div>
-                                <div class="mdui-panel-item-summary mdui-m-p-1 mdui-text-center">{$vo.money}</div>
+                                <div class="mdui-panel-item-title">{$vo.title_en}</div>
+                                <div class="mdui-panel-item-summary mdui-m-p-1 mdui-text-center">{$vo.money_en}</div>
                                 <i class="mdui-panel-item-arrow mdui-icon material-icons">keyboard_arrow_down</i>
                             </div>
                             <div class="mdui-panel-item-body mdui-color-grey-100 mdui-typo">
                                 <div class="mdui-row mdui-p-t-1">
-                                    <div class="mdui-col-xs-6 mdui-col-sm-4 mdui-col-md-3"><strong>工作性质：</strong>{$vo.work_type}
+                                    <div class="mdui-col-xs-6 mdui-col-sm-4 mdui-col-md-3"><strong>Nature of the work：</strong>{$vo.work_type_en}
                                     </div>
-                                    <div class="mdui-col-xs-6 mdui-col-sm-4 mdui-col-md-3"><strong>招聘人数：</strong>{$vo.number}
+                                    <div class="mdui-col-xs-6 mdui-col-sm-4 mdui-col-md-3"><strong>Recruitment number：</strong>{$vo.number}
                                     </div>
-                                    <div class="mdui-col-xs-12 mdui-col-sm-4 mdui-col-md-3"><strong>联系人：</strong>{$vo.contacts}
+                                    <div class="mdui-col-xs-12 mdui-col-sm-4 mdui-col-md-3"><strong>Contacts：</strong>{$vo.contacts_en}
                                     </div>
-                                    <div class="mdui-col-xs-12 mdui-col-sm-6 mdui-col-md-3"><strong>工作地点：</strong>{$vo.address}
+                                    <div class="mdui-col-xs-12 mdui-col-sm-6 mdui-col-md-3"><strong>work place：</strong>{$vo.address_en}
                                     </div>
-                                    <div class="mdui-col-xs-12 mdui-col-sm-6 mdui-col-md-3"><strong>联系电话：</strong>{$vo.telphone}
+                                    <div class="mdui-col-xs-12 mdui-col-sm-6 mdui-col-md-3"><strong>contact number：</strong>{$vo.telphone}
                                     </div>
                                     <div class="mdui-col-xs-12 mdui-col-sm-6 mdui-col-md-3"><strong>发布时间：</strong>{:date('Y-m-d',strtotime($vo['create_at']))}
                                     </div>
                                 </div>
-                                <div><strong>工作职责：</strong></div>
+                                <div><strong>release time：</strong></div>
                                 <!--<ol>-->
                                     <!--<li>负责开发客户，在全国范围内完成外贸工厂的招商对接</li>-->
                                     <!--<li>负责入驻工厂的日常维护，根据客户需求做出有效反馈，及时解决问题</li>-->
                                     <!--<li>负责收集市场信息，制定并善产品的销售策略并执行实施</li>-->
                                     <!--<li>负责组织线下招商会类的活动，完成销售目标</li>-->
                                 <!--</ol>-->
-                                {$vo.work_content}
-                                <div><strong>任职资格：</strong></div>
+                                {$vo.work_content_en}
+                                <div><strong>Qualifications：</strong></div>
                                 <!--<ol>-->
                                     <!--<li>大专以上学历，要求24-32岁之间，了解外贸工厂或电商平台者加分</li>-->
                                     <!--<li>有2年以上销售经验，销售功底过硬，抗压能力强，有B端销售经验加分</li>-->
@@ -139,15 +139,15 @@
                                     <!--<li>性格外向，乐观开朗，情商高，做事灵活，乐于分享，团队协作能力强</li>-->
                                     <!--<li>适应出差，服从分配，有车老司机加分</li>-->
                                 <!--</ol>-->
-                                {$vo.qualifications}
+                                {$vo.qualifications_en}
                                 <div class="mdui-panel-item-actions mdui-row mdui-sm-valign">
-                                    <div class="mdui-col-xs-12 mdui-col-sm-9  mdui-xs-text-center">应聘请发送简历到
+                                    <div class="mdui-col-xs-12 mdui-col-sm-9  mdui-xs-text-center">Apply to send resume to
                                         <input type="text" value="{$vo.email}"
                                                class="best-input mdui-text-color-theme mdui-xs-text-center" readonly>
                                     </div>
                                     <div class="mdui-col-xs-12 mdui-col-sm-3 mdui-text-center">
                                         <button class="mdui-btn mdui-btn-dense mdui-ripple mdui-hoverable mdui-color-grey-300 copy-email">
-                                            复制email
+                                            Copy email
                                         </button>
                                     </div>
                                 </div>
@@ -185,18 +185,18 @@
             </button>
             <a href="{:comconf('weibo')}" target="_blank" rel="nofollow"
                class="mdui-btn mdui-ripple mdui-btn-icon mdui-text-color-white mdui-color-amber-500"
-               mdui-tooltip="{content: '欢迎访问{:sysconf('site_name')}官方微博', position: 'top'}">
+               mdui-tooltip="{content: '欢迎访问{:sysconf('site_name_en')}官方微博', position: 'top'}">
                 <i class="iconfont mdui-icon icon-weibo"></i>
             </a>
         </div>
         <div class="mdui-col mdui-xs-text-center mdui-p-y-1">
-            {:sysconf('site_copy')} {:sysconf('site_name')}网络科技 All Rights Reserved {:sysconf('miitbeian')}
+            {:sysconf('site_copy')} {:sysconf('site_name_en')}网络科技 All Rights Reserved {:sysconf('miitbeian')}
         </div>
     </div>
 </footer>
 <div class="mdui-dialog" id="wechat">
-    <img src="{:comconf('wechat_img')}" alt="{:sysconf('site_name')}微信公众号二维码">
-    <div class="mdui-typo-subheading mdui-text-center mdui-m-b-1">欢迎关注{:sysconf('site_name')}官方微信</div>
+    <img src="{:comconf('wechat_img')}" alt="{:sysconf('site_name_en')}微信公众号二维码">
+    <div class="mdui-typo-subheading mdui-text-center mdui-m-b-1">欢迎关注{:sysconf('site_name_en')}官方微信</div>
 </div>
 <div id="outdated"></div>
 <script src="https://cdn.bootcss.com/outdated-browser/1.1.5/outdatedbrowser.min.js"></script>

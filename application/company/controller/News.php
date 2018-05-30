@@ -163,6 +163,9 @@ class News extends BasicAdmin
             if (empty($vo['digest'])) {
                 $vo['digest'] = mb_substr(strip_tags(str_replace(["\s", '　'], '', $vo['content'])), 0, 120);
             }
+            if (empty($vo['digest_en'])) {
+                $vo['digest_en'] = mb_substr(strip_tags(str_replace(["\s", '　'], '', $vo['content_en'])), 0, 120);
+            }
             if (empty($vo['id'])) {
                 $result = $id = Db::name('CompanyNewsArticle')->insertGetId($vo);
             } else {

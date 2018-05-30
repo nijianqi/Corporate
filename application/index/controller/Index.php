@@ -26,7 +26,7 @@ class Index extends Controller
             ->join('company_news_article b', 'a.article_id = b.id', 'left')
             ->join('company_news_nav c', 'b.nav_id = c.id', 'left')
             ->where('a.is_deleted', '0')
-            ->field('a.id,b.title,b.local_url,a.create_at,b.digest,b.nav_id,c.title as nav_title,c.title_en as nav_title_en')
+            ->field('a.id,b.title,b.title_en,b.local_url,a.create_at,b.digest,b.digest_en,b.nav_id,c.title as nav_title,c.title_en as nav_title_en')
             ->order('a.create_at asc')
             ->select();
         $partner_list = Db::table('company_partner')->where('is_deleted', '0')->order('create_at asc')->select(); //合作伙伴
@@ -43,6 +43,9 @@ class Index extends Controller
         $this->assign('new_list', $new_list);
         $this->assign('partner_list', $partner_list);
         $this->assign('data_list', $data);
+        if(cookie('think_var') =='en-us'){
+            return $this->fetch('/index-en');
+        }
         return $this->fetch('/index');
     }
 
@@ -55,6 +58,9 @@ class Index extends Controller
         $address_list = Db::table('company_address')->where('is_deleted', '0')->order('create_at asc')->select();
         $this->assign('address_list', $address_list);
         $this->assign('navs', '联系我们');
+        if(cookie('think_var') =='en-us'){
+            return $this->fetch('/contact-us-en');
+        }
         return $this->fetch('/contact-us');
     }
 
@@ -66,12 +72,15 @@ class Index extends Controller
             ->join('company_news_article b', 'a.article_id = b.id', 'left')
             ->join('company_news_nav c', 'b.nav_id = c.id', 'left')
             ->where('a.is_deleted', '0')
-            ->field('a.id,b.title,b.local_url,a.create_at,b.digest,b.nav_id,c.title as nav_title,c.title_en as nav_title_en')
+            ->field('a.id,b.title,b.title_en,b.local_url,a.create_at,b.digest,b.digest_en,b.nav_id,c.title as nav_title,c.title_en as nav_title_en')
             ->order('a.create_at asc')
             ->select();
         $this->assign('album_list', $album_list);
         $this->assign('new_list', $new_list);
         $this->assign('navs', '关于我们');
+        if(cookie('think_var') =='en-us'){
+            return $this->fetch('/about-us-en');
+        }
         return $this->fetch('/about-us');
     }
 
@@ -80,6 +89,9 @@ class Index extends Controller
         $work_list = Db::table('company_work')->where('is_deleted', '0')->order('create_at asc')->select();
         $this->assign('work_list', $work_list);
         $this->assign('navs', '诚聘英才');
+        if(cookie('think_var') =='en-us'){
+            return $this->fetch('/join-us-en');
+        }
         return $this->fetch('/join-us');
     }
 
@@ -91,7 +103,7 @@ class Index extends Controller
             ->join('company_news_article b', 'a.article_id = b.id', 'left')
             ->join('company_news_nav c', 'b.nav_id = c.id', 'left')
             ->where('a.is_deleted', '0')
-            ->field('a.id,b.title,b.local_url,a.create_at,b.digest,b.nav_id,c.title as nav_title,c.title_en as nav_title_en')
+            ->field('a.id,b.title,b.title_en,b.local_url,a.create_at,b.digest,b.digest_en,b.nav_id,c.title as nav_title,c.title_en as nav_title_en')
             ->order('a.create_at asc')
             ->select();
         $data = [];
@@ -104,6 +116,10 @@ class Index extends Controller
         }
         $this->assign('data_list', $data);
         $this->assign('new_nav', $new_nav);
+        $this->assign('navs', '新闻资讯');
+        if(cookie('think_var') =='en-us'){
+            return $this->fetch('/news-en');
+        }
         return $this->fetch('/news');
     }
 
@@ -119,30 +135,36 @@ class Index extends Controller
         if (empty($new_info)) {
             $this->error('新闻不存在');
         }
-        $new_list = Db::table('company_news')//大事记
+        $new_list = Db::table('company_news')
         ->alias('a')
             ->join('company_news_article b', 'a.article_id = b.id', 'left')
             ->where('a.is_deleted', '0')
-            ->field('a.id,b.title,b.local_url,a.create_at,b.digest,b.nav_id')
+            ->field('a.id,b.title,b.title_en,b.local_url,a.create_at,b.digest,b.digest_en,b.nav_id')
             ->order('a.create_at asc')
             ->select();
         $this->assign('new_list', $new_list);
         $this->assign('new_info', $new_info);
+        if(cookie('think_var') =='en-us'){
+            return $this->fetch('/news-info-en');
+        }
         return $this->fetch('/news-info');
     }
 
-    public function project($type_id = 1)
+    public function project($id = 1)
     {
-        $project_type = Db::table('company_project_type')->where('id', $type_id)->where('is_deleted', '0')->order('create_at asc')->find();
+        $project_type = Db::table('company_project_type')->where('id', $id)->where('is_deleted', '0')->order('create_at asc')->find();
         if (empty($project_type)) {
             $this->error('产品类型不存在');
         }
-        $project_list = Db::table('company_project')->where('is_deleted', '0')->where('type_id', $type_id)->order('create_at asc')->select();
+        $project_list = Db::table('company_project')->where('is_deleted', '0')->where('type_id', $id)->order('create_at asc')->select();
         $project_type_list = Db::table('company_project_type')->where('is_deleted', '0')->order('create_at asc')->select();
         $this->assign('project_list', $project_list);
         $this->assign('project_type_list', $project_type_list);
         $this->assign('navs', '产品中心');
-        $this->assign('type_id', $type_id);
+        $this->assign('type_id', $id);
+        if(cookie('think_var') =='en-us'){
+            return $this->fetch('/projects-en');
+        }
         return $this->fetch('/projects');
     }
 
@@ -155,5 +177,6 @@ class Index extends Controller
                 cookie('think_var','en-us');
                 break;
         }
+        $this->redirect('/index');
     }
 }

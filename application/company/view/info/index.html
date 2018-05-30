@@ -12,6 +12,15 @@
             <p class="help-block">当前网站标题，显示在浏览器标签上</p>
         </div>
     </div>
+    <div class="form-group">
+        <label class="col-sm-2 control-label">
+            Title_en<br><span class="nowrap color-desc">网站英文标题</span>
+        </label>
+        <div class='col-sm-8'>
+            <input name="title_en" required="required" title="请输入网站英文标题" placeholder="请输入网站英文标题" value="{:comconf('title_en')}" class="layui-input">
+            <p class="help-block">当前网站标题，显示在浏览器标签上</p>
+        </div>
+    </div>
 
     <div class="form-group">
         <label class="col-sm-2 control-label">
@@ -25,10 +34,30 @@
 
     <div class="form-group">
         <label class="col-sm-2 control-label">
+            Kewords_en<br><span class="nowrap color-desc">网站英文关键字</span>
+        </label>
+        <div class='col-sm-8'>
+            <input name="kewords_en" required="required" title="请输入网站关键字" placeholder="请输入网站关键字" value="{:comconf('kewords_en')}" class="layui-input">
+            <p class="help-block">当前网站关键字，显示在浏览器标签上</p>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-2 control-label">
             Description<br><span class="nowrap color-desc">网站描述</span>
         </label>
         <div class='col-sm-8'>
             <input name="description" required="required" title="请输入网站描述" placeholder="请输入网站描述" value="{:comconf('description')}" class="layui-input">
+            <p class="help-block">网站描述，显示在浏览器标签上</p>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-2 control-label">
+            Description_en<br><span class="nowrap color-desc">网站英文描述</span>
+        </label>
+        <div class='col-sm-8'>
+            <input name="description_en" required="required" title="请输入网站描述" placeholder="请输入网站描述" value="{:comconf('description_en')}" class="layui-input">
             <p class="help-block">网站描述，显示在浏览器标签上</p>
         </div>
     </div>

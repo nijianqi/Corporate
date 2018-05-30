@@ -7,10 +7,10 @@
     <meta name="renderer" content="webkit">
     <meta http-equiv="Cache-Control" content="no-siteapp">
     <meta name="applicable-device" content="pc,mobile">
-    <meta name="keywords" content="{:comconf('keywords')}">
-    <meta name="description" content="{:comconf('description')}">
+    <meta name="keywords" content="{:comconf('keywords_en')}">
+    <meta name="description" content="{:comconf('description_en')}">
     <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0">
-    <title>{:comconf('title')}-{$navs}</title>
+    <title>{:comconf('title_en')}-{$navs}</title>
     <link rel="shortcut icon" href="{:sysconf('browser_icon')}">
     <link rel="dns-prefetch" href="https://cdn.bootcss.com/">
     <link href="https://cdn.bootcss.com/mdui/0.3.0/css/mdui.min.css" rel="stylesheet">
@@ -30,18 +30,18 @@
         <div class="mdui-appbar mdui-shadow-0">
             <div class="mdui-toolbar">
                 <a href="index.html" class="mdui-btn mdui-ripple mdui-m-x-2 mdui-p-a-0 best-logo">
-                    {:sysconf('site_name')}<span class="mdui-hidden-xs">网络科技</span>
+                    {:sysconf('site_name_en')}<span class="mdui-hidden-xs">Internet technology</span>
                 </a>
                 <div class="mdui-toolbar-spacer"></div>
-                <a href="index.html" class="mdui-btn mdui-ripple mdui-ripple-white">首页</a>
+                <a href="index.html" class="mdui-btn mdui-ripple mdui-ripple-white">HOME</a>
                 {volist name="nav_list" id="vo" offset="0" length='1'}
                 <a href="{$vo.url}" target="{$vo.target}"
-                   class="mdui-btn mdui-ripple mdui-ripple-white mdui-text-color-theme">{$vo.title}</a>
+                   class="mdui-btn mdui-ripple mdui-ripple-white mdui-text-color-theme">{$vo.title_en}</a>
                 {/volist}
                 <div class="mdui-hidden-sm-down mdui-m-a-0">
                     {volist name="nav_list" id="vo" offset="1" length='10'}
                     <a href="{$vo.url}" target="{$vo.target}"
-                       class="mdui-btn mdui-ripple mdui-ripple-white">{$vo.title}</a>
+                       class="mdui-btn mdui-ripple mdui-ripple-white">{$vo.title_en}</a>
                     {/volist}
                     <a href="/index/index/lang.html?cn=cn" class="mdui-btn mdui-ripple mdui-ripple-white">中文</a> | <a href="/index/index/lang.html?cn=en" class="mdui-btn mdui-ripple mdui-ripple-white">ENGLISH</a>
                 </div>
@@ -56,7 +56,7 @@
 <div class="mdui-drawer mdui-drawer-close" id="left-drawer">
     <div class="mdui-list">
         {volist name="nav_list" id="vo" offset="1" length='10'}
-        <a href="{$vo.url}" target="{$vo.target}" class="mdui-list-item mdui-ripple">{$vo.title}</a>
+        <a href="{$vo.url}" target="{$vo.target}" class="mdui-list-item mdui-ripple">{$vo.title_en}</a>
         {/volist}
     </div>
     <div style="position: fixed;bottom: 0;">
@@ -85,7 +85,7 @@
                             {else}
                             <i class="mdui-list-item-icon iconfont mdui-icon icon-china mdui-hidden-sm"></i>
                             {/if}
-                            <div class="mdui-list-item-content">{$vo.title}</div>
+                            <div class="mdui-list-item-content">{$vo.title_en}</div>
                         </a>
                         {/foreach}
                 </div>
@@ -93,7 +93,7 @@
             <div class="mdui-col-xs-12 mdui-col-sm-10 mdui-float-right best-item">
                 {foreach name="data_list" item="new_list" key="k"}
                 <div id="{$new_list[0]['nav_title_en']}" class="mdui-color-white mdui-p-a-1">
-                    <div class="best-partition mdui-color-grey-50 mdui-m-b-1 mdui-p-x-2 mdui-p-y-1">{$k}</div>
+                    <div class="best-partition mdui-color-grey-50 mdui-m-b-1 mdui-p-x-2 mdui-p-y-1">{$new_list[0]['nav_title_en']}</div>
                     <div class="best-news-list">
                         {volist name="new_list" id="vo"}
                         <a href="info/{$vo.id}"
@@ -101,10 +101,10 @@
                            target="_blank">
                             <div class="mdui-col-xs-12 mdui-col-sm-9">
                                 <div class="mdui-typo-body-2 best-new-title">
-                                    {$vo.title}
+                                    {$vo.title_en}
                                 </div>
                                 <div class="mdui-typo-body-1 best-new-content mdui-text-color-grey-600 mdui-list-item-two-line">
-                                    {$vo.digest}
+                                    {$vo.digest_en}
                                 </div>
                             </div>
                             <div class="mdui-col-12 mdui-col-sm-3 mdui-xs-valign mdui-p-y-1">
@@ -151,18 +151,18 @@
             </button>
             <a href="{:comconf('weibo')}" target="_blank" rel="nofollow"
                class="mdui-btn mdui-ripple mdui-btn-icon mdui-text-color-white mdui-color-amber-500"
-               mdui-tooltip="{content: '欢迎访问{:sysconf('site_name')}官方微博', position: 'top'}">
+               mdui-tooltip="{content: '欢迎访问{:sysconf('site_name_en')}官方微博', position: 'top'}">
                 <i class="iconfont mdui-icon icon-weibo"></i>
             </a>
         </div>
         <div class="mdui-col mdui-xs-text-center mdui-p-y-1">
-            {:sysconf('site_copy')} {:sysconf('site_name')}网络科技 All Rights Reserved {:sysconf('miitbeian')}
+            {:sysconf('site_copy')} {:sysconf('site_name_en')}网络科技 All Rights Reserved {:sysconf('miitbeian')}
         </div>
     </div>
 </footer>
 <div class="mdui-dialog" id="wechat">
-    <img src="{:comconf('wechat_img')}" alt="{:sysconf('site_name')}微信公众号二维码">
-    <div class="mdui-typo-subheading mdui-text-center mdui-m-b-1">欢迎关注{:sysconf('site_name')}官方微信</div>
+    <img src="{:comconf('wechat_img')}" alt="{:sysconf('site_name_en')}微信公众号二维码">
+    <div class="mdui-typo-subheading mdui-text-center mdui-m-b-1">欢迎关注{:sysconf('site_name_en')}官方微信</div>
 </div>
 <div id="outdated"></div>
 <script src="https://cdn.bootcss.com/outdated-browser/1.1.5/outdatedbrowser.min.js"></script>
