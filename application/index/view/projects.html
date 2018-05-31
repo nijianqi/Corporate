@@ -269,21 +269,21 @@
     <div class="mdui-container mdui-xs-fluid">
         <div class="mdui-row">
             <div class="mdui-col-xs-12 mdui-col-sm-12 mdui-float-center best-item">
-                <div id="fenlei" style="width: 400px;margin: 20px auto;text-align: center;font-size: 14px;color: #666666;height: 30px">
+                <div id="fenlei" style="width: 100%;margin: 20px auto;text-align: center;font-size: 14px;color: #666666;height: 30px">
                     <a href="../project.html?id={$project_type_list.0.id}" style="color: #666666">
                         {if $type_id == $project_type_list[0]['id']}
-                        <div name="all" class="title titleLine " style="margin-left: 29px">
+                        <div name="all" class="title titleLine " style="margin-left: 10%">
                         {else}
-                        <div name="all" class="title " style="margin-left: 29px">
+                        <div name="all" class="title " style="margin-left: 10%">
                         {/if}
                         {$project_type_list.0.title}
                     </div>
                     </a>
                     <a href="../project.html?id={$project_type_list.1.id}" style="color: #666666">
                             {if $type_id == $project_type_list[1]['id']}
-                            <div name="company" class="title titleLine" style="margin-left: 115px;margin-right: 115px">
+                            <div name="company" class="title titleLine" style="margin:0 30% 0 30%">
                             {else}
-                            <div name="company" class="title" style="margin-left: 115px;margin-right: 115px">
+                            <div name="company" class="title" style="margin:0 30% 0 30%">
                             {/if}
                             {$project_type_list.1.title}
                         </div>
